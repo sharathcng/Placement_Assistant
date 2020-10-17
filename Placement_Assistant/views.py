@@ -5,4 +5,7 @@ def index(request):
     
 def login(request):
     return render(request, "Student/login.html")
+
+def Home(request):
+    return render(request, "Student/home.html")
     
