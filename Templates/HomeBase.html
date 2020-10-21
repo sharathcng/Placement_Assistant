@@ -10,7 +10,7 @@
 
     <header class="text-white body-font sticky top-0 bg-black">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a href="{% url "Home"%}" class="flex title-font font-medium items-center text-white-900 mb-4 md:mb-0">
+          <a href="{% url "home"%}" class="flex title-font font-medium items-center text-white-900 mb-4 md:mb-0">
             <img src="{% static "mca-logo.png" %}" height="100pt" width="100pt" />
             <span class="ml-3 text-xl hover:text-blue-500">Placement Assistant</span>
           </a>
@@ -22,7 +22,7 @@
           </nav>
           <div class="space-y-0">
             <span class="w-full flex rounded-md shadow-sm">
-              <a href="#" class="w-full flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+              <a href="{% url 'logout' %}" class="w-full flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                 Sign out
               </a>
             </span>
