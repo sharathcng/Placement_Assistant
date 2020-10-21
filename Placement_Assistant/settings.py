@@ -78,7 +78,15 @@ WSGI_APPLICATION = 'Placement_Assistant.wsgi.application'
 
 DATABASES = {
     'default': {
-        
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'placement_assistant',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS':{
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES',foreign_key_checks = 0"
+        }
     }
 }
 
