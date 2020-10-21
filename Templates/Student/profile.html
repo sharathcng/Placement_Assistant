@@ -4,6 +4,7 @@
 
 <title>Profile</title>
 
+  {% for user in user %}
       <section class="text-gray-700 body-font">
         <div class=" container px-5 py-18 mx-auto">
           <div class="flex items-center lg:w-3/4 mx-auto border-b pb-12 mb-10 border-gray-200 sm:flex-row flex-col">
@@ -11,26 +12,117 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png" alt="">
             </div>
             <div class="flex-grow items-center sm:text-left text-center mt-1 sm:mt-10">
-              <h1 class="text-gray-1000 text-5xl title-font font-xldium mb-4"><ion-icon class="" name="person-circle-outline"></ion-icon>SHARATH HG</h1>
-              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="card" class="mr-3 "></ion-icon>PES120182650</h1>
-              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="calendar" class="mr-3 "></ion-icon>04-12-1997</h1>
-              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="male-female" class="mr-3 "></ion-icon>Male</h1>
-              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="call" class="mr-3 "></ion-icon>8095908658</h1>
-              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="mail" class="mr-3 "></ion-icon>cngsharath@gmail</h1>
-              
+              <h1 class="text-gray-1000 text-5xl title-font font-xldium mb-4"><ion-icon class="" name="person-circle-outline"></ion-icon>{{ user.first_name }} {{ user.last_name }}</h1>
+              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="card" class="mr-3 "></ion-icon>{{ user.username }}</h1>
 
-              <a class="mt-3 text-indigo-500 inline-flex items-center">More
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
+            {% for profile in profile %}
+              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="calendar" class="mr-3 "></ion-icon>{{ profile.dateOfBirth }}</h1>
+              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="male-female" class="mr-3 "></ion-icon>{{ profile.gender }}</h1>
+              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="call" class="mr-3 "></ion-icon>{{ profile.phoneNumber }}</h1>
+            
+            {% endfor %}
+
+              <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="mail" class="mr-3 "></ion-icon>{{ user.email }}</h1>
+              
+              <a onclick="popUpProfile()" class="mt-3 text-indigo-500 inline-flex items-center">Edit 
+                <ion-icon name="pencil-outline"></ion-icon>
               </a>
             </div>
           </div>
           <!-- <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button> -->
         </div>
+
+
+        <!-- pop up -->
+  
+        <div id="popup-profile" style="display: none" class="fixed z-10 inset-0 overflow-y-auto">
+          <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+         
+            <div class="fixed inset-0 transition-opacity">
+              <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+        
+            
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+         
+            <div  class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                    <!-- Heroicon name: exclamation -->
+                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                      Edit your profile
+                    </h3>
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Name&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Name" type="text">
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Date Of Birth&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" type="date">
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Gender&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio">Male
+                        <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio">Female
+                        <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio">Other
+
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Phone Number&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="99XXXXXXXX" type="text">
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Email&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="@gmail.com" type="email">
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+                  <button onclick="popUpProfile()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                    Save
+                  </button>
+                </span>
+                <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+                  <button onclick="popUpProfile()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                    Cancel
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- pop up -->
+
       </section>
 
+  {% endfor %}
 
+
+  
       
       
 
@@ -100,6 +192,11 @@
            
           </tbody>
         </table>
+
+
+
+
+
       </section>
 
 
@@ -219,6 +316,7 @@
       <section>
 
       
+{% for profile in profile%}
 
       <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Hobbies :</u>
         <button onclick="popUpHobbie()"
@@ -228,9 +326,7 @@
         </button>
       </h1>
       <div class="bg-gray-200">
-        <div class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">Reading books</div>
-        <div class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">Playing cricket</div>
-        <div class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">Running</div>
+        <div class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">{{ profile.hobbies }}</div>
       </div>
      
 
@@ -308,26 +404,24 @@
           <tbody>
             <tr>
               <th class="border px-4 py-2">Languages known</th>
-              <td class="border px-4 py-2">English,Kannada,Hindi</td>
+              <td class="border px-4 py-2">{{ profile.knownLanguages }}</td>
             </tr>
 
             <tr>
               <th class="border px-4 py-2">Permanent Address</th>
-              <td class="border px-4 py-2">Shree Venkateshwara Nilaya, Sharavati Nagar,
-                 1st cross, Sagar Road, Shivamogga - 577201</td>
+              <td class="border px-4 py-2">{{ profile.permanentAddress}}</td>
             </tr>
 
             <tr>
               <th class="border px-4 py-2">Current Address</th>
-              <td class="border px-4 py-2">#624/40 Shree Krishna Nilaya, 1st "A" Main, 
-                Ittamadu, Banashankari 3rd stage, 3rd phase, Bangalore-560085</td>
+              <td class="border px-4 py-2">{{ profile.currentAddress}}</td>
             </tr>
 
            
           </tbody>
         </table>
 
-
+{% endfor %}
 
         <!-- pop up -->
   
@@ -583,6 +677,16 @@
         
         function popUpProject() {
           var popup = document.getElementById('popup-project');    
+          if(popup.style.display == "block") { // if is menuBox displayed, hide it
+            popup.style.display = "none";
+          }
+          else { // if is menuBox hidden, display it
+            popup.style.display = "block";
+          }
+        }
+
+        function popUpProfile() {
+          var popup = document.getElementById('popup-profile');    
           if(popup.style.display == "block") { // if is menuBox displayed, hide it
             popup.style.display = "none";
           }
