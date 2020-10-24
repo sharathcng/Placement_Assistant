@@ -18,29 +18,40 @@ class Student_Profile(models.Model):
     username = models.OneToOneField(User, on_delete = models.CASCADE)
     dateOfBirth = models.DateField(default = timezone.now)
     gender = models.CharField(max_length = 10, choices = gender_choices, default = 'Male')
-    phoneNumber = models.CharField(max_length = 10)
+    phoneNumber = models.CharField(max_length=10)
     course = models.CharField(max_length = 100)
-    semester = models.CharField(max_length = 10, choices = semester_choices, default='5')
+    semester = models.CharField(max_length=10, choices = semester_choices, default='5')
     hobbies = models.CharField(max_length = 500)
     bloodGroup = models.CharField(max_length = 10, choices = bloodGroup_choices, default=')+')
     knownLanguages = models.CharField(max_length = 100)
     currentAddress = models.TextField()
     permanentAddress = models.TextField()
 
-# STATUS_CHOICES = (
-# ('draft', 'Draft'),
-# ('published', 'Published'),
-# )
-#     title = models.CharField(max_length=250)
-#     slug = models.SlugField(max_length=250,
-#             unique_for_date='publish')
-#     author = models.ForeignKey(User,
-#             on_delete=models.CASCADE,
-#             related_name='blog_posts')
-#         body = models.TextField()
-#         publish = models.DateTimeField(default=timezone.now)
-#         created = models.DateTimeField(auto_now_add=True)
-#         updated = models.DateTimeField(auto_now=True)
-#         status = models.CharField(max_length=10,
-#             choices=STATUS_CHOICES,
-#             default='draft')
+
+class Academic_table(models.Model):
+    course_choices = (  ('SSLC','SSLC'),
+                        ('PUC','PUC'),
+                        ('DEGREE','DEGREE'),
+                        ('MCA','MCA')
+                    )
+    username = models.ForeignKey(User, on_delete = models.CASCADE)
+    courses = models.CharField(max_length = 50, choices = course_choices)
+    college = models.CharField(max_length = 100)
+    university = models.CharField(max_length = 100)
+    yearOfPass = models.IntegerField()
+    CGPA = models.DecimalField(max_digits=4, decimal_places=2)
+    markscard = models.ImageField(upload_to = 'markscard/', blank=True, null=True)
+
+
+class skills(models.Model):
+    username = models.OneToOneField(User, on_delete=models.CASCADE)
+    languages = models.CharField(max_length=200)
+    operatingSystem = models.CharField(max_length=200)
+    database = models.CharField(max_length=200)
+    technologies = models.CharField(max_length=200)
+    applications = models.CharField(max_length=200)
+
+class projects(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=100)

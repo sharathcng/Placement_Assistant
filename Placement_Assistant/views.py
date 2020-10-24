@@ -24,6 +24,7 @@ def logout(request):
     auth.logout(request)
     return redirect(index)
 
+@login_required
 def home(request):
     return render(request, "Student/home.html")
     
