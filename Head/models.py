@@ -26,24 +26,26 @@ class Company(models.Model):
                     ('Retail', 'Retail'),
                     ('Semiconductor', 'Semiconductor'),
                     ('Telecom', 'Telecom'),
+                    ('Other','Other')
                     )
     status_choices = (('Internship Only', 'Internship Only'),
                     ('Fulltime Only', 'Fulltime Only'),
                     ('Fulltime + Internship', 'Fulltime + Internship')
                     )
+    status = (('Open','Open'), ('Close','Close'))
     Company_Name= models.CharField(max_length=100)
     Postal_Address = models.TextField()
     About_Company = models.TextField()
-    sector = models.CharField(
-        max_length=100, choices=sector_choices, default=None)
+    sector = models.CharField(max_length=100, choices=sector_choices, default='IT & ITES')
     Job_Description = models.TextField()
     Position = models.CharField(max_length=100)
     Location = models.CharField(max_length=100)
-    Job_Status = models.CharField(
-        max_length=100, choices=status_choices, default=None)
+    Job_Status = models.CharField(max_length=100, choices=status_choices, default='Fulltime Only')
     Bond_or_serviceAgreement = models.CharField(max_length=100)
     Company_website = models.CharField(max_length=10)
     Registartion_link = models.CharField(max_length=100)
+    Date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    Status = models.CharField(max_length=50, choices = status, default='Open')
 
 
 class Test(models.Model):
