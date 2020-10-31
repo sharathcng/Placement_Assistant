@@ -26,6 +26,7 @@ class Student_Profile(models.Model):
     knownLanguages = models.CharField(max_length = 100)
     currentAddress = models.TextField()
     permanentAddress = models.TextField()
+    batch = models.PositiveIntegerField()
 
 
 class Academic_table(models.Model):
@@ -55,3 +56,4 @@ class projects(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=100)
+
