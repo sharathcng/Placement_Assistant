@@ -3,6 +3,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from Student.models import *
+
 # Create your views here.
 
 

@@ -1,0 +1,40 @@
+{% extends 'HomeBase.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<title>Drives|register</title>
+
+  <section class="text-gray-700 body-font overflow-hidden">
+    <div class="container px-5 py-14 mx-auto">
+      <div class="flex flex-wrap -m-12">
+        <div class="p-12 md:w-1/2 flex flex-col items-start">
+        {% comment %} <form  method="post" autocomplete="off"> {% endcomment %}
+              {% csrf_token %}
+                {% comment %} {{forms.Company_Name_id|as_crispy_field}} 
+                {{forms.PUC|as_crispy_field}} 
+                {{forms.UG|as_crispy_field}} 
+                {{forms.PG|as_crispy_field}}
+                {{forms.SSLC|as_crispy_field}} {% endcomment %}
+                <button onclick="{% url "Criteriadetails"%}" type="submit" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Continue</button>
+        {% comment %} </form>           {% endcomment %}
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+      <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+      <script>
+
+        function toggleMenu() {
+          var menuBox = document.getElementById('menu-box');    
+          if(menuBox.style.display == "block") { // if is menuBox displayed, hide it
+            menuBox.style.display = "none";
+          }
+          else { // if is menuBox hidden, display it
+            menuBox.style.display = "block";
+          }
+        }
+    </script>
+{% endblock content %}

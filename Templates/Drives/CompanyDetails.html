@@ -1,0 +1,94 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Drives|register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link href="/static/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="/static/demo.css" rel="stylesheet" />
+  
+</head>
+<body>
+{% block content %}
+<div class="content ">    
+  <div class="container-fluid">
+    <div class="row" style="padding-left:150px;padding-right:150px">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h6 class="card-title">Enter Details:</h6>
+          </div>
+          <div class="card-body">
+            <form  method="post" autocomplete="off" action="{% url 'CompanyDetails' %}">
+              {% csrf_token %}
+              <div class="table-responsive">
+                  <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <td class="text-left" style="font-weight: bold;">Company Name:</td>
+                        <td class="text-left">{{form.Company_Name}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left " style="font-weight: bold;">Postal Address:</td>
+                        <td class="text-left">{{form.Postal_Address}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">About Company:</td>
+                        <td class="text-left">{{form.About_Company}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Job Description:</td>
+                        <td class="text-left">{{form.Job_Description}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Sector:</td>
+                        <td class="text-left">{{form.sector}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Position:</td>
+                        <td class="text-left">{{form.Position}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Location:</td>
+                        <td class="text-left">{{form.Location}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Job Status:</td>
+                        <td class="text-left">{{form.Job_Status}}</td>
+                      </tr>
+                     <tr>
+                        <td class="text-left" style="font-weight: bold;">Bond/Agreement:</td>
+                        <td class="text-left">{{form.Bond_or_serviceAgreement}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Company website:</td>
+                        <td class="text-left">{{form.Company_website}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Registartion link:</td>
+                        <td class="text-left">{{form.Registartion_link}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">status</td>
+                        <td class="text-left">{{form.Status}}</td>
+                      </tr>
+                      <tr><td></td><td>
+                      <button type="submit" class="btn btn-success">Continue</button>
+                      </td></tr>
+                      </tbody>
+                </table> 
+                </div>
+              
+            </form>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
