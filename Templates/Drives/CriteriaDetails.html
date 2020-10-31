@@ -1,40 +1,64 @@
-{% extends 'HomeBase.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block content %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <title>Drives|register</title>
-
-  <section class="text-gray-700 body-font overflow-hidden">
-    <div class="container px-5 py-14 mx-auto">
-      <div class="flex flex-wrap -m-12">
-        <div class="p-12 md:w-1/2 flex flex-col items-start">
-        {% comment %} <form  method="post" autocomplete="off"> {% endcomment %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link href="/static/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="/static/demo.css" rel="stylesheet" />
+  
+</head>
+<body>
+{% block content %}
+<div class="content ">    
+  <div class="container-fluid">
+    <div class="row" style="padding-left:150px;padding-right:150px">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h6 class="card-title">Criteria Details:</h6>
+          </div>
+          <div class="card-body">
+            <form  method="post" autocomplete="off" action="{% url 'CriteriaDetails' %}">
               {% csrf_token %}
-                {% comment %} {{forms.Company_Name_id|as_crispy_field}} 
-                {{forms.PUC|as_crispy_field}} 
-                {{forms.UG|as_crispy_field}} 
-                {{forms.PG|as_crispy_field}}
-                {{forms.SSLC|as_crispy_field}} {% endcomment %}
-                <button onclick="{% url "Criteriadetails"%}" type="submit" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Continue</button>
-        {% comment %} </form>           {% endcomment %}
+              <div class="table-responsive">
+                  <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <td class="text-left" style="font-weight: bold;">Company Name:</td>
+                        <td class="text-left">{{form.Company_Name}}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left " style="font-weight: bold;">SSLC:</td>
+                        <td class="text-left">{{form.SSLC}}[CGPA/%]</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">PUC/Pre-Board:</td>
+                        <td class="text-left">{{form.PUC}}[CGPA/%]</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">Graduation/Equivalent:</td>
+                        <td class="text-left">{{form.UG}}[CGPA/%]</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" style="font-weight: bold;">PG:</td>
+                        <td class="text-left">{{form.PG}}[CGPA/%]</td>
+                      </tr>
+                      <tr><td></td><td>
+                      <button type="submit" class="btn btn-success">Continue...</button>
+                      </td></tr>
+                      </tbody>
+                </table> 
+                </div>
+              
+            </form>  
+          </div>
         </div>
-        
       </div>
     </div>
-  </section>
-
-      <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-      <script>
-
-        function toggleMenu() {
-          var menuBox = document.getElementById('menu-box');    
-          if(menuBox.style.display == "block") { // if is menuBox displayed, hide it
-            menuBox.style.display = "none";
-          }
-          else { // if is menuBox hidden, display it
-            menuBox.style.display = "block";
-          }
-        }
-    </script>
+  </div>
+</div>
 {% endblock content %}
