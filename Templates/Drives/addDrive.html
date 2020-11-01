@@ -1,3 +1,5 @@
+{% extends 'Drives/driveBase.html' %}
+
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -14,7 +16,7 @@
   
 </head>
 <body>
-{% block content %}
+{% block contents %}
 <div class="content ">    
   <div class="container-fluid">
     <div class="row" style="padding-left:150px;padding-right:150px">
@@ -24,7 +26,7 @@
             <h6 class="card-title">Company Details:</h6>
           </div>
           <div class="card-body">
-            <form  method="post" autocomplete="off" action="{% url 'CompanyDetails' %}">
+            <form  method="post" autocomplete="off" action="{% url 'addDrive' %}">
               {% csrf_token %}
               <div class="table-responsive">
                   <table class="table table-hover">
@@ -91,4 +93,6 @@
     </div>
   </div>
 </div>
-{% endblock content %}
+
+{% endblock contents %}
+
