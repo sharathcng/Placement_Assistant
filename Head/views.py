@@ -17,16 +17,16 @@ def Students(request):
 @login_required
 def Students_List(request,batch):
     students = Student_Profile.objects.filter(batch=batch)
-    return render(request, "Admin/studentsList.html", {'students':students})
+    return render(request, "Admin/studentsList.html", {'students':students,'batch':batch})
 
 @login_required
 def Students_Details(request,id):
-    user = User.objects.filter(id = id)
+    students = User.objects.filter(id = id)
     profile = Student_Profile.objects.filter(username = id)
     academic = Academic_table.objects.filter(username = id)
     skill = skills.objects.filter(username = id)
     project = projects.objects.filter(username = id)
-    return render(request, "Student/profile.html",{'user':user,'profile':profile,
+    return render(request, "Admin/studentDetails.html",{'students':students,'profile':profile,
                                                     'skill':skill,'project':project,
                                                     'academic':academic
                                                 } 
