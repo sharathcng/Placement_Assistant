@@ -11,8 +11,12 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def Students(request):
+    return render(request, "Admin/studentBase.html")
+
+@login_required(login_url='login')
+def Batch(request):
     year = Student_Profile.objects.values('batch').distinct()
-    return render(request, "Admin/dashboard.html", {'year':year})
+    return render(request, "Admin/batch.html", {'year':year})
 
 
 @login_required(login_url='login')

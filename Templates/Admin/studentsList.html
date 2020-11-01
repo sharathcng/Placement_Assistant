@@ -1,6 +1,6 @@
 {% extends 'Admin/studentBase.html' %}
 {% load static %}
-{% block contents %}
+{% block content %}
 
 <title>Students</title>
 
@@ -83,17 +83,5 @@
 </div>
 
 
-      <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-      <script>
 
-        function toggleMenu() {
-          var menuBox = document.getElementById('menu-box');    
-          if(menuBox.style.display == "block") { // if is menuBox displayed, hide it
-            menuBox.style.display = "none";
-          }
-          else { // if is menuBox hidden, display it
-            menuBox.style.display = "block";
-          }
-        }
-    </script>
-{% endblock contents %}
+{% endblock content %}

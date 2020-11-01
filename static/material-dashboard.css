@@ -4,6 +4,7 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  border: #000;
 }
 
 html {
@@ -168,7 +169,7 @@ svg:not(:root) {
 }
 
 table {
-  border-collapse: collapse;
+  border-color: #000;
 }
 
 caption {
@@ -346,7 +347,7 @@ template {
     background-color: #fff !important;
   }
   .table-bordered th, .table-bordered td {
-    border: 1px solid #ddd !important;
+    border: 1px solid black;
   }
 }
 
@@ -1701,19 +1702,19 @@ pre code {
 }
 
 .table-hover .table-primary:hover>td, .table-hover .table-primary:hover>th {
-  background-color: #a9d7fb;
+  background-color: black;
 }
 
 .table-secondary, .table-secondary>th, .table-secondary>td {
-  background-color: #d6d8db;
+  background-color: black;
 }
 
 .table-hover .table-secondary:hover {
-  background-color: #c8cbcf;
+  background-color: black;
 }
 
 .table-hover .table-secondary:hover>td, .table-hover .table-secondary:hover>th {
-  background-color: #c8cbcf;
+  background-color: black;
 }
 
 .table-success, .table-success>th, .table-success>td {
@@ -1725,7 +1726,7 @@ pre code {
 }
 
 .table-hover .table-success:hover>td, .table-hover .table-success:hover>th {
-  background-color: #bbe1bd;
+  background-color: black;
 }
 
 .table-info, .table-info>th, .table-info>td {
@@ -1992,7 +1993,7 @@ select.form-control:focus::-ms-value {
   padding: 0.25rem 0;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-radius: 0.2rem;
+  border-radius: 1rem;
 }
 
 select.form-control-sm:not([size]):not([multiple]), .input-group-sm>select.form-control:not([size]):not([multiple]), .input-group-sm>.input-group-prepend>select.input-group-text:not([size]):not([multiple]), .input-group-sm>.input-group-append>select.input-group-text:not([size]):not([multiple]), .input-group-sm>.input-group-prepend>select.btn:not([size]):not([multiple]), .input-group-sm>.input-group-append>select.btn:not([size]):not([multiple]) {
@@ -2003,7 +2004,7 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm>select.form-
   padding: 0.5625rem 0;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
 }
 
 select.form-control-lg:not([size]):not([multiple]), .input-group-lg>select.form-control:not([size]):not([multiple]), .input-group-lg>.input-group-prepend>select.input-group-text:not([size]):not([multiple]), .input-group-lg>.input-group-append>select.input-group-text:not([size]):not([multiple]), .input-group-lg>.input-group-prepend>select.btn:not([size]):not([multiple]), .input-group-lg>.input-group-append>select.btn:not([size]):not([multiple]) {
@@ -7655,6 +7656,7 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 
 .text-left {
   text-align: left !important;
+  border: 2px solid black;
 }
 
 .text-right {
