@@ -15,7 +15,7 @@ def login(request):
         if user is not None:
             if user.is_superuser is True:
                 auth.login(request, user)
-                return redirect(home)
+                return redirect(admin_home)
             else:
                 auth.login(request, user)
                 return redirect(home)
