@@ -15,7 +15,7 @@ def login(request):
         if user is not None:
             if user.is_superuser is True:
                 auth.login(request, user)
-                return redirect(admin_home)
+                return redirect(home)
             else:
                 auth.login(request, user)
                 return redirect(home)
@@ -31,9 +31,5 @@ def logout(request):
 
 @login_required
 def home(request):
-    return render(request, "Student/home.html")
-    
-@login_required
-def admin_home(request):
-    return render(request, "Admin/home.html")
+    return render(request, "home.html")
     
