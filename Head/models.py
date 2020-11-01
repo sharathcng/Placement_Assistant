@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.contrib import auth
 # Create your models here.
 
 
@@ -47,6 +48,9 @@ class Company(models.Model):
     Date = models.DateTimeField(auto_now=False, auto_now_add=True)
     Status = models.CharField(max_length=50, choices = status, default='Open')
 
+    def __str__(self):
+        return self.Company_Name
+
 
 class Test(models.Model):
     mode_choices = (('Online', 'ONLINE'),
@@ -63,9 +67,11 @@ class Test(models.Model):
     HR = models.BooleanField()
 
 
+
 class Criteria(models.Model):
     Company_Name = models.ForeignKey(Company, on_delete=models.CASCADE)
     SSLC = models.PositiveIntegerField(default=0)
     PUC = models.PositiveIntegerField(default=0)
     UG = models.PositiveIntegerField(default=0)
     PG = models.PositiveIntegerField(default=0)
+
