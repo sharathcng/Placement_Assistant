@@ -11,8 +11,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required(login_url='login')
-def dashboard(request):  # Drive Head Html Page.
-    return render(request, "Drives/dashboard.html")
+def Drives(request):  # Drive Head Html Page.
+    return render(request, "Drives/driveBase.html")
 
 
 @login_required(login_url='login')
