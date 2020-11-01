@@ -1,5 +1,5 @@
 from django import forms
-from Head.models import Company,Criteria,Test
+from Drives.models import Company,Criteria,Test
 
 
 class CompanyForms(forms.ModelForm):

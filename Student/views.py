@@ -17,8 +17,9 @@ def Profile(request):  # Stundent profile Html Page.
     academic = Academic_table.objects.filter(username = request.user)
     skill = skills.objects.filter(username = request.user)
     project = projects.objects.filter(username = request.user)
-    return render(request, "Student/profile.html",{'user':user,'profile':profile,
-                                                    'skill':skill,'project':project,
-                                                    'academic':academic
-                                                } 
+    context = {'user': user, 'profile': profile,
+               'skill': skill, 'project': project,
+               'academic': academic
+               }
+    return render(request, "Student/profile.html",context 
                 )

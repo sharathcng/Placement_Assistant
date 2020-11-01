@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'Student',
     'Head',
+    'Drives',
     'crispy_forms',
+    'notifications',
     'django_filters',
 ]
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
