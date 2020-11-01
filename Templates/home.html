@@ -21,6 +21,8 @@
         </div>
       </section>
 
+
+    {% if user.is_superuser is True%}
       <section class="text-gray-500 bg-gray-900 body-font">
 
         <div class="container px-5 py-24 mx-auto">
@@ -55,9 +57,44 @@
           </div>
         </div>
       </section>
+
+    {% else %}
+      <section class="text-gray-500 bg-gray-900 body-font">
+
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">STATISTICS</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
+          </div>
+          <div class="flex flex-wrap -m-4 text-center">
+            <div class="p-4 md:w-1/3 sm:w-1/2 w-full">
+              <div class="border-2 border-gray-800 px-4 py-6 rounded-lg">
+                <img class="text-indigo-500 w-25 h-25 mb-3 inline-block" alt="hero" src="https://img.icons8.com/color/project">
+                <h2 class="title-font font-medium text-3xl text-white">128</h2>
+                <p class="leading-relaxed">MY PROJECTS</p>
+              </div>
+            </div>
+            <div class="p-4 md:w-1/3 sm:w-1/2 w-full">
+              <div class="border-2 border-gray-800 px-4 py-6 rounded-lg">
+
+                <img class="text-indigo-500 w-25 h-25 mb-3 inline-block" alt="hero" src="https://img.icons8.com/color/company">
+                <h2 class="title-font font-medium text-3xl text-white">9</h2>
+                <p class="leading-relaxed">DRIVES ATTENDED</p>
+              </div>
+            </div>
+            <div class="p-4 md:w-1/3 sm:w-1/2 w-full">
+              <div class="border-2 border-gray-800 px-4 py-6 rounded-lg">
+                <img class="text-indigo-500 w-25 h-25 mb-3 inline-block" alt="hero" src="https://img.icons8.com/color/list">
+                <h2 class="title-font font-medium text-3xl text-white">74</h2>
+                <p class="leading-relaxed">DRIVES SHORTLISTED</p>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </section>
     
-
-
+    {% endif %}
 
 
       <section class="text-gray-500 bg-gray-900 body-font relative">
