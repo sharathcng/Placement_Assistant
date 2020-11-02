@@ -49,7 +49,7 @@ class Company(models.Model):
     Location = models.CharField(max_length=100)
     Job_Status = models.CharField(max_length=100, choices=jobstatus, default='Fulltime Only')
     Bond_or_serviceAgreement = models.CharField(max_length=100)
-    Company_website = models.CharField(max_length=10)
+    Company_website = models.CharField(max_length=100)
     Registartion_link = models.CharField(max_length=100)
     Date = models.DateTimeField(auto_now=False, auto_now_add=True)
     Status = models.CharField(max_length=50, choices=status_choices, default='Open')

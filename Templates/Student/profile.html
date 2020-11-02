@@ -4,29 +4,28 @@
 
 <title>Profile</title>
 
-  {% for user in user %}
       <section class="text-gray-700 body-font">
         <div class=" container px-5 py-18 mx-auto">
           <div class="flex items-center lg:w-3/4 mx-auto border-b pb-12 mb-10 border-gray-200 sm:flex-row flex-col">
             <div class="sm:w-64 sm:h-64  h-20 w-20 sm:mr-40  inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png" alt="">
             </div>
-            <div class="flex-grow items-center sm:text-left text-center mt-1 sm:mt-10">
-              <h1 class="text-gray-1000 text-5xl title-font font-xldium mb-4"><ion-icon class="" name="person-circle-outline"></ion-icon>{{ user.first_name }} {{ user.last_name }}</h1>
+            <div id="profileData" class="flex-grow items-center sm:text-left text-center mt-1 sm:mt-10">
+              {% comment %} <h1 class="text-gray-1000 text-5xl title-font font-xldium mb-4"><ion-icon class="" name="person-circle-outline"></ion-icon>{{ user.first_name }} {{ user.last_name }}</h1>
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="card" class="mr-3 "></ion-icon>{{ user.username }}</h1>
 
-            {% for profile in profile %}
+           
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="calendar" class="mr-3 "></ion-icon>{{ profile.dateOfBirth }}</h1>
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="male-female" class="mr-3 "></ion-icon>{{ profile.gender }}</h1>
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="call" class="mr-3 "></ion-icon>{{ profile.phoneNumber }}</h1>
             
-            {% endfor %}
+            
 
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="mail" class="mr-3 "></ion-icon>{{ user.email }}</h1>
-              
-              <a onclick="popUpProfile()" class="mt-3 text-indigo-500 inline-flex items-center">Edit 
+               {% endcomment %}
+              {% comment %} <a onclick="popUpProfile()" class="mt-3 text-indigo-500 inline-flex items-center">Edit 
                 <ion-icon name="pencil-outline"></ion-icon>
-              </a>
+              </a> {% endcomment %}
             </div>
           </div>
           <!-- <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button> -->
@@ -60,24 +59,31 @@
                     </h3>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Name&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Name" type="text">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">First Name&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="First NAme" type="text" id="first_name">
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Last Name&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Last Name" type="text" id="last_name">
                       </p>
                     </div>
 
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Date Of Birth&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" type="date">
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" type="date" id="date">
                       </p>
                     </div>
 
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Gender&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio">Male
-                        <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio">Female
-                        <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio">Other
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Male">Male
+                        <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Female">Female
+                        <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Other">Other
 
                       </p>
                     </div>
@@ -85,14 +91,14 @@
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Phone Number&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="99XXXXXXXX" type="text">
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="99XXXXXXXX" type="text" id="phoneNumber">
                       </p>
                     </div>
 
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Email&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="@gmail.com" type="email">
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="@gmail.com" type="email" id="email">
                       </p>
                     </div>
 
@@ -101,7 +107,7 @@
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                  <button onclick="popUpProfile()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                  <button onclick="save_profile()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                     Save
                   </button>
                 </span>
@@ -119,14 +125,14 @@
 
       </section>
 
-  {% endfor %}
+ 
 
 
       <section>
         <h1 class="text-3xl pb-4 ml-2"><u>Academic Details :</u>
         <button onclick="popUpAcademic()"
-          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Add
-          New&nbsp;&nbsp;
+          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
+          Add New&nbsp;&nbsp;
           <ion-icon name="add-circle-outline"></ion-icon>
         </button>
         </h1>
@@ -139,79 +145,14 @@
               <th class="px-4 py-2">University/Board</th>
               <th class="px-4 py-2">Year of pass</th>
               <th class="px-4 py-2">Percentage/CGPA</th>
-              <th class="px-4 py-2">Marksheet</th>
+              {% comment %} <th class="px-4 py-2">Marksheet</th> {% endcomment %}
             
             </tr>
           </thead>
-          <tbody>
-            <tr>
-      {% for academic in academic%}
-            {% if academic.courses == "SSLC" %}
-              <td class="border px-4 py-2">{{ academic.courses}}</td>
-              <td class="border px-4 py-2">{{ academic.college }}</td>
-              <td class="border px-4 py-2">{{ academic.university }}</td>
-              <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
-              <td class="border px-4 py-2">{{ academic.CGPA }}</td>
-              <td class="border px-4 py-2">
-              <img src='{{ academic.markscard.url }}' alt="..." width="50pt" height="50pt">
-            {% endif %}
-                {% comment %} <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Upload&nbsp;&nbsp;
-                  <ion-icon name="cloud-upload-outline"></ion-icon>
-                </button> {% endcomment %}
-              </td>
-            
-            </tr>
-            
+          <tbody id="academics">
 
-            <tr>
-            {% if academic.courses == "PUC" %}
-              <td class="border px-4 py-2">{{academic.courses}}</td>
-              <td class="border px-4 py-2">{{ academic.college }}</td>
-              <td class="border px-4 py-2">{{ academic.university }}</td>
-              <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
-              <td class="border px-4 py-2">{{ academic.CGPA }}</td>
-              <td class="border px-4 py-2">
-              <img src='{{ puc.markscard.url }}' alt="...">
-            {% endif %}
-                
-                {% comment %} <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Upload&nbsp;&nbsp;
-                  <ion-icon name="cloud-upload-outline"></ion-icon>
-                </button> {% endcomment %}
-              </td>
-            
-           
-            </tr>
-
-            <tr>
-            {% if academic.courses == "DEGREE" %}
-              <td class="border px-4 py-2">{{academic.courses}}</td>
-              <td class="border px-4 py-2">{{ academic.college }}</td>
-              <td class="border px-4 py-2">{{ academic.university }}</td>
-              <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
-              <td class="border px-4 py-2">{{ academic.CGPA }}</td>
-              <td class="border px-4 py-2">
-              <img src='{{ degree.markscard.url }}' alt="...">
-            {% endif %}
-                
-                {% comment %} <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Upload&nbsp;&nbsp;
-                  <ion-icon name="cloud-upload-outline"></ion-icon>
-                </button> {% endcomment %}
-              </td>
-            
-            </tr>
-
-            <tr>
-            {% if academic.courses == "MCA" %}
-              <td class="border px-4 py-2">{{academic.courses}}</td>
-              <td class="border px-4 py-2">{{ academic.college }}</td>
-              <td class="border px-4 py-2">{{ academic.university }}</td>
-              <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
-              <td class="border px-4 py-2">{{ academic.CGPA }}</td>
-            {% endif %}
-    {% endfor %}
-            </tr>
-           
           </tbody>
+          
         </table>
 
         <!-- pop up -->
@@ -242,27 +183,27 @@
                   <div class="mt-2">
                     <p class="text-sm leading-5 text-gray-500">
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text" id="course" >
                     </p>
 
                     <p class="text-sm leading-5 text-gray-500">
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">College/Institute&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="College/Institute Name" type="text">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="College/Institute Name" type="text" id="institute" >
                     </p>
 
                     <p class="text-sm leading-5 text-gray-500">
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">University/Board&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="University/Board Name" type="text">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="University/Board Name" type="text" id="university" >
                     </p>
 
                     <p class="text-sm leading-5 text-gray-500">
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Year of pass&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Year of pass" type="Number">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Year of pass" type="Number" id="yearOfPass" >
                     </p>
 
                     <p class="text-sm leading-5 text-gray-500">
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Percentage/CGPA&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="% / CGPA" type="Number">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="% / CGPA" type="Number" id="cgpa">
                     </p>
                   </div>
 
@@ -272,7 +213,7 @@
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                <button onclick="popUpAcademic()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                <button onclick="save_academic()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                   Save
                 </button>
               </span>
@@ -293,10 +234,11 @@
 
 
 <section>
-  {% for skill in skill %}
+
 
         <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Technical Skills :</u>
-          <button id="popup" onclick="popUpTech()" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Add New&nbsp;&nbsp;
+          <button id="popup" onclick="popUpTech()" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
+          Edit&nbsp;&nbsp;
             <ion-icon name="add-circle-outline"></ion-icon>
           </button>
         </h1>
@@ -307,8 +249,8 @@
               <th class="px-4 py-2"><u>Details</u></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody id="skills">
+            {% comment %} <tr>
               <th class="border px-4 py-2">Languages</th>
               <td class="border px-4 py-2">{{ skill.languages }}</td>
             </tr>
@@ -331,11 +273,10 @@
             <tr>
               <th class="border px-4 py-2">Applications</th>
               <td class="border px-4 py-2">{{ skill.applications }}</td>
-            </tr>
+            </tr> {% endcomment %}
            
           </tbody>
         </table>
-    {% endfor %}
 
         <!-- pop up -->
   
@@ -364,24 +305,44 @@
                     </h3>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Skill&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Skill Name" type="text">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Languages&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: C,Java,Python..." type="text" id="languages">
                       </p>
                     </div>
 
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Detail&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Skill Detail" type="text">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Operating system&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: Windows,Linux..." type="text" id="os">
                       </p>
                     </div>
 
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Database&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="MySQL,NoSQL..." type="text" id="database">
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Technologies&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: WebFrameworks..." type="text" id="tech">
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Applications&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: GitHub,Android Studio..." type="text" id="application">
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                  <button onclick="popUpTech()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                  <button onclick="save_skills()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                     Save
                   </button>
                 </span>
@@ -405,17 +366,17 @@
       <section>
 
       
-{% for profile in profile%}
+
 
       <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Hobbies :</u>
         <button onclick="popUpHobbie()"
-          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Add
-          New&nbsp;&nbsp;
+          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
+          Edit&nbsp;&nbsp;
           <ion-icon name="add-circle-outline"></ion-icon>
         </button>
       </h1>
-      <div class="bg-gray-200">
-        <div class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">{{ profile.hobbies }}</div>
+      <div id="hobbies" class="bg-gray-200">
+        {% comment %} <div  class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">{{ profile.hobbies }}</div> {% endcomment %}
       </div>
      
 
@@ -447,7 +408,7 @@
                   <div class="mt-2">
                     <p class="text-sm leading-5 text-gray-500">
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Hobbie&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Hobbie Name" type="text">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Hobbie Name" type="text" id="hobbie">
                     </p>
                   </div>
 
@@ -457,7 +418,7 @@
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                <button onclick="popUpHobbie()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                <button onclick="save_hobbies()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                   Save
                 </button>
               </span>
@@ -484,14 +445,15 @@
 
 
         <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Personal Details :</u>
-          <button onclick="popUpPersonal()" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Add New&nbsp;&nbsp;
+          <button onclick="popUpPersonal()" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
+          Edit&nbsp;&nbsp;
             <ion-icon name="add-circle-outline"></ion-icon>
           </button>
         </h1>
         <table class="table-auto">
           
-          <tbody>
-            <tr>
+          <tbody id="personal">
+            {% comment %} <tr>
               <th class="border px-4 py-2">Languages known</th>
               <td class="border px-4 py-2">{{ profile.knownLanguages }}</td>
             </tr>
@@ -504,13 +466,12 @@
             <tr>
               <th class="border px-4 py-2">Current Address</th>
               <td class="border px-4 py-2">{{ profile.currentAddress}}</td>
-            </tr>
+            </tr> {% endcomment %}
 
            
           </tbody>
         </table>
 
-{% endfor %}
 
         <!-- pop up -->
   
@@ -539,15 +500,22 @@
                     </h3>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Heading&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Heading Name" type="text">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Languages Known&nbsp;</span>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex:Kannada,English,Hindi..." type="text" id="language">
                       </p>
                     </div>
 
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Detail&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Complete Detail" type="text">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Permanent Address&nbsp;</span>
+                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Your Permanent Address" id="permanent"></textarea>
+                      </p>
+                    </div>
+
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Current Address&nbsp;</span>
+                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Your Current Address"  id="current"> </textarea>
                       </p>
                     </div>
 
@@ -556,7 +524,7 @@
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                  <button onclick="popUpPersonal()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                  <button onclick="save_personal()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                     Save
                   </button>
                 </span>
@@ -589,11 +557,9 @@
     
       <section class="text-gray-700 body-font">
         <div class="container px-5 py-2 mx-auto">
-          <div class="flex flex-wrap -m-4">
-            
-            
-            {% for project in project %}
-            <div class="p-4 md:w-1/3">
+          <div id="projects" class="flex flex-wrap -m-4">
+
+            {% comment %} <div class="p-4 md:w-1/3">
               <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
                 <div class="flex items-center mb-3">
                   <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
@@ -608,8 +574,8 @@
                   
                 </div>
               </div>
-            </div>
-            {% endfor %}
+            </div> {% endcomment %}
+           
           </div>
         </div>
       </section>
@@ -644,14 +610,14 @@
                   <div class="mt-2">
                     <p class="text-sm leading-5 text-gray-500">
                       <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Project&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Name" type="text">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Name" type="text" id="title">
                     </p>
                   </div>
 
                   <div class="mt-2">
                     <p class="text-sm leading-5 text-gray-500">
                       <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Detail&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Detail" type="text">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Detail" type="text" id="description">
                     </p>
                   </div>
 
@@ -660,7 +626,7 @@
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                <button onclick="popUpProject()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                <button onclick="save_project()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                   Save
                 </button>
               </span>
@@ -754,5 +720,340 @@
           }
         }
 
+
+        function save_academic() {
+        var action = confirm("Are you sure you want to save this data?");
+        var token = "{{csrf_token}}";
+        var course = $('#course').val();
+        var institute = $('#institute').val();
+        var university = $('#university').val();
+        var yearOfPass = $('#yearOfPass').val();
+        var cgpa = $('#cgpa').val();
+       // var popup = document.getElementById('popup-academic');
+
+            
+            if (action != false) {
+              popUpAcademic();
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "updateAcademic" %}',
+                data: {
+                      course:course, institute:institute,
+                      university:university, yearOfPass:yearOfPass,
+                      cgpa:cgpa
+                  },
+                dataType: 'json',
+                success: function (data) { 
+                          
+                  }
+              });
+            }
+          }
+
+
+
+      function save_skills() {
+        var action = confirm("Are you sure you want to save this data?");
+        var token = "{{csrf_token}}";
+        var languages = $('#languages').val();
+        var os = $('#os').val();
+        var database = $('#database').val();
+        var tech = $('#tech').val();
+        var application = $('#application').val();
+       // var popup = document.getElementById('popup-academic');
+
+            
+            if (action != false) {
+              popUpTech();
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "updateSkill" %}',
+                data: {
+                      languages:languages, os:os,
+                      database:database, tech:tech,
+                      application:application
+                  },
+                dataType: 'json',
+                success: function (data) { 
+                          
+                  }
+              });
+            }
+          } 
+
+      function save_hobbies() {
+        var action = confirm("Are you sure you want to save this data?");
+        var token = "{{csrf_token}}";
+        var hobbies = $('#hobbie').val();
+       // var popup = document.getElementById('popup-academic');
+
+            
+            if (action != false) {
+              popUpHobbie();
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "updateHobbies" %}',
+                data: {
+                      hobbies: hobbies
+                  },
+                dataType: 'json',
+                success: function (data) { 
+                          
+                  }
+              });
+            }
+          } 
+
+
+      function save_personal() {
+        var action = confirm("Are you sure you want to save this data?");
+        var token = "{{csrf_token}}";
+        var languages = $('#language').val();
+        var permanent = $('#permanent').val();
+        var current = $('#current').val();
+       // var popup = document.getElementById('popup-academic');
+
+            
+            if (action != false) {
+              popUpPersonal();
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "updatePersonal" %}',
+                data: {
+                      languages : languages, permanent : permanent, current : current
+                  },
+                dataType: 'json',
+                success: function (data) { 
+                          
+                  }
+              });
+            }
+          }
+
+
+      function save_project() {
+        var action = confirm("Are you sure you want to save this data?");
+        var token = "{{csrf_token}}";
+        var title = $('#title').val();
+        var description = $('#description').val();
+            
+            if (action != false) {
+              popUpProject();
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "updateProject" %}',
+                data: {
+                      title : title, description : description
+                  },
+                dataType: 'json',
+                success: function (data) { 
+                          
+                  }
+              });
+            }
+          }
+
+
+      function save_profile() {
+        var action = confirm("Are you sure you want to save this data?");
+        var token = "{{csrf_token}}";
+        var first_name = $('#first_name').val();
+        var last_name = $('#last_name').val();
+        var date = $('#date').val();
+        var gender = $('#gender').val();
+        var phoneNumber = $('#phoneNumber').val();
+        var email = $('#email').val();
+            
+            if (action != false) {
+              popUpProfile();
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "updateProfile" %}',
+                data: {
+                      first_name : first_name, last_name : last_name,
+                      date : date, gender : gender,
+                      phoneNumber : phoneNumber, email : email
+                  },
+                dataType: 'json',
+                success: function (data) { 
+                          
+                  }
+              });
+            }
+          }
+
+          
+
       </script>
+
+      <script>
+        $(document).ready(function(){
+
+          setInterval(function(){
+
+            $.ajax({
+                type :'GET',
+                url : "{% url 'getDetails' %}",
+                success : function(response){
+                  $("#academics").empty();
+                  for( var key in response.academic)
+                  {
+                    console.log(response.academic[key].id);
+                    var temp = "<tr><td class='border px-4 py-2'>"+response.academic[key].courses+
+                              "</td><td class='border px-4 py-2'>"+response.academic[key].college+
+                              "</td><td class='border px-4 py-2'>"+response.academic[key].university+
+                              "</td><td class='border px-4 py-2'>"+response.academic[key].yearOfPass+
+                              "</td><td class='border px-4 py-2'>"+response.academic[key].CGPA+
+                              "</td>"+
+                              "<td><button onclick='deleteAcademic("+response.academic[key].id+")' type='button' class='inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5'>"+
+                              "Delete"+
+                              "</button></td>"+
+                              "</tr>"
+                                
+                    $("#academics").append(temp);
+                  }        
+
+
+                  $("#skills").empty();
+                  for( var key in response.skill)
+                  {
+                    console.log(response.skill[key].id);
+                    var temp = "<tr><td class='border px-4 py-2'>Languages</td><td class='border px-4 py-2'>"+response.skill[key].languages+
+                                "<tr><td class='border px-4 py-2'>Operating System</td><td class='border px-4 py-2'>"+response.skill[key].operatingSystem+
+                                "<tr><td class='border px-4 py-2'>Databases</td><td class='border px-4 py-2'>"+response.skill[key].database+
+                                "<tr><td class='border px-4 py-2'>Technologies</td><td class='border px-4 py-2'>"+response.skill[key].technologies+
+                                "<tr><td class='border px-4 py-2'>Applications</td><td class='border px-4 py-2'>"+response.skill[key].applications+
+                                "</td></tr>"
+                                
+                    $("#skills").append(temp);
+                  }     
+
+                  $("#personal").empty();
+                  $("#hobbies").empty();
+                  $("#profileData").empty();
+                  for( var key in response.personal)
+                  {
+                    console.log(response.personal[key].id);
+                    var personal = "<tr><td class='border px-4 py-2'>Languages Known</td><td class='border px-4 py-2'>"+response.personal[key].knownLanguages+
+                                "<tr><td class='border px-4 py-2'>Permanent Address</td><td class='border px-4 py-2'>"+response.personal[key].permanentAddress+
+                                "<tr><td class='border px-4 py-2'>Current Address</td><td class='border px-4 py-2'>"+response.personal[key].currentAddress+
+                                "</td></tr>"
+                    
+                    var hobbie = "<div class='inline text-gray-700 text-center bg-gray-400 px-4 py-2'>"+response.personal[key].hobbies+"</div>"
+                                
+                   
+                      for( var key in response.student )
+                      {
+                        console.log(response.student[key].id);
+                        var temp = "<h1 class='text-gray-1000 text-5xl title-font font-xldium mb-4'><ion-icon  name='person-circle-outline'></ion-icon>"+response.student[key].first_name+" "+response.student[key].last_name+"</h1>"+
+                                    "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='card' class='mr-3'></ion-icon>"+response.student[key].username+"</h1>"+
+                                    "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='mail' class='mr-3 '></ion-icon>"+response.student[key].email+"</h1>"
+                                    
+                        $("#profileData").append(temp);
+
+                      }
+                      var temp = "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='calendar' class='mr-3 '></ion-icon>"+response.personal[key].dateOfBirth+"</h1>"+
+                                  "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='male-female' class='mr-3 '></ion-icon>"+response.personal[key].gender+"</h1>"+
+                                  "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='call' class='mr-3 '></ion-icon>"+response.personal[key].phoneNumber+"</h1>"+
+                                  "<a onclick='popUpProfile()' class='mt-3 text-indigo-500 inline-flex items-center'>Edit"+
+                                  "<ion-icon name='pencil-outline'></ion-icon>"+
+                                  "</a>"
+                        $("#profileData").append(temp);
+
+                  
+                    $("#personal").append(personal);
+                    $("#hobbies").append(hobbie);
+                  }
+
+                  $("#projects").empty();
+                  for( var key in response.project )
+                  {
+                    console.log(response.project[key].id);
+                    var temp = "<div class='p-8 md:w-1/3'>"+
+                                  "<div class='flex rounded-lg h-full bg-gray-100 p-8 flex-col'>"+
+                                    "<div class='flex items-center mb-3'>"+
+                                      "<div class='w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0'>"+
+                                      "</div>"+
+                                      "<h2 class='text-gray-900 text-lg title-font font-medium'>"+response.project[key].title+"</h2>"+
+                                    "</div>"+
+                                      "<div class='flex-grow'>"+
+                                        "<p class='leading-relaxed text-base'>"+response.project[key].description+"</p>"+
+                                      "</div>"+
+                                  "</div>"+
+                                  "<td><button onclick='deleteProject("+response.project[key].id+")' type='button' class='inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5'>"+
+                                  "Delete"+
+                                  "</button></td>"+
+                                "</div>"
+                                
+                    $("#projects").append(temp);
+                  }   
+
+
+                },
+                error : function(response){
+                  alert("No data found");
+                }
+            });
+          },2000);
+
+        });
+
+
+
+        function deleteAcademic(id) {
+            var action = confirm("Are you sure you want to delete this data?");
+            var token = "{{csrf_token}}";
+            if (action != false) {
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "deleteAcademic" %}',
+                data: {
+                      id : id
+                  },
+                dataType: 'json',
+                success: function (data) {
+                     
+                  }
+              });
+            }
+          }
+
+
+          function deleteProject(id) {
+            var action = confirm("Are you sure you want to delete this project?");
+            var token = "{{csrf_token}}";
+            if (action != false) {
+              $.ajax({
+                type: "POST",
+                headers: { "X-CSRFToken": token },
+                url: '{% url "deleteProject" %}',
+                data: {
+                      id : id
+                  },
+                dataType: 'json',
+                success: function (data) {
+                     
+                  }
+              });
+            }
+          }
+        
+      </script>
+
+    
+
+
+      <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+   
+
+  </body>
+</html>
+
 {% endblock content %}
