@@ -13,16 +13,12 @@ def login(request):
     if request.method == "POST":
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
-            if user.is_superuser is True:
-                auth.login(request, user)
-                return redirect(home)
-            else:
-                auth.login(request, user)
-                return redirect(home)
+            auth.login(request, user)
+            return redirect(home)
         else:
-            return render(request,'Student/login.html',{'usernameError':"Username doesnot exist"})
+            return render(request,'login.html',{'usernameError':"Username doesnot exist"})
     else:
-        return render(request,'Student/login.html')
+        return render(request,'login.html')
 
 
 def logout(request):

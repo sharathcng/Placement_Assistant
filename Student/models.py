@@ -16,6 +16,7 @@ class Student_Profile(models.Model):
                             ('5','5'),('6','6'),
                     )
     username = models.OneToOneField(User, on_delete = models.CASCADE)
+    profilepic = models.ImageField(upload_to='profilepic/', blank=True, null=True)
     dateOfBirth = models.DateField(default = timezone.now)
     gender = models.CharField(max_length = 10, choices = gender_choices, default = 'Male')
     phoneNumber = models.CharField(max_length=10)
