@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <header class="text-white body-font sticky top-0 bg-black">
+    <header class="text-white body-font sticky top-0 bg-black z-40">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center" >
           <a href="{% url "home" %}" class="flex title-font font-medium items-center text-white-900 mb-4 md:mb-0">
             <img src="{% static 'mca-logo.png' %}" height="100pt" width="100pt" />
@@ -49,7 +49,7 @@
 
 
 {% endblock content %}
-      <footer class="text-gray-700 body-font">
+      <footer class="text-gray-700 body-font ">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
           <a href="#" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <img src="{% static "mca-logo.png" %}" alt="" width="120px" height="120px">

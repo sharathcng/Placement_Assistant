@@ -74,7 +74,7 @@ def update_skill(request):
 
 def update_hobbies(request):
     user = Student_Profile.objects.filter(username=request.user).update(
-            hobbies=request.POST['hobbies'],
+            hobbies=request.POST['hobbies']
             )
 
     data = {
