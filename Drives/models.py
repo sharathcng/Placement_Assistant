@@ -68,13 +68,13 @@ class Test(models.Model):
     Company_Name = models.ForeignKey(Company, on_delete=models.CASCADE)
     TestMode = models.CharField(
         max_length=100, choices=mode_choices, default=None)
+    Test_Date = models.DateField()
     Aptitude = models.BooleanField()
     Coding = models.BooleanField()
     Communication = models.BooleanField()
     GD = models.BooleanField()
     Techinacal = models.BooleanField()
     HR = models.BooleanField()
-
 
 
 class Criteria(models.Model):

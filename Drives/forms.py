@@ -2,33 +2,31 @@ from django import forms
 from Drives.models import Company,Criteria,Test
 
 
-class CompanyForms(forms.ModelForm):
+class PostDrive(forms.ModelForm):
     class Meta:
         model = Company
-        fields = "__all__"
-        exclude = ['Date']
-        
-    # def __init__(self, *args, **kwargs):
-    #     super(CompanyForms, self).__init__(*args, **kwargs)
-    #     # self.fields['email'].required = False
+        fields="__all__"
+        exclude = ('Status','Date',)
 
+    def _init_(self, *args, **kwargs):
+        super(PostDrive, self)._init_(*args, **kwargs)
+        self.fields['stipend'].required = False
 
-class TestForms(forms.ModelForm):
+class PostTest(forms.ModelForm):
     class Meta:
         model = Test
-        fields = "__all__"
+        fields="__all__"
+        exclude = ('Company_Name',)
 
-    # def __init__(self, *args, **kwargs):
-    #     super(TestForms, self).__init__(*args, **kwargs)
-    #     # self.fields['email'].required = False
+    def _init_(self, *args, **kwargs):
+        super(PostTest, self)._init_(*args, **kwargs)
+        
 
-
-class CriteriaForms(forms.ModelForm):
+class PostCriteria(forms.ModelForm):
     class Meta:
         model = Criteria
         fields="__all__"
-        
+        exclude = ('Company_Name',)
 
-    # def __init__(self, *args, **kwargs):
-    #     super(CriteriaForms, self).__init__(*args, **kwargs)
-    #     # self.fields['email'].required = False
+    def _init_(self, *args, **kwargs):
+        super(PostCriteria, self)._init_(*args, **kwargs)
