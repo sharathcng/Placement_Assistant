@@ -3,14 +3,14 @@
 {% block content %}
 
 <title>Drives</title>
-
+{% for drive in drives%}
   <section class="text-gray-700 body-font overflow-hidden">
     <div class="container px-5 py-14 mx-auto">
       <div class="flex flex-wrap -m-12">
         <div class="p-12 md:w-1/2 flex flex-col items-start">
           <span class="items-start inline-block py-1 px-3 rounded bg-indigo-100 text-indigo-500 text-sm font-medium tracking-widest">Placement Drives</span>
-          <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900 mt-1 mb-">1) Company 1 </h2>
-          <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900 mt-1 mb-">2) Company 2 </h2>          
+          <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900 mt-1 mb-">{{ drive.Company_Name}}</h2>
+          {% comment %} <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900 mt-1 mb-">2) Company 2 </h2>           {% endcomment %}
         </div>
         <div class="p-12 md:w-1/2 flex flex-col items-start">
           <span class="inline-block py-1 px-3 rounded bg-indigo-100 text-indigo-500 text-sm font-medium tracking-widest">Internship Drives</span>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </section>
-
+{% endfor%}
       <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
       <script>
 

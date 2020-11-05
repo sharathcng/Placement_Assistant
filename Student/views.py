@@ -3,13 +3,15 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from Student.models import *
+from Drives.models import *
 from django.http import JsonResponse
 
 # Create your views here.
 
 
 def D_Student(request):  # Drive Stundent Html Page.
-    return render(request, "Drives/DriveStudent.html")
+    drives = Company.objects.all()
+    return render(request, "Drives/DriveStudent.html",{'drives':drives})
 
 
 def Profile(request):  # Stundent profile Html Page.
@@ -71,7 +73,7 @@ def update_skill(request):
 
 def update_hobbies(request):
     user = Student_Profile.objects.filter(username=request.user).update(
-            hobbies=request.POST['hobbies'],
+            hobbies=request.POST['hobbies']
             )
 
     data = {
