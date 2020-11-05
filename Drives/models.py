@@ -61,6 +61,7 @@ class Company(models.Model):
         return self.Company_Name
 
 
+
 class Test(models.Model):
     mode_choices = (('Online', 'ONLINE'),
                     ('Offline', 'OFFLINE')

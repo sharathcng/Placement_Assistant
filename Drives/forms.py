@@ -6,11 +6,12 @@ class CompanyForms(forms.ModelForm):
     class Meta:
         model = Company
         fields = "__all__"
-        exclude = ['Date']
+        # exclude=('Date',)
         
-    # def __init__(self, *args, **kwargs):
-    #     super(CompanyForms, self).__init__(*args, **kwargs)
-    #     # self.fields['email'].required = False
+        
+    def __init__(self, *args, **kwargs):
+        super(CompanyForms, self).__init__(*args, **kwargs)
+        self.fields['stipend'].required = False
 
 
 class TestForms(forms.ModelForm):
@@ -18,9 +19,9 @@ class TestForms(forms.ModelForm):
         model = Test
         fields = "__all__"
 
-    # def __init__(self, *args, **kwargs):
-    #     super(TestForms, self).__init__(*args, **kwargs)
-    #     # self.fields['email'].required = False
+    def __init__(self, *args, **kwargs):
+        super(TestForms, self).__init__(*args, **kwargs)
+        # self.fields['email'].required = False
 
 
 class CriteriaForms(forms.ModelForm):
@@ -29,6 +30,6 @@ class CriteriaForms(forms.ModelForm):
         fields="__all__"
         
 
-    # def __init__(self, *args, **kwargs):
-    #     super(CriteriaForms, self).__init__(*args, **kwargs)
-    #     # self.fields['email'].required = False
+    def __init__(self, *args, **kwargs):
+        super(CriteriaForms, self).__init__(*args, **kwargs)
+        # self.fields['email'].required = False

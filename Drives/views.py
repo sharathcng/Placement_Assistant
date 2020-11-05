@@ -18,10 +18,12 @@ def Drives(request):  # Drive Head Html Page.
 @login_required(login_url='login')
 def Add_Drive(request): 
     context={}
-    if request.method == "post":
+    if request.method == "POST":
         form = CompanyForms(request.POST)  # , request.FILES
+        print("check1")
         if form.is_valid():
             form.save()
+            print("Saved")
         return redirect('CriteriaDetails')
     else: 
         form = CompanyForms()
@@ -32,11 +34,11 @@ def Add_Drive(request):
 @login_required(login_url='login')
 def Testdetails(request):
     context = {}
-    if request.method == "post":
+    if request.method == "POST":
         form = TestForms(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('D_Head')
+        return redirect('drives')
     else:
         form = TestForms()
         context['form'] = form
@@ -47,7 +49,7 @@ def Testdetails(request):
 @login_required(login_url='login')
 def Criteriadetails(request):
     context = {}
-    if request.method == "post":
+    if request.method == "POST":
         form = CriteriaForms(request.POST)
         if form.is_valid():
             form.save()

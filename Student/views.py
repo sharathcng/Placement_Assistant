@@ -3,13 +3,16 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from Student.models import *
+from Drives.models import drive,Company
 from django.http import JsonResponse
 
 # Create your views here.
 
 
 def D_Student(request):  # Drive Stundent Html Page.
-    return render(request, "Drives/DriveStudent.html")
+    form = drive.objects.filter(username = request.user)
+    # context={'form':form}
+    return render(request, "Drives/DriveStudent.html", {'form': form})
 
 
 def Profile(request):  # Stundent profile Html Page.
