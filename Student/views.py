@@ -3,7 +3,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from Student.models import *
-from Drives.models import *
+from Drives.models import drive,Company
 from django.http import JsonResponse
 
 # Create your views here.
