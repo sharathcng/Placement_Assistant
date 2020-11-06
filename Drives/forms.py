@@ -6,7 +6,7 @@ class PostDrive(forms.ModelForm):
     class Meta:
         model = Company
         fields="__all__"
-        exclude = ('Status','Date',)
+        exclude = ('Status','Year',)
 
     def _init_(self, *args, **kwargs):
         super(PostDrive, self)._init_(*args, **kwargs)

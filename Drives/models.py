@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 # Create your models here.
 
+import datetime
+def current_year():
+    return datetime.date.today().year
 
 class Company(models.Model):
     sector_choices = (('Automobile', 'Automobile'),
@@ -51,7 +54,7 @@ class Company(models.Model):
     Bond_or_serviceAgreement = models.CharField(max_length=100)
     Company_website = models.CharField(max_length=100)
     Registartion_link = models.CharField(max_length=100)
-    Date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    Year = models.IntegerField(default=current_year)
     Status = models.CharField(max_length=50, choices=status_choices, default='Open')
     package = models.CharField(max_length=100)
     stipend = models.CharField(max_length=100)
@@ -59,6 +62,11 @@ class Company(models.Model):
 
     def __str__(self):
         return self.Company_Name
+    
+    # def yearpublished(self):
+    #     return self.Date.strftime('%Y')
+
+
 
 
 class Test(models.Model):

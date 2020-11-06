@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from Student.models import *
+from Drives.models import *
 from django.http import HttpResponse
 from .forms import PostDrive,PostTest,PostCriteria
 from django.contrib.auth.models import User
@@ -28,35 +29,6 @@ def Drives(request):  # Drive Head Html Page.
 #         context['form'] = form
 #         return render(request, "Drives/driveAdd.html", context)
 
-
-# @login_required(login_url='login')
-# def Testdetails(request):
-#     context = {}
-#     if request.method == "post":
-#         form = TestForms(request.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('D_Head')
-#     else:
-#         form = TestForms()
-#         context['form'] = form
-#         return render(request, "Drives/TestDetails.html", context)
-        
-
-
-# @login_required(login_url='login')
-# def Criteriadetails(request):
-#     context = {}
-#     if request.method == "post":
-#         form = CriteriaForms(request.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('Testdetails')
-#     else:
-#         form = CriteriaForms()
-#         context['form']=form
-#         return render(request, "Drives/CriteriaDetails.html", context)
-
 @login_required(login_url='login')
 def Post_Drive(request):
     if request.method == "POST":
@@ -76,6 +48,22 @@ def Post_Drive(request):
             return render(request, "Drives/driveAdd.html")
     else :
         return render(request, "Drives/driveAdd.html")
+
+
+
+@login_required(login_url='login')
+def Drive_Year(request):  # Drive Head Html Page.
+    driveYears = Company.objects.values('Year').distinct()
+    return render(request, "Drives/companyBatch.html",{'driveYears':driveYears})
+
+@login_required(login_url='login')
+def Company_List(request,year):  # Drive Head Html Page.
+    companyList = Company.objects.filter(Year = year)
+    testMode = Test.objects.all()
+    return render(request, "Drives/companyList.html", {'companyList':companyList,
+                        'year':year,'testMode':testMode})
+
+
 
 
 
