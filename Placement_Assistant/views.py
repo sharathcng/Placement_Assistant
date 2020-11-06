@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from Student.models import Student_Profile
 from django.contrib.auth.models import AnonymousUser
 
+
 # Create your views here.
 def index(request):
     return render(request, "index.html")
@@ -28,4 +29,5 @@ def logout(request):
 @login_required
 def home(request):
     return render(request, "home.html")
-    
+
+

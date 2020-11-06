@@ -22,13 +22,15 @@
           <nav class=" md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	 flex flex-wrap items-center text-base justify-center">
             <a href="{% url "Students"%}" class="mr-5 hover:text-blue-500">Students</a>
             <a href="{% url "drives" %}" class="mr-5 hover:text-blue-500">Drives</a>
+            <a href="{% url "cal" %}" class="mr-5 hover:text-blue-500">Calender</a>            
             <a class="mr-5 hover:text-blue-500">Reports</a>
             <a class="mr-5 hover:text-blue-500">Notifications</a>
           </nav>
           {% else %}
           <nav class=" md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	 flex flex-wrap items-center text-base justify-center">
-            <a href="{% url "Profile"%}" class="mr-5 hover:text-blue-500">Profile</a>
-            <a href="{% url "D_Student"%}" class="mr-5 hover:text-blue-500">Drives</a>
+            <a href="{% url "Profile" %}" class="mr-5 hover:text-blue-500">Profile</a>
+            <a href="{% url "D_Student" %}" class="mr-5 hover:text-blue-500">Drives</a>
+            <a href="{% url "cal" %}" class="mr-5 hover:text-blue-500">Calender</a>
             <a class="mr-5 hover:text-blue-500">Reports</a>
             <a class="mr-5 hover:text-blue-500">Notifications</a>
           </nav>
