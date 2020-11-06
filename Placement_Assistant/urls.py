@@ -26,8 +26,10 @@ urlpatterns = [
     path('', include('Student.urls')),
     path('', include('Drives.urls')),
     path('', include('notifications.urls')),
+    path('', include('Calendar.urls')),
     path('', views.index),
     path('login', views.login,name="login"),
     path('home', views.home, name="home"),
     path('logout', views.logout, name="logout"),
+
 ]

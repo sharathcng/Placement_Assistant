@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'notifications',
     'django_filters',
+    'Calendar',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
