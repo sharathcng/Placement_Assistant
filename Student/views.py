@@ -9,10 +9,9 @@ from django.http import JsonResponse
 # Create your views here.
 
 
-def D_Student(request):  # Drive Stundent Html Page.
-    form = drive.objects.filter(username = request.user)
-    # context={'form':form}
-    return render(request, "Drives/DriveStudent.html", {'form': form})
+def Student_Drives(request):  # Drive Stundent Html Page.
+    drives = Company.objects.all()
+    return render(request, "Drives/StudentDrives.html",{'drives':drives})
 
 
 def Profile(request):  # Stundent profile Html Page.

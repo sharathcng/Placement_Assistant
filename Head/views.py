@@ -11,18 +11,18 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def Students(request):
-    return render(request, "Admin/studentBase.html")
+    return render(request, "Student/studentBase.html")
 
 @login_required(login_url='login')
 def Batch(request):
     year = Student_Profile.objects.values('batch').distinct()
-    return render(request, "Admin/batch.html", {'year':year})
+    return render(request, "Student/studentB-atch.html", {'year':year})
 
 
 @login_required(login_url='login')
 def Students_List(request,batch):
     students = Student_Profile.objects.filter(batch=batch)
-    return render(request, "Admin/studentsList.html", {'students':students,'batch':batch})
+    return render(request, "Student/studentsList.html", {'students':students,'batch':batch})
 
 @login_required(login_url='login')
 def Students_Details(request,id):
@@ -31,7 +31,7 @@ def Students_Details(request,id):
     academic = Academic_table.objects.filter(username = id)
     skill = skills.objects.filter(username = id)
     project = projects.objects.filter(username = id)
-    return render(request, "Admin/studentDetails.html",{'students':students,'profile':profile,
+    return render(request, "Student/studentDetails.html",{'students':students,'profile':profile,
                                                     'skill':skill,'project':project,
                                                     'academic':academic
                                                 } 
