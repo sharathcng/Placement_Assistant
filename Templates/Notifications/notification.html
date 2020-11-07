@@ -1,0 +1,29 @@
+{% extends 'HomeBase.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="text-white px-6 py-4 border-4 rounded relative mb-4 bg-orange-500">
+  <span class="text-xl inline-block mr-10 align-middle">
+    <i class="fas fa-bell" />
+  </span>
+  <span class="inline-block align-middle mr-8">
+    <b class="capitalize">Company Name</b> If you really want to work please choose <b>Apply</b> or you just wanna chill press <b>Cancel</b>...!!!
+  </span>
+  <span class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-2 mr-64 outline-none focus:outline-none">
+  <button class="absolute  bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4  border-b-4 border-blue-700 hover:border-blue-500 rounded">
+  Apply
+</button>
+</span>
+<span class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-2 mr-32 outline-none focus:outline-none">
+  <button class="absolute  bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4  border-b-4 border-blue-700 hover:border-blue-500 rounded">
+  Cancel
+</button>
+  </span>
+ 
+  {% comment %} <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
+    <span>×</span>
+  </button> {% endcomment %}
+</div>
+
+{% endblock %}
