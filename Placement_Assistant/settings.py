@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'Head',
     'Drives',
     'crispy_forms',
-    'notifications',
+    'Notifications',
     'django_filters',
     'Calendar',
 ]

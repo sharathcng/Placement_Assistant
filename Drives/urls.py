@@ -8,5 +8,6 @@ urlpatterns = [
     path('postDrive', views.Post_Drive, name="postDrive"),
     path('driveYear', views.Drive_Year, name="driveYear"),
     path('companyList/<int:year>', views.Company_List, name="companyList"),
+    path('driveDetails<int:id>', views.Drive_Details, name="driveDetails"),
 
 ]

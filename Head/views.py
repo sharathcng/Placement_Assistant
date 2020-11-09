@@ -3,9 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from Student.models import *
 from django.http import HttpResponse
-from django.contrib.auth.models import User
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -16,7 +14,7 @@ def Students(request):
 @login_required(login_url='login')
 def Batch(request):
     year = Student_Profile.objects.values('batch').distinct()
-    return render(request, "Student/studentB-atch.html", {'year':year})
+    return render(request, "Student/studentBatch.html", {'year':year})
 
 
 @login_required(login_url='login')
