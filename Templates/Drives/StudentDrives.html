@@ -9,7 +9,9 @@
         <div class="p-12 md:w-full flex flex-col items-start">
           <span class="items-start inline-block py-1 px-3 rounded bg-indigo-100 text-indigo-500 text-sm font-medium tracking-widest">Placement Drives</span>
           {% for drive in drives%}
+          <a href="{% url 'driveDetails' drive.id %}">
           <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900 mt-1 mb-">{{ drive.Company_Name}}</h2>
+          </a>
           {% endfor %}
         </div>
       </div>
@@ -29,4 +31,4 @@
           }
         }
     </script>
-{% endblock content %}
+{% endblock %}

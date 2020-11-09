@@ -16,18 +16,6 @@ def Drives(request):  # Drive Head Html Page.
     return render(request, "Drives/driveBase.html")
 
 
-# @login_required(login_url='login')
-# def Add_Drive(request): 
-#     context={}
-#     if request.method == "post":
-#         form = CompanyForms(request.POST)  # , request.FILES
-#         if form.is_valid():
-#             form.save()
-#         return redirect('CriteriaDetails')
-#     else: 
-#         form = CompanyForms()
-#         context['form'] = form
-#         return render(request, "Drives/driveAdd.html", context)
 
 @login_required(login_url='login')
 def Post_Drive(request):
@@ -63,9 +51,23 @@ def Company_List(request,year):  # Drive Head Html Page.
     return render(request, "Drives/companyList.html", {'companyList':companyList,
                         'year':year,'testMode':testMode})
 
+def Drive_Details(request, id):
+    companyDetail = Company.objects.filter(id=id)
+    return render(request, "Drives/DriveDetails.html",{'companyDetail':companyDetail})
 
 
 
 
 
-
+# @login_required(login_url='login')
+# def Add_Drive(request): 
+#     context={}
+#     if request.method == "post":
+#         form = CompanyForms(request.POST)  # , request.FILES
+#         if form.is_valid():
+#             form.save()
+#         return redirect('CriteriaDetails')
+#     else: 
+#         form = CompanyForms()
+#         context['form'] = form
+#         return render(request, "Drives/driveAdd.html", context)
