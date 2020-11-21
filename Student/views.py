@@ -27,6 +27,10 @@ def Profile(request):  # Stundent profile Html Page.
     return render(request, "Student/profile.html",context 
                 )
 
+def edit_profile(request):
+    return render(request, "Student/profileEdit.html")
+
+
 
 def Get_details(request):
     student = User.objects.filter(username = request.user)

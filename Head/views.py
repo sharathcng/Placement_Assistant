@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from Student.models import *
 from django.http import HttpResponse
 from django.contrib import auth
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -36,3 +37,10 @@ def Students_Details(request,id):
                 )
 
 
+@login_required(login_url='login')
+def Update_Student_Profile(request):
+    profile = Student_Profile.objects.filter(id = request.POST['id']).update(editStatus=request.POST['editStatus'])
+    data = {
+        'profile':profile,
+    }
+    return JsonResponse(data)
