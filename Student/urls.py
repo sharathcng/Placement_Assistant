@@ -6,6 +6,8 @@ urlpatterns = [
     path('student_drives', views.Student_Drives, name="student_drives"),
 
     path('Profile', views.Profile, name="Profile"),
+    path('editProfile', views.edit_profile, name="editProfile"),
+
     path('ajax/getDetails', views.Get_details, name="getDetails"),
     path('ajax/updateAcademic', views.update_academic, name="updateAcademic"),
     path('ajax/updateSkill', views.update_skill, name="updateSkill"),

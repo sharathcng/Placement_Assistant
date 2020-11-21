@@ -28,6 +28,7 @@ class Student_Profile(models.Model):
     currentAddress = models.TextField()
     permanentAddress = models.TextField()
     batch = models.PositiveIntegerField()
+    editStatus = models.IntegerField(default=0)
 
 
 class Academic_table(models.Model):

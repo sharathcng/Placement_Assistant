@@ -7,5 +7,7 @@ urlpatterns = [
     path('batch', views.Batch, name = "batch"),
     path('studentsList/<int:batch>', views.Students_List, name="studentsList"),
     path('studentDetails/<int:id>', views.Students_Details, name = "studentDetails"),
+    path('updateStudentProfile', views.Update_Student_Profile, name = "updateStudentProfile"),
     
+
 ]

@@ -1,10 +1,35 @@
 {% extends 'HomeBase.html' %}
 {% load static %}
+
+
 {% block content %}
+
+{% for profile in profile %}
+{% if profile.editStatus == 0%}
+  
+  <div class=" container px-5 py-18 mx-auto">
+        <a href="{% url 'editProfile'%}" class='absolute top-1 right-0 h-16 w-16 text-indigo-500 inline-flex items-center'>Edit
+          <ion-icon name='pencil-outline'></ion-icon>
+        </a>
+  </div>
+
+{% elif profile.editStatus == 2 %}
+
+  <div class=" container px-5 py-18 mx-auto">
+  <h1 class="text-white px-6 py-4 border-4 rounded relative mb-4 bg-red-700">Your profile data submission is rejected due to missmatched contents, please verify, edit and submit again.</h1>
+        <a href="{% url 'editProfile'%}" class='absolute top-1 right-0 h-16 w-16 text-indigo-500 inline-flex items-center'>Edit
+          <ion-icon name='pencil-outline'></ion-icon>
+        </a>
+  </div>
+
+{% elif profile.editStatus == 1 %}
 
 <title>Profile</title>
       <section class="text-gray-700 body-font">
+        <h1 class="text-white px-6 py-4 border-4 rounded relative mb-4 bg-green-500">Your profile data submission is verified and approved.</h1>
+
         <div class=" container px-5 py-18 mx-auto">
+        
           <div class="flex items-center lg:w-3/4 mx-auto border-b pb-12 mb-10 border-gray-200 sm:flex-row flex-col">
             <div class="sm:w-64 sm:h-64  h-20 w-20 sm:mr-40  inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png" alt="">
@@ -29,7 +54,7 @@
           </div>
           <!-- <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button> -->
         </div>
-
+        
 
         <!-- pop up -->
   
@@ -129,11 +154,7 @@
 
       <section>
         <h1 class="text-3xl pb-4 ml-2"><u>Academic Details :</u>
-        <button onclick="popUpAcademic()"
-          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
-          Add New&nbsp;&nbsp;
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </button>
+        
         </h1>
         <table class="table-auto">
           <thead>
@@ -236,10 +257,7 @@
 
 
         <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Technical Skills :</u>
-          <button id="popup" onclick="popUpTech()" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
-          Edit&nbsp;&nbsp;
-            <ion-icon name="add-circle-outline"></ion-icon>
-          </button>
+          
         </h1>
         <table class="table-auto">
           <thead>
@@ -368,11 +386,7 @@
 
 
       <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Hobbies :</u>
-        <button onclick="popUpHobbie()"
-          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
-          Edit&nbsp;&nbsp;
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </button>
+        
       </h1>
       <div id="hobbies" class="bg-gray-200">
         {% comment %} <div  class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">{{ profile.hobbies }}</div> {% endcomment %}
@@ -444,10 +458,7 @@
 
 
         <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Personal Details :</u>
-          <button onclick="popUpPersonal()" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">
-          Edit&nbsp;&nbsp;
-            <ion-icon name="add-circle-outline"></ion-icon>
-          </button>
+         
         </h1>
         <table class="table-auto">
           
@@ -547,9 +558,7 @@
 
   
       <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Projects :</u>
-        <button onclick="popUpProject()" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Add New&nbsp;&nbsp;
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </button>
+        
       </h1>
 
             
@@ -910,9 +919,9 @@
                               "</td><td class='border px-4 py-2'>"+response.academic[key].yearOfPass+
                               "</td><td class='border px-4 py-2'>"+response.academic[key].CGPA+
                               "</td>"+
-                              "<td><button onclick='deleteAcademic("+response.academic[key].id+")' type='button' class='inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5'>"+
+                              {% comment %} "<td><button onclick='deleteAcademic("+response.academic[key].id+")' type='button' class='inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5'>"+
                               "Delete"+
-                              "</button></td>"+
+                              "</button></td>"+ {% endcomment %}
                               "</tr>"
                                 
                     $("#academics").append(temp);
@@ -949,20 +958,19 @@
                    
                       for( var key in response.student )
                       {
+                        
                         console.log(response.student[key].id);
                         var temp = "<h1 class='text-gray-1000 text-5xl title-font font-xldium mb-4'><ion-icon  name='person-circle-outline'></ion-icon>"+response.student[key].first_name+" "+response.student[key].last_name+"</h1>"+
                                     "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='card' class='mr-3'></ion-icon>"+response.student[key].username+"</h1>"+
                                     "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='mail' class='mr-3 '></ion-icon>"+response.student[key].email+"</h1>"
                                     
                         $("#profileData").append(temp);
-
+                        
                       }
                       var temp = "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='calendar' class='mr-3 '></ion-icon>"+response.personal[key].dateOfBirth+"</h1>"+
                                   "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='male-female' class='mr-3 '></ion-icon>"+response.personal[key].gender+"</h1>"+
-                                  "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='call' class='mr-3 '></ion-icon>"+response.personal[key].phoneNumber+"</h1>"+
-                                  "<a onclick='popUpProfile()' class='mt-3 text-indigo-500 inline-flex items-center'>Edit"+
-                                  "<ion-icon name='pencil-outline'></ion-icon>"+
-                                  "</a>"
+                                  "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='call' class='mr-3 '></ion-icon>"+response.personal[key].phoneNumber+"</h1>"
+                                 
                         $("#profileData").append(temp);
 
                   
@@ -985,9 +993,7 @@
                                         "<p class='leading-relaxed text-base'>"+response.project[key].description+"</p>"+
                                       "</div>"+
                                   "</div>"+
-                                  "<td><button onclick='deleteProject("+response.project[key].id+")' type='button' class='inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5'>"+
-                                  "Delete"+
-                                  "</button></td>"+
+                                  
                                 "</div>"
                                 
                     $("#projects").append(temp);
@@ -1055,4 +1061,6 @@
   </body>
 </html>
 
+{% endif %}
+{% endfor %} 
 {% endblock content %}
