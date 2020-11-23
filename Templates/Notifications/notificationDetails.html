@@ -1,0 +1,11 @@
+{% extends 'HomeBase.html' %}
+{% load static %}
+{% block content %}
+
+{% for notify in notifyDetails %}
+    <h1>Sender : {{ notify.username}}</h1>
+    <h2>Subject : {{ notify.subject}}</h2>
+    <p>Description : {{ notify.body}}</p>
+{% endfor %}
+
+{% endblock content %}
