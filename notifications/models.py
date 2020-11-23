@@ -9,3 +9,4 @@ class Notifications(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     subject = models.CharField(max_length=100)
     body = models.TextField(max_length=100)
+    view_Status = models.IntegerField(default = 0)
