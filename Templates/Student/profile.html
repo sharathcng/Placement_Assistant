@@ -3,8 +3,23 @@
 
 
 {% block content %}
+{% for user in user %}
+  {% if user.email == null %}
+    <div class=" container px-5 py-18 mx-auto">
+        <a href="{% url 'editProfile'%}" class='absolute top-1 right-0 h-16 w-16 text-indigo-500 inline-flex items-center'>Edit
+          <ion-icon name='pencil-outline'></ion-icon>
+        </a>
+  </div>
+  {% endif %}
 
+{% endfor %}
+<div class=" container px-5 py-18 mx-auto">
+        <a href="{% url 'editProfile'%}" class='absolute top-1 right-0 h-16 w-16 text-indigo-500 inline-flex items-center'>Edit
+          <ion-icon name='pencil-outline'></ion-icon>
+        </a>
+  </div>
 {% for profile in profile %}
+
 {% if profile.editStatus == 0%}
   
   <div class=" container px-5 py-18 mx-auto">
