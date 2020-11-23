@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from Student.models import *
 from Drives.models import *
 from django.http import HttpResponse
-from .forms import PostDrive,PostTest,PostCriteria
+from .forms import PostCompany,PostTest,PostCriteria
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -16,11 +16,11 @@ def Drives(request):  # Drive Head Html Page.
     return render(request, "Drives/driveBase.html")
 
 
-
+# new drive
 @login_required(login_url='login')
-def Post_Drive(request):
+def Post_Drive(request):  # posting new Drive
     if request.method == "POST":
-        form1 = PostDrive(request.POST)
+        form1 = PostCompany(request.POST)
         form2 = PostTest(request.POST)
         form3 = PostCriteria(request.POST)
         if  form1.is_valid() and form2.is_valid() and form3.is_valid() :
@@ -40,12 +40,12 @@ def Post_Drive(request):
 
 
 @login_required(login_url='login')
-def Drive_Year(request):  # Drive Head Html Page.
+def Drive_Year(request):  # company batch Html Page.
     driveYears = Company.objects.values('Year').distinct()
     return render(request, "Drives/companyBatch.html",{'driveYears':driveYears})
 
 @login_required(login_url='login')
-def Company_List(request,year):  # Drive Head Html Page.
+def Company_List(request,year):  # company list Html Page.
     companyList = Company.objects.filter(Year = year)
     testMode = Test.objects.all()
     return render(request, "Drives/companyList.html", {'companyList':companyList,
