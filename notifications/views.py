@@ -1,7 +1,28 @@
 from django.shortcuts import render,redirect,reverse
 from django.contrib.auth.models import User
+from Notifications.models import *
+from django.http import HttpResponse
+
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def Notification(request):
-    return render(request,"Notifications/notification.html")
+    notificate = Notifications.objects.all()
+    return render(request,"Notifications/notification.html",{"notificate":notificate})
+
+def notificationForm(request):
+    return render(request,"Notifications/notificationForm.html")
+
+def postNotification(request):
+    if request.method == "POST":
+        Notifications.objects.create(username=request.user,subject=request.POST['subject'],body=request.POST['body'])
+        print('saved')
+        return redirect(Notification)
+    else:   
+        return render(request,"Notifications/notificationForm.html")
+    
+
+def notificationDetails(request,id):
+    notifyDetails = Notifications.objects.filter(id=id)
+    return render(request,"Notifications/notificationDetails.html",{"notifyDetails":notifyDetails})

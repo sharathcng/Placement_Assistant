@@ -3,5 +3,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path("notification", views.Notification, name="notification")
+    path("notification", views.Notification, name="notification"),
+    path("notificationForm", views.notificationForm, name="notificationForm"),
+    path("postNotification", views.postNotification, name="postNotification"),
+    path("notificationDetails/<int:id>", views.notificationDetails, name="notificationDetails"),
 ]

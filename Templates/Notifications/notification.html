@@ -2,39 +2,74 @@
 {% load static %}
 {% block content %}
 
-
-<div class="text-white px-6 py-4 border-4 rounded relative mb-4 bg-orange-500">
-<span>
-  <svg class=" inline-block h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-  </svg>
-</span>
-  <span class="inline-block align-middle mr-32">
-    <b class="capitalize">Company Name</b> If you really want to work please choose <b>Apply</b> or you want to be a Entrepreneur please choose <b>Reject</b>...!!!
-  </span>
-<span class="inline-block items-right justify-center ">
-        <button x-data="{}"
-                @click="$dispatch('notice', {type: 'success', text: 'Applied for the job'})"
-                class="m-4 bg-green-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
-            Apply
-        </button>
-        {% comment %} <button x-data="{}"
-                @click="$dispatch('notice', {type: 'info', text: 'آلرت اینفو'})"
-                class="m-4 bg-blue-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
-            Info
-        </button>
-        <button x-data="{}"
-                @click="$dispatch('notice', {type: 'warning', text: 'آلرت وارنینگ'})"
-                class="m-4 bg-orange-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
-            Warning
-        </button> {% endcomment %}
-        <button x-data="{}"
-                x-on:click="$dispatch('notice', {type: 'danger', text: 'All the best for your Entrepreneurship '})"
-                class="m-4 bg-red-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
-            Reject
-        </button>
-    </span>
+{% if user.is_superuser is True%}
+<section>
+<div class="mt-4 top-1 right-0 h-16 w-50">
+        <span>
+          <a href="{% url 'notificationForm' %}" class="m-4 bg-green-500 text-lg font-bold p-2 py-2 text-white shadow-md rounded">
+               <ion-icon name="add-circle-outline"></ion-icon>
+                Post Notification
+          </a>
+          </span>
 </div>
+</section>
+
+{% endif %}
+
+<div class="px-3 py-2 ">
+    <div class="flex -mx-2">
+
+        <div class="w-1/2 px-2">
+        {% for notify in notificate %}
+            <div class="bg-gray-500 ">
+                <div class="text-white px-6 py-0 border-4 rounded relative mb-4 bg-orange-500">
+                    <span class="inline-block align-middle mr-32">
+                        <svg class=" inline-block h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                        </svg>
+                        <a href="{% url 'notificationDetails' notify.id %}">
+                            {{ notify.subject }}&nbsp;
+                                <span class="animate-ping absolute inline-flex h-3 w-3 mt-1 rounded-full bg-blue-800"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-800"></span>
+                                
+                        </a>
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+    <div class="w-1/2 px-2">
+        <div class="bg-gray-400 ">
+      
+            <div class="text-white px-6 py-0 border-4 rounded relative mb-4 bg-orange-500">
+                <span class="inline-block align-middle mr-32">
+                    <svg class=" inline-block h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                    </svg>
+                    <b class="capitalize">Company Name</b> If you really want to work please choose <b>Apply</b> or you want to be a Entrepreneur please choose <b>Reject</b>...!!!
+                </span>
+                <span class="inline-block items-right justify-center ">
+                    <button x-data="{}"
+                        @click="$dispatch('notice', {type: 'success', text: 'Applied for the job'})"
+                        class="m-4 bg-green-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
+                        Apply
+                    </button>
+                    <button x-data="{}"
+                        x-on:click="$dispatch('notice', {type: 'danger', text: 'All the best for your Entrepreneurship '})"
+                        class="m-4 bg-red-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
+                        Reject
+                    </button>
+                </span>
+            </div>
+      
+        </div>
+    </div>
+
+
+  </div>
+</div> 
+
 
 
 
@@ -82,6 +117,9 @@
 
     </div>
 
+
+
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 
     
 
