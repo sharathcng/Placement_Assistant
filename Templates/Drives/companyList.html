@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<title>Students</title>
+<title>Company/Batch</title>
 
 
 <header class="bg-white shadow">
@@ -30,6 +30,7 @@
               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Job Status
               </th>
+             
               {% comment %} <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Test Mode
               </th> {% endcomment %}
@@ -77,7 +78,7 @@
               </td> {% endcomment %}
               
               <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium">
-                <a href="{% url 'driveDetails' companyList.id %}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                <a href="{% url 'driveDetails' companyList.id %}" class="text-indigo-600 hover:text-indigo-900">View</a>
               </td>
             </tr>
           {% endfor %}

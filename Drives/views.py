@@ -32,6 +32,18 @@ def Post_Drive(request):  # posting new Drive
             c.Company_Name = a
             c.save()
             return redirect(Drives)
+
+            # companyCritera = Criteria.objects.filter(id=a)
+            # studentmarks = Academic_table.objects.all()
+            # for course in studentmarks:
+            #     if course.SSLC <= companyCritera.SSLC:
+            #         if course.PUC <= companyCritera.PUC:
+            #             if course.DEGREE <= companyCritera.UG:
+            #                 if course.MCA <= companyCritera.PG:
+            #                     form1 = drive.objects.all()
+            #                     form1.Company_Name=a
+            #                     form1.username = course.username
+                            
         else:
             return render(request, "Drives/driveAdd.html")
     else :
@@ -52,8 +64,17 @@ def Company_List(request,year):  # company list Html Page.
                         'year':year,'testMode':testMode})
 
 def Drive_Details(request, id):
-    companyDetail = Company.objects.filter(id=id)
-    return render(request, "Drives/DriveDetails.html",{'companyDetail':companyDetail})
+    companyDetails = Company.objects.filter(id=id)
+    testDetails=Test.objects.filter(id=id)
+    criteriaDetails=Criteria.objects.filter(id=id)
+    return render(request, "Drives/ViewDrive.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails})
+
+
+def editDrive(request, id):
+    companyDetails = Company.objects.filter(id=id)
+    testDetails = Test.objects.filter(id=id)
+    criteriaDetails = Criteria.objects.filter(id=id)
+    return render(request, "Drives/DriveDetails.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails})
 
 
 
