@@ -16,6 +16,7 @@ def Student_Drives(request):  # Drive Stundent Html Page.
 
 def Profile(request):  # Stundent profile Html Page.
     users = User.objects.filter(username = request.user)
+    print(request.user)
     profile = Student_Profile.objects.filter(username = request.user)
     academic = Academic_table.objects.filter(username = request.user)
     skill = skills.objects.filter(username = request.user)

@@ -44,3 +44,29 @@ def Update_Student_Profile(request):
         'profile':profile,
     }
     return JsonResponse(data)
+    
+def addStudentForm(request):
+    return render(request, "Admin/addStudent.html")
+
+def addStudent(request):
+    if request.method == 'POST':
+        print('already exist1')
+        username=request.POST['username']
+        password=request.POST['password']
+        if not User.objects.filter(username=request.POST['username']):
+            print('already exist2')
+            User.objects.create(username=request.POST['username'],password=request.POST['password'])
+            #JsonResponse({"student":student})
+            data = {
+                'student':username,
+                'password':password,
+            }
+            return JsonResponse(data)
+        else:
+            print('already exist3')
+            #JsonResponse({"username":kid.username})
+            data = {
+                'username':username,
+            }
+            return JsonResponse(data)
+    return render(request, "Admin/addStudent.html")

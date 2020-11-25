@@ -1,0 +1,154 @@
+{% extends 'HomeBase.html' %}
+{% load static %}
+{% block content %}
+
+<title>Students</title>
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-center text-gray-900">
+        Add new student
+      </h1>
+    </div>
+  </header>
+
+
+<div class="w-full py-2 ml-2">
+  <div class="flex content-center -mx-2">
+    <div class="w-full px-64">
+      <div class="bg-gray-400 ">
+      
+      <form id="addUser" action=""> 
+        <table  class="min-w-full divide-y divide-gray-200 center">
+            <tbody class="bg-gray-300 divide-y divide-gray-200">
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Pesu ID :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap z-0">
+                    
+                     <input   id="username" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="PES12020XXXXXX"></td> 
+                </tr>
+
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Password :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap z-0">
+                    
+                     <input id="password" type="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="**********"></td> 
+                    
+                </tr>
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">
+                    </td>
+                    <td class="px-8 py-4 whitespace-wrap text-right">
+                    <div class="content-right">
+                        <span>
+                        <button   type="submit" class="inline-flex justify-center w-1/3 rounded-md border border-transparent py-2 bg-green-500 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">Add Student&nbsp;
+                            {% comment %} <ion-icon name="add-circle-outline"></ion-icon> {% endcomment %}
+                                
+                        </button>
+                        </span>
+                    </div>
+                    </td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w-full py-2 ml-2">
+  <div class="flex content-center -mx-2">
+    <div class="w-full px-40">
+      <div class="bg-gray-400 ">
+        <table id="error" class="min-w-full divide-y divide-gray-200 center">
+            <tbody  class="bg-gray-300 divide-y divide-gray-200">
+                
+                {% comment %} <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Pesu ID :</td>
+                    <td id="pesuid" class="px-2 py-4 w-100 whitespace-wrap z-0">
+                </tr>
+
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Password :</td>
+                    <td id="pass" class="px-2 py-4 w-100 whitespace-wrap z-0">
+                </tr> {% endcomment %}
+
+       
+            </tbody>
+        </table>
+</div>
+</div>
+
+    </div>
+</div>
+    
+
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<script>
+// Create Django Ajax Call
+$("form#addUser").submit(function() {
+    var action = confirm("Are you sure you want to save this data?");
+    var username = $('#username').val().trim();
+    var password = $('#password').val().trim();
+    var token = "{{csrf_token}}";
+    //var password = $('input[name="password"]').val().trim();
+    if (action != false){
+    if (username && password) {
+      
+        // Create Ajax Call
+        $.ajax({
+            type: "POST",
+            headers: { "X-CSRFToken": token },
+            url: '{% url "addStudent" %}',
+            data: {
+                'username': username,
+                'password': password
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.username) {
+                  //console.log(data.username);
+                  $("#error > tbody:last-child").empty();
+                    var temp="<tr>"+
+                          "<td class='px-8 py-4 whitespace-wrap text-center'>"+
+                          "<p style='color:red'>Student with pesuID <b>"+data.username+"</b> already exist</p>"+"</td>"+
+                          "<tr>"
+                  //$("#error").append(temp);
+                  $("#error > tbody:last-child").append(temp);
+                }
+                else{
+                    $("#error > tbody:last-child").empty();
+                    //$("#pesuid").empty();
+                    //$("#pass").empty();
+                    //$("#pesuid").html(
+                    //  '<p style="color:brown">'+data.student+'</p>'
+                    //);
+                    //$("#pass").html(
+                    //  '<p style="color:brown">'+data.password+'</p>'
+                    //);
+                    var temp="<tr>"+
+                          "<td style='color:green' class='px-8 py-4 whitespace-wrap text-center'>New student added "+
+                          "with pesuID as <b>"+data.student+
+                          "</b></td>"+
+                          "<tr>"
+                    $("#error > tbody:last-child").append(temp);
+                    //$("#pass").html(temp);
+                    
+                }
+            }
+        });
+      } else {
+        alert("All fields must have a valid value.");
+    }
+    $('addForm').trigger("reset");
+    return false;
+}});
+
+</script>
+
+{% endblock content %}
+
