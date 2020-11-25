@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from Student.models import *
 from Drives.models import *
 from django.http import HttpResponse
-from .forms import PostCompany,PostTest,PostCriteria
+from .forms import PostDrive, PostTest, PostCriteria
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -20,7 +20,7 @@ def Drives(request):  # Drive Head Html Page.
 @login_required(login_url='login')
 def Post_Drive(request):  # posting new Drive
     if request.method == "POST":
-        form1 = PostCompany(request.POST)
+        form1 = PostDrive(request.POST)
         form2 = PostTest(request.POST)
         form3 = PostCriteria(request.POST)
         if  form1.is_valid() and form2.is_valid() and form3.is_valid() :
