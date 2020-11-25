@@ -2,33 +2,72 @@
 {% load static %}
 {% block content %}
 
+<title>Company/Batch</title>
 
-  <section class="text-gray-700 body-font overflow-hidden">
-    <div class="container px-5 py-14 mx-auto">
-      <div class="flex flex-wrap -m-12">
-        <div class="p-12 md:w-full flex flex-col items-start">
-          <span class="items-start inline-block py-1 px-3 rounded bg-indigo-100 text-indigo-500 text-sm font-medium tracking-widest">Placement Drives</span>
-          {% for drive in drives%}
-          <a href="{% url 'driveDetails' drive.id %}">
-          <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900 mt-1 mb-">{{ drive.Company_Name}}</h2>
-          </a>
+
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-gray-900">
+        Placement Drives
+      </h1>
+    </div>
+  </header>
+
+ 
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="w-1/2 divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Company Name
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Tier
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Job Status
+              </th>
+              
+              <th class="px-6 py-3 bg-gray-50"></th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+          {% for drive in drives %}
+            
+            <tr>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="flex items-center">
+                  <div class="ml-0">
+                    <div class="text-sm leading-5 font-medium text-gray-900">
+                      {{drive.Company_Name}}
+                    </div>
+                    <div class="text-sm leading-5 text-gray-500">
+                      {{drive.Location}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm">{{ drive.tier }}</td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm">
+                {{drive.Job_Status}}
+              
+              
+              <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium">
+                <a href="{% url 'driveDetails' drive.id %}" class="text-indigo-600 hover:text-indigo-900">View</a>
+              </td>
+            </tr>
           {% endfor %}
-        </div>
+          
+          </tbody>
+        </table>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-      <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-      <script>
 
-        function toggleMenu() {
-          var menuBox = document.getElementById('menu-box');    
-          if(menuBox.style.display == "block") { // if is menuBox displayed, hide it
-            menuBox.style.display = "none";
-          }
-          else { // if is menuBox hidden, display it
-            menuBox.style.display = "block";
-          }
-        }
-    </script>
-{% endblock %}
+
+{% endblock content %}

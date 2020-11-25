@@ -1,0 +1,190 @@
+{% extends 'HomeBase.html' %}
+{% load static %}
+{% block content %}
+
+<title>Students/Drive</title>
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-center text-gray-900">
+        Drive Details
+      </h1>
+    </div>
+  </header>
+{% for companyDetail in companyDetail %}
+
+<form action="{% url 'editDrive' companyDetail.id %}" method="" >
+ {% csrf_token %}
+
+<div class="px-64 py-2 ">
+  <div class="flex content-center -mx-2">
+    <div class="w-full  px-2">
+      <div class="bg-gray-400 ">
+      
+      
+        <table class="min-w-full divide-y divide-gray-200 center" >
+            <tbody class="bg-gray-300 divide-y divide-gray-200">
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Company Name :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap z-0">
+                     {{ companyDetail.Company_Name }}</td> 
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Postal Address :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.Postal_Address}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">About Company :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.About_Company}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Sector :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.sector}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Job description :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.About_Company}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Position/Designation Offered :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.Position}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Location Of work :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.Location}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Job Status :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.Job_Status}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Bond/Service agreement :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.Bond_or_serviceAgreement}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Company Website :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.Company_website}}</td>
+                </tr>
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Registration Link :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.Registartion_link}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Package :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.package}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Internship Stipend :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.stipend}}</td>
+                </tr>
+                
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center ">Tier :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{companyDetail.tier}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+      </div>
+    </div>
+    </div>
+</div>
+
+{% endfor %}    
+{% for testDetail in testDetails %}
+<div class="px-3 py-2 ">
+  <div class="flex -mx-2">
+    <div class="w-1/2 px-2">
+      <div class="bg-gray-500 ">
+      
+     
+        <table class="min-w-full divide-y divide-gray-200 center">
+            <tbody class="bg-gray-300 divide-y divide-gray-200">
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right ">Test Mode :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{testDetail.TestMode}}</td>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Test Date :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{testDetail.Test_Date}}</td> 
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Aptitude :
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{% if testDetail.Aptitude == True %}YES{% else %}No{% endif %}</td>
+                
+                    <td class="px-8 py-4 whitespace-wrap text-right">Coding :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{% if testDetail.Coding == True %}YES{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Communication :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{% if testDetail.Communication == True %}YES{% else %}No{% endif %}</td>
+                
+                    <td class="px-8 py-4 whitespace-wrap text-right">Group Discussion :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{% if testDetail.GD == True %}YES{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Technical :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{% if testDetail.Techinacal == True %}YES{% else %}No{% endif %}</td>
+                
+                    <td class="px-8 py-4 whitespace-wrap text-right">HR :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{% if testDetail.HR == True %}YES{% else %}No{% endif %}</td>
+                </tr>
+
+                </tbody>
+        </table>
+
+    
+      </div>
+    </div>
+    {% endfor %}    
+{% for criteriaDetail in criteriaDetails %}
+
+    <div class="w-1/2 px-2">
+      <div class="bg-gray-400 ">
+      
+        <table class="min-w-full divide-y divide-gray-200 center">
+            <tbody class="bg-gray-300 divide-y divide-gray-200">
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">SSLC / Equivalence :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{criteriaDetail.SSLC}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">PUC / Equivalence :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{criteriaDetail.PUC}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Degree / Equivalence :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{criteriaDetail.UG}}</td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">PG / Equivalence :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">{{criteriaDetail.PG}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% if user.is_superuser is True %}
+<div class="px-64 py-2 ">
+    <div class="flex content-center -mx-2">
+        <div class="w-full  px-2">
+            <div class="bg-gray-400 ">
+                <div class="mt-6">
+                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                    Edit Details
+                    </button>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+</form>
+
+{% endblock content %}

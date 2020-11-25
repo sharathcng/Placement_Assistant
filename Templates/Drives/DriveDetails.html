@@ -2,156 +2,237 @@
 {% load static %}
 {% block content %}
 
+<title>Students</title>
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-center text-gray-900">
+        Drive details
+      </h1>
+    </div>
+  </header>
 
-{% for companyDetail in companyDetail%}
-<!-- Full width column -->
-<div class="flex mb-2">
-  <div class="w-full text-center text-3xl h-12 pt-2">
-    {{ companyDetail.Company_Name}}
+<form action="{% url 'postDrive'%}" method="POST" >
+{% for companyDetail in companyDetail %}
+ {% csrf_token %}
+
+<div class="px-64 py-2 ">
+  <div class="flex content-center -mx-2">
+    <div class="w-full  px-2">
+      <div class="bg-gray-400 ">
+      
+      
+        <table class="min-w-full divide-y divide-gray-200 center" >
+            <tbody class="bg-gray-300 divide-y divide-gray-200">
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Company Name :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap z-0">
+                    
+                     <input  name="Company_Name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{ companyDetail.Company_Name }}" ></td> 
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Postal Address :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="Postal_Address" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Postal_Address}}"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">About Company :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="About_Company" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.About_Company}}"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Sector :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">
+                        <select aria-label="Email address" name="sector" required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{companyDetail.sector}}">
+                            <option value="Automobile">Automobile</option>
+                            <option value="Banking/Financial Services/Insurance">Banking/Financial Services/Insurance</option>
+                            <option value="Conglomerate">Conglomerate</option>
+                            <option value="Consulting">Consulting</option>
+                            <option value="Consumer Durables">Consumer Durables</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="FMCG">FMCG</option>
+                            <option value="Government/PSU">Government/PSU</option>
+                            <option value="Healthcare & Pharma">Healthcare & Pharma</option>
+                            <option value="Infrastructure">Infrastructure</option>
+                            <option value="IT & ITES">IT & ITES</option>
+                            <option value="Leasure,Travel & Tourism">Leasure,Travel & Tourism</option>
+                            <option value="Manufacturing">Manufacturing</option>
+                            <option value="Market Research">Market Research</option>
+                            <option value="Media & Advertising">Media & Advertising</option>
+                            <option value="Power/Oil/Energy">Power/Oil/Energy</option>
+                            <option value="R & D">R & D</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Retail">Retail</option>
+                            <option value="Semiconductor">Semiconductor</option>
+                            <option value="Telecom">Telecom</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Job description :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="Job_Description" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.About_Company}}"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Position/Designation Offered :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Position" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Position}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Location Of work :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Location" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Location}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Job Status :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">
+                        <select aria-label="Email address" name="Job_Status" required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{companyDetail.Job_Status}}">
+                            <option value="Internship Only">Internship Only</option>
+                            <option value="Fulltime Only">Fulltime Only</option>
+                            <option value="Fulltime + Internship">Fulltime + Internship</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Bond/Service agreement :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Bond_or_serviceAgreement" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Bond_or_serviceAgreement}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Company Website :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Company_website" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Company_website}}"></td>
+                </tr>
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Registration Link :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Registartion_link" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Registartion_link}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Package :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="package" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.package}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center">Internship Stipend :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="stipend" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.stipend}}"></td>
+                </tr>
+                
+                
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-center ">Tier :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">
+                        <select  name="tier"  required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{companyDetail.tier}}">
+                            <option value="Tier1">Tier-1</option> 
+                            <option value="Tier2">Tier-2</option> 
+                            <option value="Tier3">Tier-3</option> 
+                        </select>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+      </div>
+    </div>
+    </div>
+</div>
+{% endfor %}    
+{% for testDetail in testDetails %}
+<div class="px-3 py-2 ">
+  <div class="flex -mx-2">
+    <div class="w-1/2 px-2">
+      <div class="bg-gray-500 ">
+      
+     
+        <table class="min-w-full divide-y divide-gray-200 center">
+            <tbody class="bg-gray-300 divide-y divide-gray-200">
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right ">Test Mode :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap">
+                        <select  name="TestMode"  required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{testDetail.TestMode}}"{% if user.is_superuser is False %} disabled {% endif %}>
+                            <option value="Online">Online mode</option> 
+                            <option value="Offline">Offline mode</option> 
+                            
+                        </select>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Test Date :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Test_Date" type="date" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
+                
+                    
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Aptitude :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Aptitude" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                
+                    <td class="px-8 py-4 whitespace-wrap text-right">Coding :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Coding" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Communication :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Communication" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                
+                    <td class="px-8 py-4 whitespace-wrap text-right">Group Discussion :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="GD" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Technical :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Techinacal" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                
+                    <td class="px-8 py-4 whitespace-wrap text-right">HR :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="HR" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                </tr>
+
+                </tbody>
+        </table>
+
+    
+      </div>
+    </div>
+    {% endfor %}    
+{% for criteriaDetail in criteriaDetails %}
+
+    <div class="w-1/2 px-2">
+      <div class="bg-gray-400 ">
+      
+        <table class="min-w-full divide-y divide-gray-200 center">
+            <tbody class="bg-gray-300 divide-y divide-gray-200">
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">SSLC / Equivalence :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="SSLC" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.SSLC}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">PUC / Equivalence :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="PUC" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.PUC}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">Degree / Equivalence :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="UG" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.UG}}"></td>
+                </tr>
+                <tr>
+                    <td class="px-8 py-4 whitespace-wrap text-right">PG :</td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="PG" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.PG}}"></td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+      </div>
+    </div>
   </div>
 </div>
-
-
-<!-- Three columns -->
-<div class="flex mb-2 ml-2 mr-2">
-  <div class="w-1/3 text-center text-xl bg-gray-400 h-10 pt-1">
-    {{ companyDetail.tier }}
-  </div>
-  <div class="w-1/3 text-center text-xl bg-gray-500 text-blue-600 h-10 pt-1 ml-1">
-    <a class="hover:text-blue-800">
-    {{ companyDetail.Company_website }}
-    </a>
-  </div>
-  <div class="w-1/3 text-center text-xl bg-gray-400 h-10 pt-1 ml-1">
-    {{ companyDetail.Location }}
-  </div>
+ {% endfor %}
+<div class="px-64 py-2 ">
+    <div class="flex content-center -mx-2">
+        <div class="w-full  px-2">
+            <div class="bg-gray-400 ">
+                <div class="mt-6">{% if user.is_superuser is True %}
+                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                    Post Drive
+                    </button>
+                    {% else %}
+                    <a href="#" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                    Apply
+                    </a>
+                    {% endif %}
+                </div> 
+            </div>
+        </div>
+    </div>
 </div>
 
+</form>
 
-
-<!-- Full width column -->
-<div class="flex mb-4">
-  <div class="w-full text-xl h-12">
-  About Company : <br> 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    {{ companyDetail.About_Company}}
-  </div>
-</div>
-
-
-<!-- Four columns -->
-<div class="w-full text-xl h-12">
-Other Details : <br> 
-</div>
-<div class="flex mb-1 ">
-  <div class="w-1/5  bg-gray-500 h-12 text-xl text-center ml-24 pt-2">
-    Sector
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2">
-    {{companyDetail.sector }}
-  </div>
-  <div class="w-1/5 bg-gray-500 h-12 text-xl text-center ml-16 pt-2">
-    Job Status
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2">
-    {{companyDetail.Job_Status }}
-  </div>
-</div>
-<div class="flex mb-1">
-  <div class="w-1/5 bg-gray-500 h-12 text-xl text-center pt-2 ml-24">
-    Job posotion
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2">
-  {{companyDetail.Position }}
-  </div>
-  <div class="w-1/5 bg-gray-500 h-12 text-xl text-center pt-2 ml-16">
-    Job Description
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2">
-  {{companyDetail.Job_Description }}
-  </div>
-</div>
-<div class="flex mb-1">
-  <div class="w-1/5 bg-gray-500 h-12 text-xl text-center pt-2 ml-24">
-    Stipend
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2">
-  {{companyDetail.stipend }}
-  </div>
-  <div class="w-1/5 bg-gray-500 h-12 text-xl text-center ml-16 pt-2">
-    Package
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2">
-    {{companyDetail.package }}
-  </div>
-</div>
-<div class="flex mb-1">
-  <div class="w-1/5 bg-gray-500 h-12 text-xl text-center pt-2 ml-24">
-    Bond/Agreement
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2 ">
-  {{companyDetail.Bond_or_serviceAgreement }}
-  </div>
-  <div class="w-1/5 bg-gray-500 h-12 text-xl text-center ml-16 pt-2 ">
-    Postal Address
-  </div>
-  <div class="w-1/5 bg-gray-400 h-12 text-xl text-center pt-2 ">
-  {{companyDetail.Postal_Address }}
-  </div>
-</div>
-
-
-<!-- Two columns -->
-<div class="flex mb-4">
-  <div class="w-1/4 bg-gray-500 h-12 text-xl text-center pt-2 ml-16">
-    Registration Link
-  </div>
-  <div class="w-full bg-gray-400 h-12 text-xl text-center text-blue-600 pt-2 mr-16">
-    <a class="hover:text-blue-800">
-        {{companyDetail.Registartion_link }}
-    </a>
-  </div>
-</div>
-
-
-{% endfor %}
-
-
-{% endblock %}
-
-
-
-
-
-
-{% comment %} 
-<!-- Two columns -->
-<div class="flex mb-4">
-  <div class="w-1/2 bg-gray-400 h-12"></div>
-  <div class="w-1/2 bg-gray-500 h-12"></div>
-</div>
-
-
-
-
-
-<!-- Five columns -->
-<div class="flex mb-4">
-  <div class="w-1/5 bg-gray-500 h-12"></div>
-  <div class="w-1/5 bg-gray-400 h-12"></div>
-  <div class="w-1/5 bg-gray-500 h-12"></div>
-  <div class="w-1/5 bg-gray-400 h-12"></div>
-  <div class="w-1/5 bg-gray-500 h-12"></div>
-</div>
-
-<!-- Six columns -->
-<div class="flex">
-  <div class="w-1/6 bg-gray-400 h-12"></div>
-  <div class="w-1/6 bg-gray-500 h-12"></div>
-  <div class="w-1/6 bg-gray-400 h-12"></div>
-  <div class="w-1/6 bg-gray-500 h-12"></div>
-  <div class="w-1/6 bg-gray-400 h-12"></div>
-  <div class="w-1/6 bg-gray-500 h-12"></div>
-</div>
-
- {% endcomment %}
+{% endblock content %}
