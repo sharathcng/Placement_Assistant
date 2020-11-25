@@ -2,7 +2,7 @@ from django import forms
 from Drives.models import Company,Criteria,Test
 
 
-class PostCompany(forms.ModelForm):
+class PostDrive(forms.ModelForm):
     class Meta:
         model = Company
         fields="__all__"
