@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 @admin.register(Student_Profile)
 class Student_Profile_Admin(admin.ModelAdmin):
-    list_display = ('username', 'dateOfBirth', 'gender','bloodGroup','course','semester',
+    list_display = ('username', 'dateOfBirth', 'gender','bloodGroup','courseName','semester',
                     'phoneNumber','hobbies','knownLanguages','currentAddress','permanentAddress'
                     )
     list_filter = ('gender', 'bloodGroup', 'semester')

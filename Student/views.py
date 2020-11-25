@@ -15,12 +15,13 @@ def Student_Drives(request):  # Drive Stundent Html Page.
 
 
 def Profile(request):  # Stundent profile Html Page.
-    user = User.objects.filter(username = request.user)
+    users = User.objects.filter(username = request.user)
+    print(request.user)
     profile = Student_Profile.objects.filter(username = request.user)
     academic = Academic_table.objects.filter(username = request.user)
     skill = skills.objects.filter(username = request.user)
     project = projects.objects.filter(username = request.user)
-    context = {'user': user, 'profile': profile,
+    context = {'users': users, 'profile': profile,
                'skill': skill, 'project': project,
                'academic': academic
                }
@@ -61,7 +62,8 @@ def update_academic(request):
     return JsonResponse(data)
     
 def update_skill(request):
-    user = skills.objects.filter(username=request.user).update(
+    user = skills.objects.filter(username=request.user).update_or_create(
+            username=request.user,
             languages=request.POST['languages'],
             operatingSystem=request.POST['os'],
             database=request.POST['database'],
@@ -111,15 +113,20 @@ def update_project(request):
     return JsonResponse(data)
 
 def update_profile(request):
-    student_1 = User.objects.filter(username=request.user).update(
-            first_name=request.POST['first_name'],
+    student_1 = User.objects.filter(username=request.user).update(first_name=request.POST['first_name'],
             last_name=request.POST['last_name'],
             email=request.POST['email']
             )
-    student_2 = Student_Profile.objects.filter(username=request.user).update(
+    print(request.POST['first_name'],request.POST['first_name'])
+    student_2 = Student_Profile.objects.filter(username=request.user).update_or_create(
+            username=request.user,
             dateOfBirth=request.POST['date'],
             gender=request.POST['gender'],
-            phoneNumber=request.POST['phoneNumber']
+            phoneNumber=request.POST['phoneNumber'],
+            courseName=request.POST['courseName'],
+            semester=request.POST['semester'],
+            bloodGroup=request.POST['bloodGroup'],
+            batch=request.POST['batch']
             )
 
     data = {

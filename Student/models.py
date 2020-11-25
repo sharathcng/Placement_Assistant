@@ -4,29 +4,29 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Student_Profile(models.Model):
-    gender_choices = (  ('male','Male'),
-                        ('female','Female'),
-                        ('other','Other'),
-                    )
+    # gender_choices = (  ('male','Male'),
+    #                     ('female','Female'),
+    #                     ('other','Other'),
+    #                 )
 
-    bloodGroup_choices = (  ('O+','O+'),('A+','A+'),('B+','B+'),('AB+','AB+'),
-                            ('O-','O-'),('A-','A-'),('B-','B-'),('AB-','AB-'),
-                    )
-    semester_choices = (    ('3','3'),('4','4'),
-                            ('5','5'),('6','6'),
-                    )
+    # bloodGroup_choices = (  ('O+','O+'),('A+','A+'),('B+','B+'),('AB+','AB+'),
+    #                         ('O-','O-'),('A-','A-'),('B-','B-'),('AB-','AB-'),
+    #                 )
+    # semester_choices = (    ('3','3'),('4','4'),
+    #                         ('5','5'),('6','6'),
+    #                 )
     username = models.OneToOneField(User, on_delete = models.CASCADE)
     profilepic = models.ImageField(upload_to='profilepic/', blank=True, null=True)
     dateOfBirth = models.DateField(default = timezone.now)
-    gender = models.CharField(max_length = 10, choices = gender_choices, default = 'Male')
+    gender = models.CharField(max_length = 10,  default = 'Male')
     phoneNumber = models.CharField(max_length=10)
-    course = models.CharField(max_length = 100)
-    semester = models.CharField(max_length=10, choices = semester_choices, default='5')
-    hobbies = models.CharField(max_length = 500)
-    bloodGroup = models.CharField(max_length = 10, choices = bloodGroup_choices, default=')+')
-    knownLanguages = models.CharField(max_length = 100)
-    currentAddress = models.TextField()
-    permanentAddress = models.TextField()
+    courseName = models.CharField(max_length = 100)
+    semester = models.CharField(max_length=10,  default='5')
+    hobbies = models.CharField(max_length = 500, null=True)
+    bloodGroup = models.CharField(max_length = 10, default='O+')
+    knownLanguages = models.CharField(max_length = 100, null=True)
+    currentAddress = models.TextField(null=True)
+    permanentAddress = models.TextField(null=True)
     batch = models.PositiveIntegerField()
     editStatus = models.IntegerField(default=0)
 
