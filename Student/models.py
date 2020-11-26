@@ -32,13 +32,9 @@ class Student_Profile(models.Model):
 
 
 class Academic_table(models.Model):
-    course_choices = (  ('SSLC','SSLC'),
-                        ('PUC','PUC'),
-                        ('DEGREE','DEGREE'),
-                        ('MCA','MCA')
-                    )
     username = models.ForeignKey(User, on_delete = models.CASCADE)
-    courses = models.CharField(max_length = 50, choices = course_choices)
+    qualification = models.CharField(max_length = 50)
+    courses = models.CharField(max_length = 50)
     college = models.CharField(max_length = 100)
     university = models.CharField(max_length = 100)
     yearOfPass = models.IntegerField()
