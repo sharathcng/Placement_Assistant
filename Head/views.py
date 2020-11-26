@@ -50,12 +50,14 @@ def addStudentForm(request):
 
 def addStudent(request):
     if request.method == 'POST':
-        print('already exist1')
+        
         username=request.POST['username']
         password=request.POST['password']
         if not User.objects.filter(username=request.POST['username']):
-            print('already exist2')
-            User.objects.create(username=request.POST['username'],password=request.POST['password'])
+            
+            user=User.objects.create_user(
+                username=username, password=password)
+            user.save()
             #JsonResponse({"student":student})
             data = {
                 'student':username,
@@ -63,7 +65,7 @@ def addStudent(request):
             }
             return JsonResponse(data)
         else:
-            print('already exist3')
+            
             #JsonResponse({"username":kid.username})
             data = {
                 'username':username,

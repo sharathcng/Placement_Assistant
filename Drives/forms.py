@@ -11,6 +11,7 @@ class PostDrive(forms.ModelForm):
     def _init_(self, *args, **kwargs):
         super(PostDrive, self)._init_(*args, **kwargs)
         self.fields['stipend'].required = False
+        
 
 class PostTest(forms.ModelForm):
     class Meta:

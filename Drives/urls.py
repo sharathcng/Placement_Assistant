@@ -10,6 +10,7 @@ urlpatterns = [
     path('driveYear', views.Drive_Year, name="driveYear"),
     path('companyList/<int:year>', views.Company_List, name="companyList"),
     path('editDrive<int:id>', views.editDrive, name="editDrive"),
+    path('updateDrive<int:id>', views.updateDrive, name="updateDrive"),
     path('driveDetails<int:id>', views.Drive_Details, name="driveDetails"),
 
 ]

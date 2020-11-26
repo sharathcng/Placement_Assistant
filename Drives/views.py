@@ -63,18 +63,42 @@ def Company_List(request,year):  # company list Html Page.
     return render(request, "Drives/companyList.html", {'companyList':companyList,
                         'year':year,'testMode':testMode})
 
-def Drive_Details(request, id):
+def Drive_Details(request, id):# get the drive static details
     companyDetails = Company.objects.filter(id=id)
     testDetails=Test.objects.filter(id=id)
     criteriaDetails=Criteria.objects.filter(id=id)
     return render(request, "Drives/ViewDrive.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails})
 
 
-def editDrive(request, id):
+def editDrive(request, id):#get the drive editing page
     companyDetails = Company.objects.filter(id=id)
     testDetails = Test.objects.filter(id=id)
     criteriaDetails = Criteria.objects.filter(id=id)
     return render(request, "Drives/DriveDetails.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails})
+
+
+def updateDrive(request, id):# save edited Drive details
+    if request.method == "POST":
+        x = Company.objects.get(pk=id)
+        y = Test.objects.filter(Company_Name=id)
+        # z = Criteria.objects.filter(Company_Name=id)
+        form1 = PostDrive(request.POST, instance=x)
+        form2 = PostTest(request.POST, instance=y)
+        form3 = PostCriteria(request.POST, instance=x)
+        if form1.is_valid() and form2.is_valid() and form3.is_valid():
+            a= form1.save()
+            b = form2.save(commit=False)
+            c = form3.save(commit=False)
+            b.Company_Name = a
+            b.save()
+            c.Company_Name = a
+            c.save()
+            return redirect('postDrive')
+        else:
+            return render(request, "Drives/companyList.html")
+    else:
+        return render(request, "Drives/companyList.html")
+    
 
 
 

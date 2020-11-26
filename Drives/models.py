@@ -81,12 +81,14 @@ class Test(models.Model):
     Techinacal = models.BooleanField()
     HR = models.BooleanField()
 
+
 class Criteria(models.Model):
     Company_Name = models.ForeignKey(Company, on_delete=models.CASCADE)
     SSLC = models.PositiveIntegerField(default=0)
     PUC = models.PositiveIntegerField(default=0)
     UG = models.PositiveIntegerField(default=0)
     PG = models.PositiveIntegerField(default=0)
+
 
 class drive(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
