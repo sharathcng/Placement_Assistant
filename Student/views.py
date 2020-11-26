@@ -16,7 +16,6 @@ def Student_Drives(request):  # Drive Stundent Html Page.
 
 def Profile(request):  # Stundent profile Html Page.
     users = User.objects.filter(username = request.user)
-    print(request.user)
     profile = Student_Profile.objects.filter(username = request.user)
     academic = Academic_table.objects.filter(username = request.user)
     skill = skills.objects.filter(username = request.user)
@@ -25,8 +24,15 @@ def Profile(request):  # Stundent profile Html Page.
                'skill': skill, 'project': project,
                'academic': academic
                }
-    return render(request, "Student/profile.html",context 
-                )
+    for student in users:
+        if student.first_name == '':
+            return render(request, "Student/profileEdit.html")
+        for profile in profile:
+            if profile.editStatus == 0 or profile.editStatus == 2:
+                return render(request, "Student/profileEdit.html")
+            else:
+                return render(request, "Student/profile.html",context )
+    #return render(request, "Student/profile.html",context )
 
 def edit_profile(request):
     return render(request, "Student/profileEdit.html")
