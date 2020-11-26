@@ -58,7 +58,8 @@ def update_academic(request):
             college=request.POST['institute'],
             university=request.POST['university'],
             yearOfPass=request.POST['yearOfPass'],
-            CGPA=request.POST['cgpa']
+            CGPA=request.POST['cgpa'],
+            qualification=request.POST['qualification']
             )
 
     # academic = {'courses':user.courses, 'college':user.college, 'university':user.university,'yearofPass':user.yearofPass,'cgpa':user.cgpa}
