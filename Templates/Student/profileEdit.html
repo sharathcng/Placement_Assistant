@@ -47,10 +47,11 @@
                     <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <td>
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">First Name&nbsp;</span>
-                        </td>
-                        <td>
+
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">First Name&nbsp;</span></td><td>
+
+                       
                         <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="First Name" type="text" id="first_name"></td>
                       </p>
                     </div>
@@ -84,7 +85,10 @@
                         <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Male">Male
                         <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Female">Female
                         <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Other">Other
-                      </p></td>
+
+                      </td>
+                      </p>
+                     
                     </div>
                     </tr>
 
@@ -97,6 +101,7 @@
                       </p>
                     </div>
                     </tr>
+
                     <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
@@ -113,8 +118,10 @@
                       <p class="text-sm leading-5 text-gray-500">
                       <td>
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span></td><td>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Master of Computer Applications" type="text" id="courseName">
-                      </p></td>
+
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Master of Computer Applications" type="text" id="courseName"></td>
+                      </p>
+
                     </div>
                     </tr>
 
@@ -127,9 +134,10 @@
                             <option value="3">3</option> 
                             <option value="4">4</option> 
                             <option value="5">5</option> 
-                            <option value="6">6</option>    
-                        </select>
-                      </p></td>
+                            <option value="6">6</option> 
+                        </select></td>
+                      </p>
+                            
                     </div>
                     </tr>
 
@@ -145,9 +153,11 @@
                             <option value="A-">A-</option> 
                             <option value="B+">B+</option>
                             <option value="B-">B-</option>
-                            <option value="AB-">AB-</option>    
-                        </select>
-                      </p></td>
+                            <option value="AB-">AB-</option>
+                             
+                        </select></td>
+                      </p>
+
                     </div>
                     </tr>
 
@@ -157,8 +167,9 @@
                       <td>
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Batch&nbsp;</span>
                         </td><td>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Enter current year" type="number" id="batch">
-                      </p></td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Enter current year" type="number" id="batch"></td>
+                      </p>
+
                     </div>
                     </tr>
                     </tbody>
@@ -243,11 +254,14 @@
                   </h3>
                   <table class="table-auto">
                   <tbody>
-                  <tr>
+
                   <div class="mt-2">
+                  <tr>
                     <p class="text-sm leading-5 text-gray-500">
                     <td>
-                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span>
+                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Qualification&nbsp;</span>
+                      </td><td>
+
                       <b>:</b>&nbsp;
                       {% comment %} <input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text" id="course" > {% endcomment %}
                       <select class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" id="qualification">
@@ -255,13 +269,17 @@
                         <option value="12">12</option> 
                         <option value="UG">UG</option>
                         <option value="PG">PG</option>
-                      </select>
+                      </select></td>
                     </p>
+                    </tr>
 
+                    <tr>
                     <p class="text-sm leading-5 text-gray-500">
+                    <td>
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span>
+                      </td><td>
                       <b>:</b>&nbsp;
-                      <input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text" id="course" >
+                      <input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text" id="course" ></td>
                       
                     </p>
                     </tr>
@@ -298,7 +316,7 @@
                     </p>
                     </tr>
                   </div>
-                  </body>
+                  </tbody>
                   </table>
 
 
@@ -594,7 +612,8 @@
                       <p class="text-sm leading-5 text-gray-500">
                       <td>
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Languages Known&nbsp;</span></td><td>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: Kannada,English,Hindi..." type="text" id="language"></td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex:Kannada,English,Hindi..." type="text" id="language"></td>
+
                       </p>
                     </div>
                     </tr>
@@ -614,8 +633,8 @@
                       <p class="text-sm leading-5 text-gray-500">
                       <td>
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Current Address&nbsp;</span></td><td>
-                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-5 " placeholder="Your Current Address" id="current"></textarea></td>
-                        
+                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Your Current Address" id="current"></textarea></td>
+
                       </p>
                     </div>
                     </tr>
@@ -718,7 +737,7 @@
                     <td>
                       <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Project&nbsp;</span>
                       </td><td>
-                      
+
                       <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Name" type="text" id="title"></td>
                     </p>
                   </div>
@@ -730,13 +749,13 @@
                     <td>
                       <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Detail&nbsp;</span>
                       </td><td>
-                      <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-5 " placeholder="Project Details" id="description"></textarea></td>
+                      <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Project Details" id="description"></textarea></td>
+
                     </p>
                   </div>
                   </tr>
                   </tbody>
                   </table>
-
                 </div>
               </div>
             </div>
