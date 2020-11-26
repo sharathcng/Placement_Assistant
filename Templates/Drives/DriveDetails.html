@@ -10,9 +10,9 @@
       </h1>
     </div>
   </header>
-
-<form action="{% url 'postDrive'%}" method="POST" >
 {% for companyDetail in companyDetail %}
+<form action="{% url 'updateDrive' companyDetail.id %}" method="POST" >
+
  {% csrf_token %}
 
 <div class="px-64 py-2 ">
@@ -28,97 +28,97 @@
                     <td class="px-8 py-4 whitespace-wrap text-center">Company Name :</td>
                     <td class="px-2 py-4 w-100 whitespace-wrap z-0">
                     
-                     <input  name="Company_Name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{ companyDetail.Company_Name }}" ></td> 
+                     <input  name="Company_Name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{ companyDetail.Company_Name }}" ></td> 
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Postal Address :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="Postal_Address" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Postal_Address}}"></textarea></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="Postal_Address" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" >{{companyDetail.Postal_Address}}</textarea></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">About Company :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="About_Company" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.About_Company}}"></textarea></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="About_Company" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" >{{companyDetail.About_Company}}</textarea></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Sector :</td>
                     <td class="px-2 py-4 w-100 whitespace-wrap">
-                        <select aria-label="Email address" name="sector" required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{companyDetail.sector}}">
-                            <option value="Automobile">Automobile</option>
-                            <option value="Banking/Financial Services/Insurance">Banking/Financial Services/Insurance</option>
-                            <option value="Conglomerate">Conglomerate</option>
-                            <option value="Consulting">Consulting</option>
-                            <option value="Consumer Durables">Consumer Durables</option>
-                            <option value="Engineering">Engineering</option>
-                            <option value="FMCG">FMCG</option>
-                            <option value="Government/PSU">Government/PSU</option>
-                            <option value="Healthcare & Pharma">Healthcare & Pharma</option>
-                            <option value="Infrastructure">Infrastructure</option>
-                            <option value="IT & ITES">IT & ITES</option>
-                            <option value="Leasure,Travel & Tourism">Leasure,Travel & Tourism</option>
-                            <option value="Manufacturing">Manufacturing</option>
-                            <option value="Market Research">Market Research</option>
-                            <option value="Media & Advertising">Media & Advertising</option>
-                            <option value="Power/Oil/Energy">Power/Oil/Energy</option>
-                            <option value="R & D">R & D</option>
-                            <option value="Real Estate">Real Estate</option>
-                            <option value="Retail">Retail</option>
-                            <option value="Semiconductor">Semiconductor</option>
-                            <option value="Telecom">Telecom</option>
-                            <option value="Other">Other</option>
+                        <select aria-label="sector" name="sector" required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
+                            <option value="Automobile"{% if companyDetail.sector == 'Automobile' %} selected {% endif %}>Automobile</option>
+                            <option value="Banking/Financial Services/Insurance"{% if companyDetail.sector == 'Banking/Financial Services/Insurance' %} selected {% endif %}>Banking/Financial Services/Insurance</option>
+                            <option value="Conglomerate"{% if companyDetail.sector == 'Conglomerate' %} selected {% endif %}>Conglomerate</option>
+                            <option value="Consulting"{% if companyDetail.sector == 'Conglomerate' %} selected {% endif %}>Consulting</option>
+                            <option value="Consumer Durables"{% if companyDetail.sector == 'Consumer Durables' %} selected {% endif %}>Consumer Durables</option>
+                            <option value="Engineering"{% if companyDetail.sector == 'Engineering' %} selected {% endif %}>Engineering</option>
+                            <option value="FMCG"{% if companyDetail.sector == 'FMCG' %} selected {% endif %}>FMCG</option>
+                            <option value="Government/PSU"{% if companyDetail.sector == 'Government/PSU' %} selected {% endif %}>Government/PSU</option>
+                            <option value="Healthcare & Pharma"{% if companyDetail.sector == 'Healthcare & Pharma' %} selected {% endif %}>Healthcare & Pharma</option>
+                            <option value="Infrastructure"{% if companyDetail.sector == 'Infrastructure' %} selected {% endif %}>Infrastructure</option>
+                            <option value="IT & ITES"{% if companyDetail.sector == 'IT & ITES' %} selected {% endif %}>IT & ITES</option>
+                            <option value="Leasure,Travel & Tourism"{% if companyDetail.sector == 'Leasure,Travel & Tourism' %} selected {% endif %}>Leasure,Travel & Tourism</option>
+                            <option value="Manufacturing"{% if companyDetail.sector == 'Manufacturing' %} selected {% endif %}>Manufacturing</option>
+                            <option value="Market Research"{% if companyDetail.sector == 'Market Research' %} selected {% endif %}>Market Research</option>
+                            <option value="Media & Advertising"{% if companyDetail.sector == 'Media & Advertising' %} selected {% endif %}>Media & Advertising</option>
+                            <option value="Power/Oil/Energy"{% if companyDetail.sector == 'Power/Oil/Energy' %} selected {% endif %}>Power/Oil/Energy</option>
+                            <option value="R & D"{% if companyDetail.sector == 'R & D' %} selected {% endif %}>R & D</option>
+                            <option value="Real Estate"{% if companyDetail.sector == 'Real Estate' %} selected {% endif %}>Real Estate</option>
+                            <option value="Retail"{% if companyDetail.sector == 'Retail' %} selected {% endif %}>Retail</option>
+                            <option value="Semiconductor"{% if companyDetail.sector == 'Semiconductor' %} selected {% endif %}>Semiconductor</option>
+                            <option value="Telecom"{% if companyDetail.sector == 'Telecom' %} selected {% endif %}>Telecom</option>
+                            <option value="Other"{% if companyDetail.sector == 'Other' %} selected {% endif %}>Other</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Job description :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="Job_Description" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.About_Company}}"></textarea></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><textarea  name="Job_Description" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" >{{companyDetail.About_Company}}</textarea></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Position/Designation Offered :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Position" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Position}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Position" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{companyDetail.Position}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Location Of work :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Location" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Location}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Location" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{companyDetail.Location}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Job Status :</td>
                     <td class="px-2 py-4 w-100 whitespace-wrap">
-                        <select aria-label="Email address" name="Job_Status" required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{companyDetail.Job_Status}}">
-                            <option value="Internship Only">Internship Only</option>
-                            <option value="Fulltime Only">Fulltime Only</option>
-                            <option value="Fulltime + Internship">Fulltime + Internship</option>
+                        <select aria-label="Email address" name="Job_Status" required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" >
+                            <option value="Internship Only"{% if companyDetail.Job_Status == 'Internship Only' %} selected {% endif %}>Internship Only</option>
+                            <option value="Fulltime Only"{% if companyDetail.Job_Status == 'Fulltime Only' %} selected {% endif %}>Fulltime Only</option>
+                            <option value="Fulltime + Internship"{% if companyDetail.Job_Status == 'Fulltime + Internship' %} selected {% endif %}>Fulltime + Internship</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Bond/Service agreement :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Bond_or_serviceAgreement" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Bond_or_serviceAgreement}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Bond_or_serviceAgreement" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{companyDetail.Bond_or_serviceAgreement}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Company Website :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Company_website" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Company_website}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Company_website" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{companyDetail.Company_website}}"></td>
                 </tr>
                 
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Registration Link :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Registartion_link" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.Registartion_link}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="Registartion_link" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{companyDetail.Registartion_link}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Package :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="package" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.package}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="package" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{companyDetail.package}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center">Internship Stipend :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="stipend" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{companyDetail.stipend}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="stipend" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{companyDetail.stipend}}"></td>
                 </tr>
                 
                 
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-center ">Tier :</td>
                     <td class="px-2 py-4 w-100 whitespace-wrap">
-                        <select  name="tier"  required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{companyDetail.tier}}">
-                            <option value="Tier1">Tier-1</option> 
-                            <option value="Tier2">Tier-2</option> 
-                            <option value="Tier3">Tier-3</option> 
+                        <select  name="tier"  required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" >
+                            <option value="Tier1"{% if companyDetail.tier == 'Tier1' %} selected {% endif %}>Tier-1</option> 
+                            <option value="Tier2"{% if companyDetail.tier == 'Tier2' %} selected {% endif %}>Tier-2</option> 
+                            <option value="Tier3"{% if companyDetail.tier == 'Tier3' %} selected {% endif %}>Tier-3</option> 
                         </select>
                     </td>
                 </tr>
@@ -143,36 +143,36 @@
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right ">Test Mode :</td>
                     <td class="px-2 py-4 w-100 whitespace-wrap">
-                        <select  name="TestMode"  required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" placeholder="{{testDetail.TestMode}}"{% if user.is_superuser is False %} disabled {% endif %}>
-                            <option value="Online">Online mode</option> 
-                            <option value="Offline">Offline mode</option> 
+                        <select  name="TestMode"  required class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" >
+                            <option value="Online" {% if testDetail.TestMode == 'Online' %} selected {% endif %}>Online mode</option> 
+                            <option value="Offline" {% if testDetail.TestMode == 'Offline' %} selected {% endif %}>Offline mode</option> 
                             
                         </select>
                     <td class="px-8 py-4 whitespace-wrap text-right">Test Date :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Test_Date" type="date" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Test_Date" type="date" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" value="{{testDetail.Test_Date}}" >
                 
                     
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">Aptitude :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Aptitude" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Aptitude" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" {% if testDetail.Aptitude == True %} checked='True'{% endif %}>
                 
                     <td class="px-8 py-4 whitespace-wrap text-right">Coding :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Coding" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Coding" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"{% if testDetail.Coding == True %} checked='True'{% endif %}>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">Communication :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Communication" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Communication" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"{% if testDetail.Communication == True %} checked='True'{% endif %}>
                 
                     <td class="px-8 py-4 whitespace-wrap text-right">Group Discussion :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="GD" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="GD" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" {% if testDetail.GD == True %} checked='True'{% endif %}>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">Technical :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Techinacal" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Techinacal" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"{% if testDetail.Techinacal == True %} checked='True'{% endif %}>
                 
                     <td class="px-8 py-4 whitespace-wrap text-right">HR :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="HR" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="HR" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"{% if testDetail.HR == True %} checked='True'{% endif %}>
                 </tr>
 
                 </tbody>
@@ -191,19 +191,19 @@
             <tbody class="bg-gray-300 divide-y divide-gray-200">
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">SSLC / Equivalence :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="SSLC" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.SSLC}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="SSLC" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{criteriaDetail.SSLC}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">PUC / Equivalence :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="PUC" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.PUC}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="PUC" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{criteriaDetail.PUC}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">Degree / Equivalence :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="UG" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.UG}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="UG" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{criteriaDetail.UG}}"></td>
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">PG :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="PG" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="{{criteriaDetail.PG}}"></td>
+                    <td class="px-2 py-4 w-100 whitespace-wrap"><input  name="PG" type="number" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-800 value-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" value="{{criteriaDetail.PG}}"></td>
                 </tr>
                 
             </tbody>
@@ -218,15 +218,10 @@
     <div class="flex content-center -mx-2">
         <div class="w-full  px-2">
             <div class="bg-gray-400 ">
-                <div class="mt-6">{% if user.is_superuser is True %}
+                <div class="mt-6">
                     <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                    Post Drive
+                    Save Drive
                     </button>
-                    {% else %}
-                    <a href="#" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                    Apply
-                    </a>
-                    {% endif %}
                 </div> 
             </div>
         </div>
