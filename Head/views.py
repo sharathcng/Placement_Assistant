@@ -53,7 +53,7 @@ def addStudent(request):
         
         username=request.POST['username']
         password=request.POST['password']
-        if not User.objects.filter(username=request.POST['username']):
+        if not User.objects.filter(username=username):
             
             user=User.objects.create_user(
                 username=username, password=password)
