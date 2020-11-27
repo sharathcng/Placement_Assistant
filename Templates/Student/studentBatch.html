@@ -16,7 +16,7 @@
     <div class="container px-5 py-14 mx-auto">
       <div class="flex  -m-12">
         <div class="p-12  flex flex-col items-start">
-        {% for year in year %}
+        {% for year in year|dictsort:"batch" %}
           <a href="{% url 'studentsList' year.batch %}"><div class="items-start inline-block py-1 px-3 rounded bg-indigo-100 text-indigo-600 text-sm font-medium tracking-widest">
           {{ year.batch }}-batch</div></a><br>
           {% endfor %}

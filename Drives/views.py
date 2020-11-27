@@ -31,6 +31,11 @@ def Post_Drive(request):  # posting new Drive
             b.save()
             c.Company_Name = a
             c.save()
+
+            # studentmarks = Academic_table.objects.all()
+            # for marks in studentmarks:
+            #     if marks
+            # drive.objects.create()
             return redirect(Drives)
 
             # companyCritera = Criteria.objects.filter(id=a)
@@ -79,8 +84,8 @@ def editDrive(request, id):#get the drive editing page
 
 def updateDrive(request, id):# save edited Drive details
     if request.method == "POST":
-        x = Company.objects.get(pk=id)
-        y = Test.objects.filter(Company_Name=id)
+        x = Company.objects.filter(Company_Name=id).first()
+        y = Test.objects.filter(Company_Name=id).first()
         # z = Criteria.objects.filter(Company_Name=id)
         form1 = PostDrive(request.POST, instance=x)
         form2 = PostTest(request.POST, instance=y)
