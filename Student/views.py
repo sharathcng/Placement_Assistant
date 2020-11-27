@@ -124,21 +124,21 @@ def update_profile(request):
             last_name=request.POST['last_name'],
             email=request.POST['email']
             )
-    print(request.POST['first_name'],request.POST['first_name'])
-    student_2 = Student_Profile.objects.filter(username=request.user).update_or_create(
-            username=request.user,
-            dateOfBirth=request.POST['date'],
-            gender=request.POST['gender'],
-            phoneNumber=request.POST['phoneNumber'],
-            courseName=request.POST['courseName'],
-            semester=request.POST['semester'],
-            bloodGroup=request.POST['bloodGroup'],
-            batch=request.POST['batch']
+    student_2 = Student_Profile.objects.update_or_create(username=request.user,
+            defaults = {
+            'dateOfBirth' : request.POST['date'],
+            'gender' : request.POST['gender'],
+            'phoneNumber' : request.POST['phoneNumber'],
+            'courseName' : request.POST['courseName'],
+            'semester' : request.POST['semester'],
+            'bloodGroup' : request.POST['bloodGroup'],
+            'batch' : request.POST['batch']
+            }
             )
 
     data = {
         'student_1':student_1,
-        'student_2':student_2
+        'student_2':list(student_2.values())
     }
     return JsonResponse(data)
 

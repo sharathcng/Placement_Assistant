@@ -93,5 +93,5 @@ class Criteria(models.Model):
 class drive(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     Company_Name = models.ForeignKey(Company, on_delete=models.CASCADE)
-    Selected_status = models.BooleanField()
+    Selected_status = models.IntegerField(default=0)
     Date = models.DateTimeField(auto_now=False, auto_now_add=True)
