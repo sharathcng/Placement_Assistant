@@ -41,28 +41,34 @@
     
     <div class="w-1/2 px-2">
         <div class="bg-gray-400 ">
-      
+      {% for offer in offer %}
+        {% if offer.Selected_status == 0 %}
             <div class="text-white px-6 py-0 border-4 rounded relative mb-4 bg-orange-500">
                 <span class="inline-block align-middle mr-32">
                     <svg class=" inline-block h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
                     </svg>
-                    <b class="capitalize">Company Name</b> If you really want to work please choose <b>Apply</b> or you want to be a Entrepreneur please choose <b>Reject</b>...!!!
+                    <b class="capitalize">{{ offer.Company_Name.Company_Name }}</b> If you really want to work please choose <b>Apply</b> or you want to be a Entrepreneur please choose <b>Reject</b>...!!!
                 </span>
                 <span class="inline-block items-right justify-center ">
+                <a href="{% url 'applyJob' id=offer.Company_Name.id x=1 %}">
                     <button x-data="{}"
-                        @click="$dispatch('notice', {type: 'success', text: 'Applied for the job'})"
-                        class="m-4 bg-green-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
+                        @click="$dispatch('notice', {type: 'success',  text: 'Applied to {{ offer.Company_Name.Company_Name }}'})"
+                        class="m-4 bg-green-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded" >
                         Apply
                     </button>
+                    </a>
+                    <a href="{% url 'applyJob' id=offer.Company_Name.id x=2 %}">
                     <button x-data="{}"
-                        x-on:click="$dispatch('notice', {type: 'danger', text: 'All the best for your Entrepreneurship '})"
-                        class="m-4 bg-red-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
+                        x-on:click="$dispatch('notice', {type: 'danger', text: 'you just rejected an chance from {{ offer.Company_Name.Company_Name }}'})"
+                        class="m-4 bg-red-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded" >
                         Reject
                     </button>
+                    </a>
                 </span>
             </div>
-      
+            {% endif %}
+        {% endfor %}
         </div>
     </div>
 
@@ -155,7 +161,9 @@
                     else if ( notice.type == 'danger')
                         return  "<div class='text-red-500 rounded-full bg-white float-left'><svg width='1.8em' height='1.8em' viewBox='0 0 16 16' class='bi bi-x' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z'/><path fill-rule='evenodd' d='M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z'/></svg></div>" ;
                 }
+                
             };
         }
     </script>
+
 {% endblock %}

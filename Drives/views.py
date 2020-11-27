@@ -31,24 +31,35 @@ def Post_Drive(request):  # posting new Drive
             b.save()
             c.Company_Name = a
             c.save()
-
-            # studentmarks = Academic_table.objects.all()
-            # for marks in studentmarks:
-            #     if marks
-            # drive.objects.create()
-            return redirect(Drives)
-
-            # companyCritera = Criteria.objects.filter(id=a)
-            # studentmarks = Academic_table.objects.all()
-            # for course in studentmarks:
-            #     if course.SSLC <= companyCritera.SSLC:
-            #         if course.PUC <= companyCritera.PUC:
-            #             if course.DEGREE <= companyCritera.UG:
-            #                 if course.MCA <= companyCritera.PG:
-            #                     form1 = drive.objects.all()
-            #                     form1.Company_Name=a
-            #                     form1.username = course.username
-                            
+            studList = []
+            kids = {}
+            studentmarks = Academic_table.objects.all()
+            for marks in studentmarks:
+                if marks.username not in studList:
+                    studList.append(marks.username)
+            for q in studList:
+                total = Academic_table.objects.filter(username=q).order_by('yearOfPass')
+                for i in total:
+                    kids[i.qualification] = i.CGPA
+                count=0
+                for key,value in kids.items():
+                    if key == '10':
+                        if value >= c.SSLC :
+                            count = count+1
+                    elif key == '12':
+                        if value >= c.PUC:
+                            count = count+1
+                    elif key == 'UG':
+                        if value >= c.UG:
+                            count = count+1
+                    else:
+                        if value >= c.PG:
+                            count = count+1
+                #print(count)
+                if count == 4:
+                    print(count)
+                    drive.objects.create(username=q,Company_Name=a)
+            return redirect(Drives)            
         else:
             return render(request, "Drives/driveAdd.html")
     else :

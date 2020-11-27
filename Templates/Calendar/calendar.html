@@ -1,52 +1,5 @@
+{% extends 'Calendar/CalendarBase.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    
-    
-</head>
-<body>
-
-    <header class="text-white body-font sticky top-0 bg-black z-40">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center" >
-          <a href="{% url "home" %}" class="flex title-font font-medium items-center text-white-900 mb-4 md:mb-0">
-            <img src="{% static 'mca-logo.png' %}" height="100pt" width="100pt" />
-            <span class="ml-3 text-xl hover:text-blue-500">Placement Assistant</span>
-          </a>
-          {% if user.is_superuser is True%}
-          <nav class=" md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	 flex flex-wrap items-center text-base justify-center">
-            <a href="{% url "Students"%}" class="mr-5 hover:text-blue-500">Students</a>
-            <a href="{% url "drives" %}" class="mr-5 hover:text-blue-500">Drives</a>
-            <a href="{% url "cal" %}" class="mr-5 hover:text-blue-500">Calender</a>            
-            <a class="mr-5 hover:text-blue-500">Reports</a>
-            <a href="{% url "notification" %}" class="mr-5 hover:text-blue-500">Notifications</a>
-          </nav>
-          {% else %}
-          <nav class=" md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	 flex flex-wrap items-center text-base justify-center">
-            <a href="{% url "Profile" %}" class="mr-5 hover:text-blue-500">Profile</a>
-            <a href="{% url "student_drives" %}" class="mr-5 hover:text-blue-500">Drives</a>
-            <a href="{% url "cal" %}" class="mr-5 hover:text-blue-500">Calender</a>
-            <a class="mr-5 hover:text-blue-500">Reports</a>
-            <a href="{% url "notification" %}" class="mr-5 hover:text-blue-500">Notifications</a>
-          </nav>
-          {% endif %}
-          <div class="space-y-0">
-            <span>Hello&nbsp;{{ user.username }}&nbsp;&nbsp;</span> 
-            <span class="w-full flex rounded-md shadow-sm">
-            
-              <a href="{% url 'logout' %}" class="w-full flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                Sign out
-              </a>
-            </span>
-          </div>
-        </div>
-      </header>
-
 {% block content %}
 
 <style type="text/css">

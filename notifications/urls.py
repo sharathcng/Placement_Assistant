@@ -7,4 +7,7 @@ urlpatterns = [
     path("notificationForm", views.notificationForm, name="notificationForm"),
     path("postNotification", views.postNotification, name="postNotification"),
     path("notificationDetails/<int:id>", views.notificationDetails, name="notificationDetails"),
+    path("applyJob/<int:id><int:x>", views.applyJob, name="applyJob"),
+    
+
 ]
