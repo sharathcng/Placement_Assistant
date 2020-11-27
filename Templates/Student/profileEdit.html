@@ -36,7 +36,7 @@
         <!-- pop up -->
   
         <div id="popup-profile" style="display: none" class="fixed z-10 inset-0 overflow-y-auto">
-          <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="flex items-end justify-center min-h-screen pt-5 px-4 pb-20 text-center sm:block sm:p-0">
          
             <div class="fixed inset-0 transition-opacity">
               <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -58,74 +58,102 @@
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
                       Edit your profile
                     </h3>
+                    <table class="table-auto">
+                    <tbody>
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">First Name&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="First Name" type="text" id="first_name">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">First Name&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="First Name" type="text" id="first_name"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Last Name&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Last Name" type="text" id="last_name">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Last Name&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Last Name" type="text" id="last_name"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Date Of Birth&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" type="date" id="date">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Date Of Birth&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" type="date" id="date"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Gender&nbsp;</span>
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Gender&nbsp;</span></td><td>
                         <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Male">Male
                         <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Female">Female
                         <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Other">Other
-
+                      </td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Phone Number&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="99XXXXXXXX" type="text" id="phoneNumber">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Phone Number&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="99XXXXXXXX" type="text" id="phoneNumber"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
+                      <td>
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Email&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="@gmail.com" type="email" id="email">
+                        </td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="@gmail.com" type="email" id="email"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Master of Computer Applications" type="text" id="courseName">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Master of Computer Applications" type="text" id="courseName"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Semester&nbsp;</span>
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Semester&nbsp;</span></td><td>
                         <b>:</b>&nbsp;<select class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4"  id="semester">
                             <option value="3">3</option> 
                             <option value="4">4</option> 
                             <option value="5">5</option> 
                             <option value="6">6</option> 
-                             
-                        </select>
+                        </select></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Blood group&nbsp;</span>
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Blood group&nbsp;</span></td><td>
                         <b>:</b>&nbsp;<select class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4"  id="bloodGroup">
                             <option value="O+">O+</option> 
                             <option value="O-">O-</option> 
@@ -135,17 +163,23 @@
                             <option value="B-">B-</option>
                             <option value="AB-">AB-</option>
                              
-                        </select>
+                        </select></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
+                      <td>
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Batch&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Enter current year" type="number" id="batch">
+                        </td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Enter current year" type="number" id="batch"></td>
                       </p>
                     </div>
-
+                    </tr>
+                    </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -224,9 +258,14 @@
                   <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
                     Add new academic details
                   </h3>
+                  <table class="table-auto">
+                  <tbody>
                   <div class="mt-2">
+                  <tr>
                     <p class="text-sm leading-5 text-gray-500">
-                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span>
+                    <td>
+                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Qualification&nbsp;</span>
+                      </td><td>
                       <b>:</b>&nbsp;
                       {% comment %} <input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text" id="course" > {% endcomment %}
                       <select class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" id="qualification">
@@ -234,37 +273,55 @@
                         <option value="12">12</option> 
                         <option value="UG">UG</option>
                         <option value="PG">PG</option>
-                      </select>
+                      </select></td>
                     </p>
+                    </tr>
 
+                    <tr>
                     <p class="text-sm leading-5 text-gray-500">
+                    <td>
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Course&nbsp;</span>
+                      </td><td>
                       <b>:</b>&nbsp;
-                      <input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text" id="course" >
+                      <input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Course Name" type="text" id="course" ></td>
                       
                     </p>
+                    </tr>
 
+                    <tr>
                     <p class="text-sm leading-5 text-gray-500">
-                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">College/Institute&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="College/Institute Name" type="text" id="institute" >
+                    <td>
+                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">College/Institute&nbsp;</span></td><td>
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="College/Institute Name" type="text" id="institute" ></td>
                     </p>
+                    </tr>
 
+                    <tr>
                     <p class="text-sm leading-5 text-gray-500">
-                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">University/Board&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="University/Board Name" type="text" id="university" >
+                    <td>
+                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">University/Board&nbsp;</span></td><td>
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="University/Board Name" type="text" id="university" ></td>
                     </p>
+                    </tr>
 
+                    <tr>
                     <p class="text-sm leading-5 text-gray-500">
-                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Year of pass&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Year of pass" type="Number" id="yearOfPass" >
+                    <td>
+                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Year of pass&nbsp;</span></td><td>
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Year of pass" type="Number" id="yearOfPass" ></td>
                     </p>
+                    </tr>
 
+                    <tr>
                     <p class="text-sm leading-5 text-gray-500">
-                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Percentage/CGPA&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="% / CGPA" type="Number" id="cgpa">
+                    <td>
+                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Percentage/CGPA&nbsp;</span></td><td>
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="% / CGPA" type="Number" id="cgpa"></td>
                     </p>
+                    </tr>
                   </div>
-
+                  </tbody>
+                  </table>
 
                 </div>
               </div>
@@ -361,40 +418,59 @@
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
                       Add new technical skill
                     </h3>
+                    <table class="table-auto">
+                    <tbody>
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Languages&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: C,Java,Python..." type="text" id="languages">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Languages&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: C,Java,Python..." type="text" id="languages"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Operating system&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: Windows,Linux..." type="text" id="os">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Operating system&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: Windows,Linux..." type="text" id="os"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Database&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="MySQL,NoSQL..." type="text" id="database">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Database&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: MySQL,NoSQL..." type="text" id="database"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Technologies&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: WebFrameworks..." type="text" id="tech">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Technologies&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: WebFrameworks..." type="text" id="tech"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Applications&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: GitHub,Android Studio..." type="text" id="application">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Applications&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: GitHub,Android Studio..." type="text" id="application"></td>
                       </p>
                     </div>
+                    </tr>
+                    </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -466,7 +542,7 @@
                   <div class="mt-2">
                     <p class="text-sm leading-5 text-gray-500">
                       <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Hobbie&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Hobbie Name" type="text" id="hobbie">
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex: Swimming, Cycling...." type="text" id="hobbie">
                     </p>
                   </div>
 
@@ -556,26 +632,39 @@
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
                       Add new personal detail
                     </h3>
+                    <table class="table-auto">
+                    <tbody>
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Languages Known&nbsp;</span>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex:Kannada,English,Hindi..." type="text" id="language">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Languages Known&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Ex:Kannada,English,Hindi..." type="text" id="language"></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Permanent Address&nbsp;</span>
-                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Your Permanent Address" id="permanent"></textarea>
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Permanent Address&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-5 " placeholder="Your Permanent Address" id="permanent"></textarea></td>
                       </p>
                     </div>
+                    </tr>
 
+                    <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
-                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Current Address&nbsp;</span>
-                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Your Current Address"  id="current"> </textarea>
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Current Address&nbsp;</span></td><td>
+                        <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Your Current Address" id="current"></textarea></td>
                       </p>
                     </div>
+                    </tr>
+                    </tbody>
+                    </table>
 
                   </div>
                 </div>
@@ -665,20 +754,31 @@
                   <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
                     Add new Project
                   </h3>
+                  <table class="table-auto">
+                  <tbody>
+                  <tr>
                   <div class="mt-2">
                     <p class="text-sm leading-5 text-gray-500">
+                    <td>
                       <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Project&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Name" type="text" id="title">
+                      </td><td>
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Name" type="text" id="title"></td>
                     </p>
                   </div>
+                  </tr>
 
+                  <tr>
                   <div class="mt-2">
                     <p class="text-sm leading-5 text-gray-500">
+                    <td>
                       <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Detail&nbsp;</span>
-                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" placeholder="Project Detail" type="text" id="description">
+                      </td><td>
+                      <b>:</b>&nbsp;<textarea class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black py-3 " placeholder="Project Details" id="description"></textarea></td>
                     </p>
                   </div>
-
+                  </tr>
+                  </tbody>
+                  </table>
                 </div>
               </div>
             </div>
