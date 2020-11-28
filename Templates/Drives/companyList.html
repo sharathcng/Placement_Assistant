@@ -30,6 +30,9 @@
               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Job Status
               </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Students List
+              </th>
              
               {% comment %} <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Test Mode
@@ -76,9 +79,12 @@
                 {% endfor %} 
                 </span>
               </td> {% endcomment %}
+              <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium">
+                <a href="{% url 'AppliedStudents' companyList.id %}" class="text-indigo-600 hover:text-indigo-900">Applied Students</a>
+              </td>
               
               <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium">
-                <a href="{% url 'driveDetails' companyList.id %}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                <a href="{% url 'driveDetails' companyList.id %}" class="text-indigo-600 hover:text-indigo-900">Company Details</a>
               </td>
             </tr>
           {% endfor %}

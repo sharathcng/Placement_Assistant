@@ -76,22 +76,25 @@ def addStudent(request):
 
 @login_required(login_url='login')
 def ResetPassword(request):
-    if request.method == 'POST':
+    if request.method == "POST":
+
         username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate(username=username)
-        if user is not None:
-            user.set_password(request.POST['password'])
+        if User.objects.filter(username=username):
+
+            user = User.objects.get(username=username)
+            user.set_password(password)
             user.save()
             data = {
-                'student': username,
-                'password': password,
+                'username': username,
+                
             }
             return JsonResponse(data)
         else:
             data = {
-                'username': username,
+                'student': username,
+                'password': password,
             }
             return JsonResponse(data)
     else:
