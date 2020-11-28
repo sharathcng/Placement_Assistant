@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('Drives.urls')),
     path('', include('Notifications.urls')),
     path('', include('Calendar.urls')),
+    path('', include('Reports.urls')),
     path('', views.index),
     path('login', views.login,name="login"),
     path('home', views.home, name="home"),
