@@ -1,0 +1,73 @@
+{% extends 'HomeBase.html' %}
+{% load static %}
+{% block content %}
+
+<title>Drives</title>
+
+
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-gray-900">
+        My Drives
+      </h1>
+    </div>
+  </header>
+
+ 
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="w-1/2 divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Company Name
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Tier
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Job Status
+              </th>
+              
+              <th class="px-6 py-3 bg-gray-50"></th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+          {% for drive in mydrives %}
+            
+            <tr>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="flex items-center">
+                  <div class="ml-0">
+                    <div class="text-sm leading-5 font-medium text-gray-900">
+                      {{drive.Company_Name}}
+                    </div>
+                    <div class="text-sm leading-5 text-gray-500">
+                      {{drive.Company_Name.location}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm">{{ drive.Company_Name.tier }}</td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm">
+                {{drive.Company_Name.Job_Status}}
+              
+              
+              <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium">
+                <a href="{% url 'driveDetails' drive.id %}" class="text-indigo-600 hover:text-indigo-900">View</a>
+              </td>
+            </tr>
+          {% endfor %}
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

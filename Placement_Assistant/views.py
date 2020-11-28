@@ -22,6 +22,21 @@ def login(request):
         return render(request,'login.html')
 
 
+@login_required(login_url='login')
+def ChangePassword(request):
+    if request.method == 'POST':
+        username = request.user
+        password = request.POST['OldPassword']
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            user.set_password(request.POST['NewPassword'])
+            user.save()
+        return redirect(index)
+    else:
+        return render(request, "Student/ChangePassword.html")
+
+
+
 def logout(request):
     auth.logout(request)
     return redirect(index)

@@ -9,10 +9,6 @@ from django.http import JsonResponse
 # Create your views here.
 
 
-def Student_Drives(request):  # Drive Stundent Html Page.
-    drives = Company.objects.all()
-    return render(request, "Drives/StudentDrives.html",{'drives':drives})
-
 
 def Profile(request):  # Stundent profile Html Page.
     users = User.objects.filter(username = request.user)
@@ -33,9 +29,12 @@ def Profile(request):  # Stundent profile Html Page.
             else:
                 return render(request, "Student/profile.html",context )
     #return render(request, "Student/profile.html",context )
-
+@login_required(login_url='login')
 def edit_profile(request):
     return render(request, "Student/profileEdit.html")
+
+
+
 
 
 

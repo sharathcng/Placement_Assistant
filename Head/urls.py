@@ -10,6 +10,7 @@ urlpatterns = [
     path('updateStudentProfile', views.Update_Student_Profile, name = "updateStudentProfile"),
     path('addStudentForm', views.addStudentForm, name = "addStudentForm"),
     path('addStudent', views.addStudent, name = "addStudent"),
+    path('resetpassword', views.ResetPassword, name="resetpassword"),
     
 
 ]
