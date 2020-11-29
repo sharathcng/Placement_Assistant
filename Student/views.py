@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from Student.models import *
 from Drives.models import drive,Company
 from django.http import JsonResponse
+from .forms import updatePics
 
 # Create your views here.
 
@@ -22,21 +23,27 @@ def Profile(request):  # Stundent profile Html Page.
                }
     for student in users:
         if student.first_name == '':
-            return render(request, "Student/profileEdit.html")
+            return render(request, "Student/profileEdit.html",{'profilepic':profile})
         for profile in profile:
             if profile.editStatus == 0 or profile.editStatus == 2:
-                return render(request, "Student/profileEdit.html")
+                return render(request, "Student/profileEdit.html",{'profilepic':profile})
             else:
                 return render(request, "Student/profile.html",context )
     #return render(request, "Student/profile.html",context )
+    
 @login_required(login_url='login')
 def edit_profile(request):
     return render(request, "Student/profileEdit.html")
 
 
-
-
-
+def updatePic(request):
+    if request.method == "POST":
+        form = updatePics(request.POST,request.FILES)
+        if  form.is_valid():
+            m = Student_Profile.objects.get(username=request.user)
+            m.profilepic = form.cleaned_data['profilepic']
+            m.save()
+    return redirect(Profile)
 
 def Get_details(request):
     student = User.objects.filter(username = request.user)
@@ -119,7 +126,8 @@ def update_project(request):
     return JsonResponse(data)
 
 def update_profile(request):
-    student_1 = User.objects.filter(username=request.user).update(first_name=request.POST['first_name'],
+    student_1 = User.objects.filter(username=request.user).update(
+            first_name=request.POST['first_name'],
             last_name=request.POST['last_name'],
             email=request.POST['email']
             )
@@ -131,13 +139,14 @@ def update_profile(request):
             'courseName' : request.POST['courseName'],
             'semester' : request.POST['semester'],
             'bloodGroup' : request.POST['bloodGroup'],
-            'batch' : request.POST['batch']
+            'batch' : request.POST['batch'],
+            # 'profilepic' : request.FILES['profilepic']
             }
             )
 
     data = {
         'student_1':student_1,
-        'student_2':list(student_2.values())
+        'student_2':list(student_2.values()),
     }
     return JsonResponse(data)
 

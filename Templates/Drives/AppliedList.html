@@ -92,6 +92,9 @@
               </td>
 
               <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+
+                <input type="checkbox" id="selectSatus" name="selectSatus" value="3">
+
               <span class="inline-block items-right justify-center ">
                 {% if list.Selected_status == 0 %}
                 <a href="{% url 'listUpdate' id=list.id d=0 %}"
@@ -115,6 +118,7 @@
                   </a>
                   {% endif %}
               </span>
+
               </td>
               
             </tr>
@@ -126,4 +130,16 @@
   </div>
 </div>
 {% endfor %}
+<div class="space-y-0">
+  <span  class="inline-block items-right justify-center ">
+      <a href="" class="absolute right-0 w-24 mt-4 mr-32 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                Send&nbsp;Email
+      </a>
+
+      <a href="" class="absolute right-0  w-24 mt-4 mr-2 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                Submit
+      </a>
+
+</span>
+<div>
 {% endblock content %}

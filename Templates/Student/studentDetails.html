@@ -41,16 +41,17 @@
           {% endif %}
           {% endfor %}
           </span>
+          {% for profile in profile %}
         </div>
           <div class="flex items-center lg:w-3/4 mx-auto border-b pb-12 mb-10 border-gray-200 sm:flex-row flex-col">
             <div class="sm:w-64 sm:h-64  h-20 w-20 sm:mr-40  inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png" alt="">
+              <img class="h-60 w-60 rounded-full" src='{{ profile.profilepic.url }}' alt="">
             </div>
             <div class="flex-grow items-center sm:text-left text-center mt-1 sm:mt-10">
               <h1 class="text-gray-1000 text-5xl title-font font-xldium mb-4"><ion-icon class="" name="person-circle-outline"></ion-icon>{{ user.first_name }} {{ user.last_name }}</h1>
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="card" class="mr-3 "></ion-icon>{{ user.username }}</h1>
 
-            {% for profile in profile %}
+            
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="calendar" class="mr-3 "></ion-icon>{{ profile.dateOfBirth }}</h1>
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="male-female" class="mr-3 "></ion-icon>{{ profile.gender }}</h1>
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="call" class="mr-3 "></ion-icon>{{ profile.phoneNumber }}</h1>

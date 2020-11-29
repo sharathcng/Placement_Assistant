@@ -18,6 +18,8 @@ urlpatterns = [
 
     path("ajax/deleteAcademic", views.delete_academic, name="deleteAcademic"),
     path("ajax/deleteProject", views.delete_project, name="deleteProject"),
+
+    path("updatePic", views.updatePic, name="updatePic"),
     
     
 

@@ -1,7 +1,7 @@
 {% extends 'HomeBase.html' %}
 {% load static %}
 {% block content %}
-
+{% comment %} 
 {% for users in users %}
   {% if users.first_name == '' %}
     <div class=" container px-5 py-18 mx-auto">
@@ -31,19 +31,21 @@
         </a>
   </div>
 
-{% elif profile.editStatus == 1 %}
-
+{% elif profile.editStatus == 1 %} {% endcomment %}
+{% for profile in profile %}
 <title>Profile</title>
       <section class="text-gray-700 body-font">
         <h1 class="text-white px-6 py-4 border-4 rounded relative mb-4 bg-green-500">Your profile data submission is verified and approved.</h1>
 
-        
+        <a href="{% url 'changepassword'%}" class='absolute top-1 right-0 h-16 w-40 text-indigo-500 inline-flex items-center'>Change Password
+          <ion-icon name='lock-outline'></ion-icon>
+        </a>
           <div class="flex items-center lg:w-3/4 mx-auto border-b pb-12 mb-10 border-gray-200 sm:flex-row flex-col">
             <div class="sm:w-64 sm:h-64  h-20 w-20 sm:mr-40  inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png" alt="">
+              <img class="h-60 w-60 rounded-full" src='{{ profile.profilepic.url }}' alt="">
             </div>
             <div id="profileData" class="flex-grow items-center sm:text-left text-center mt-1 sm:mt-10">
-              
+          
             </div>
             
           </div>
@@ -149,9 +151,7 @@
 
       <section>
       <div class=" container px-5 py-18 mx-auto">
-        <a href="{% url 'changepassword'%}" class='absolute top-1 right-0 h-16 w-40 text-indigo-500 inline-flex items-center'>Change Password
-          <ion-icon name='lock-outline'></ion-icon>
-        </a>
+        
         <h1 class="text-3xl pb-4 ml-2"><u>Academic Details :</u>
         
         </h1>
@@ -1037,7 +1037,7 @@
 
   </body>
 </html>
-
-{% endif %}
-{% endfor %} 
+{% comment %} 
+{% endif %}{% endcomment %}
+{% endfor %}  
 {% endblock content %}
