@@ -72,3 +72,30 @@ def addStudent(request):
             }
             return JsonResponse(data)
     return render(request, "Admin/addStudent.html")
+
+
+@login_required(login_url='login')
+def ResetPassword(request):
+    if request.method == "POST":
+
+        username = request.POST['username']
+        password = request.POST['password']
+
+        if User.objects.filter(username=username):
+
+            user = User.objects.get(username=username)
+            user.set_password(password)
+            user.save()
+            data = {
+                'username': username,
+                
+            }
+            return JsonResponse(data)
+        else:
+            data = {
+                'student': username,
+                'password': password,
+            }
+            return JsonResponse(data)
+    else:
+        return render(request, "Admin/resetpassword.html")

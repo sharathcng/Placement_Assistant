@@ -37,7 +37,6 @@
       <section class="text-gray-700 body-font">
         <h1 class="text-white px-6 py-4 border-4 rounded relative mb-4 bg-green-500">Your profile data submission is verified and approved.</h1>
 
-        <div class=" container px-5 py-18 mx-auto">
         
           <div class="flex items-center lg:w-3/4 mx-auto border-b pb-12 mb-10 border-gray-200 sm:flex-row flex-col">
             <div class="sm:w-64 sm:h-64  h-20 w-20 sm:mr-40  inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
@@ -46,8 +45,9 @@
             <div id="profileData" class="flex-grow items-center sm:text-left text-center mt-1 sm:mt-10">
               
             </div>
+            
           </div>
-          <!-- <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button> -->
+          
         </div>
         
 
@@ -148,6 +148,10 @@
 
 
       <section>
+      <div class=" container px-5 py-18 mx-auto">
+        <a href="{% url 'changepassword'%}" class='absolute top-1 right-0 h-16 w-40 text-indigo-500 inline-flex items-center'>Change Password
+          <ion-icon name='lock-outline'></ion-icon>
+        </a>
         <h1 class="text-3xl pb-4 ml-2"><u>Academic Details :</u>
         
         </h1>
@@ -262,31 +266,9 @@
             </tr>
           </thead>
           <tbody id="skills">
-            {% comment %} <tr>
-              <th class="border px-4 py-2">Languages</th>
-              <td class="border px-4 py-2">{{ skill.languages }}</td>
-            </tr>
 
-            <tr>
-              <th class="border px-4 py-2">Operating system</th>
-              <td class="border px-4 py-2">{{ skill.operatingSystem}}</td>
-            </tr>
+           {% comment %} skills body will display here {% endcomment %}
 
-            <tr>
-              <th class="border px-4 py-2">Database</th>
-              <td class="border px-4 py-2">{{ skill.database}}</td>
-            </tr>
-
-            <tr>
-              <th class="border px-4 py-2">Web Technologies</th>
-              <td class="border px-4 py-2">{{ skill.technologies }}</td>
-            </tr>
-
-            <tr>
-              <th class="border px-4 py-2">Applications</th>
-              <td class="border px-4 py-2">{{ skill.applications }}</td>
-            </tr> {% endcomment %}
-           
           </tbody>
         </table>
 
@@ -383,8 +365,8 @@
       <h1 class="text-3xl pb-4 ml-2 mt-8"><u>Hobbies :</u>
         
       </h1>
-      <div id="hobbies" class="bg-gray-200">
-        {% comment %} <div  class="inline text-gray-700 text-center bg-gray-400 px-4 py-2">{{ profile.hobbies }}</div> {% endcomment %}
+      <div id="hobbies" >
+        {% comment %} Hobbies body will display here {% endcomment %}
       </div>
      
 

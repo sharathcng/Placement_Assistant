@@ -1,0 +1,100 @@
+{% extends 'HomeBase.html' %}
+{% load static %}
+{% block content %}
+
+<title>Applied Students List</title>
+{% csrf_token %}
+{% for list in appliedList %}
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-gray-900">
+        {{ list.Company_Name }} - Applied Students
+      </h1>
+    </div>
+</header>
+
+
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Email
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Application Status
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Selection Status
+              </th>
+              
+              <th class="px-6 py-3 bg-gray-50"></th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {% if list.Selected_status != 0 %}
+            <tr>
+              <td class="px-6 py-4 text-center whitespace-no-wrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm leading-5 font-medium text-gray-900">
+                      {{list.username.first_name}} {{list.username.last_name}}
+                    </div>
+                    <div class="text-sm leading-5 text-gray-500">
+                      {{list.username.username}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+
+              <td class="px-6 py-4 whitespace-no-wrap text-center">
+                <div class="text-sm leading-5 text-gray-900">{{ list.username.email }}</div>
+              </td>
+
+              <td class="px-6 py-4 whitespace-no-wrap text-center ">
+                <div class="text-sm leading-5 text-gray-900">
+                    {% if list.Selected_status == 1 %}
+                    Applied
+                    {% elif list.Selected_status == 2 %}
+                    Rejected
+                    {% elif list.Selected_status == 3 %}
+                    Selected
+                    {% endif %}
+                </div>
+              </td>
+
+              <td class="px-6 py-4 whitespace-no-wrap text-center ">
+                <div class="text-sm leading-5 text-gray-900">
+                    {% if list.Selected_status == 1 %}
+                    Process
+                    {% elif list.Selected_status == 2 %}
+                    Rejected
+                    {% elif list.Selected_status == 3 %}
+                    Selected
+                    {% endif %}
+                    </div>
+              </td>
+
+              <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+              </td>
+              
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>        
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}

@@ -9,11 +9,27 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 
 @login_required(login_url='login')
 def Drives(request):  # Drive Head Html Page.
     return render(request, "Drives/driveBase.html")
+
+
+@login_required(login_url='login')
+def Student_Drives(request):  # all Stundents drive Html Page.
+    drives = Company.objects.all()
+    return render(request, "Drives/AllStudentDrives.html", {'drives': drives})
+
+
+@login_required(login_url='login')
+def MyDrives(request):  # all Stundents drive Html Page.
+    mydrives = drive.objects.filter(username=request.user)
+    return render(request, "Drives/MyDrives.html",{'mydrives': mydrives} )
+
+
+@login_required(login_url='login')
+def StudentDriveBase(request):  # Base drive Stundent Html Page.
+    return render(request, "Drives/studentDriveBase.html")
 
 
 # new drive
@@ -79,13 +95,17 @@ def Company_List(request,year):  # company list Html Page.
     return render(request, "Drives/companyList.html", {'companyList':companyList,
                         'year':year,'testMode':testMode})
 
+
+@login_required(login_url='login')
 def Drive_Details(request, id):# get the drive static details
     companyDetails = Company.objects.filter(id=id)
     testDetails=Test.objects.filter(id=id)
     criteriaDetails=Criteria.objects.filter(id=id)
-    return render(request, "Drives/ViewDrive.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails})
+    alldrive = drive.objects.filter(username=request.user)
+    return render(request, "Drives/ViewDrive.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails, "alldrive": alldrive})
 
 
+@login_required(login_url='login')
 def editDrive(request, id):#get the drive editing page
     companyDetails = Company.objects.filter(id=id)
     testDetails = Test.objects.filter(id=id)
@@ -93,6 +113,7 @@ def editDrive(request, id):#get the drive editing page
     return render(request, "Drives/DriveDetails.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails})
 
 
+@login_required(login_url='login')
 def updateDrive(request, id):# save edited Drive details
     if request.method == "POST":
         x = Company.objects.filter(Company_Name=id).first()
@@ -116,6 +137,10 @@ def updateDrive(request, id):# save edited Drive details
         return render(request, "Drives/companyList.html")
     
 
+@login_required(login_url='login')
+def AppliedStudents(request, id):  # company list Html Page.
+    appliedList = drive.objects.filter(Company_Name=id)
+    return render(request, "Drives/AppliedList.html", {'appliedList': appliedList})
 
 
 

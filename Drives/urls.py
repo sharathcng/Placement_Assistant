@@ -4,6 +4,10 @@ from . import views
 urlpatterns = [
     path('drives', views.Drives, name="drives"),
     # path('addDrive', views.Add_Drive, name="addDrive"),
+    path('studentDriveBase', views.StudentDriveBase, name="studentDriveBase"),
+    path('student_drives', views.Student_Drives, name="student_drives"),
+    path('mydrives', views.MyDrives, name="mydrives"),
+    path('AppliedStudents<int:id>', views.AppliedStudents, name="AppliedStudents"),
 
     path('postDrive', views.Post_Drive,
          name="postDrive"),  # posting new drive
