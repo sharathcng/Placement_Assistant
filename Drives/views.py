@@ -101,7 +101,7 @@ def Drive_Details(request, id):# get the drive static details
     companyDetails = Company.objects.filter(id=id)
     testDetails=Test.objects.filter(id=id)
     criteriaDetails=Criteria.objects.filter(id=id)
-    alldrive = drive.objects.filter(username=request.user)
+    alldrive = drive.objects.filter(username=request.user,Company_Name=id)
     return render(request, "Drives/ViewDrive.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails, "alldrive": alldrive})
 
 
@@ -116,20 +116,20 @@ def editDrive(request, id):#get the drive editing page
 @login_required(login_url='login')
 def updateDrive(request, id):# save edited Drive details
     if request.method == "POST":
-        x = Company.objects.filter(Company_Name=id).first()
-        y = Test.objects.filter(Company_Name=id).first()
-        # z = Criteria.objects.filter(Company_Name=id)
+        x = Company.objects.filter(pk=id)
+        #y = Test.objects.filter(Company_Name=id).first()
+        #z = Criteria.objects.filter(Company_Name=id)
         form1 = PostDrive(request.POST, instance=x)
-        form2 = PostTest(request.POST, instance=y)
-        form3 = PostCriteria(request.POST, instance=x)
-        if form1.is_valid() and form2.is_valid() and form3.is_valid():
-            a= form1.save()
-            b = form2.save(commit=False)
-            c = form3.save(commit=False)
-            b.Company_Name = a
-            b.save()
-            c.Company_Name = a
-            c.save()
+        #form2 = PostTest(request.POST, instance=y)
+        #form3 = PostCriteria(request.POST, instance=x)
+        if form1.is_valid():
+            form1.save()
+            #b = form2.save(commit=False)
+            #c = form3.save(commit=False)
+            #b.Company_Name = a
+            #b.save()
+            #c.Company_Name = a
+            #c.save()
             return redirect('postDrive')
         else:
             return render(request, "Drives/companyList.html")
@@ -138,7 +138,7 @@ def updateDrive(request, id):# save edited Drive details
     
 
 @login_required(login_url='login')
-def AppliedStudents(request, id):  # company list Html Page.
+def AppliedStudents(request, id):  # Applied students list Html Page.
     appliedList = drive.objects.filter(Company_Name=id)
     return render(request, "Drives/AppliedList.html", {'appliedList': appliedList})
 
@@ -152,6 +152,17 @@ def AppliedListUpdate(request,id,d):
         pass
     appliedList = drive.objects.filter(id=id)
     return render(request, "Drives/AppliedList.html", {'appliedList': appliedList})
+
+
+@login_required(login_url='login')
+def ApplyReject(request, id,d):
+    if d == 1:
+        drive.objects.filter(id=id).update(Selected_status=1)
+    elif d == 2:
+        drive.objects.filter(id=id).update(Selected_status=2)
+    else:
+        pass
+    return redirect(MyDrives)
     
 
 
