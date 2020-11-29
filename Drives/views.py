@@ -142,7 +142,17 @@ def AppliedStudents(request, id):  # company list Html Page.
     appliedList = drive.objects.filter(Company_Name=id)
     return render(request, "Drives/AppliedList.html", {'appliedList': appliedList})
 
-
+@login_required(login_url='login')
+def AppliedListUpdate(request,id,d):
+    if d == 0:
+        drive.objects.filter(id=id).update(Selected_status=3)
+    elif d == 1:
+        drive.objects.filter(id=id).update(Selected_status=4)
+    else:
+        pass
+    appliedList = drive.objects.filter(id=id)
+    return render(request, "Drives/AppliedList.html", {'appliedList': appliedList})
+    
 
 
 # @login_required(login_url='login')
