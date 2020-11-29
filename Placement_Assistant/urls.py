@@ -19,6 +19,8 @@ from . import views
 from Head import urls
 from Student import urls
 from django.contrib.auth.decorators import login_required
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,3 +37,5 @@ urlpatterns = [
     path('changepassword', views.ChangePassword, name="changepassword"),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

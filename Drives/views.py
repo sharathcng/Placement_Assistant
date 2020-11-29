@@ -101,7 +101,7 @@ def Drive_Details(request, id):# get the drive static details
     companyDetails = Company.objects.filter(id=id)
     testDetails=Test.objects.filter(id=id)
     criteriaDetails=Criteria.objects.filter(id=id)
-    alldrive = drive.objects.filter(username=request.user)
+    alldrive = drive.objects.filter(username=request.user,Company_Name=id)
     return render(request, "Drives/ViewDrive.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails, "alldrive": alldrive})
 
 

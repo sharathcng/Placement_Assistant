@@ -9,8 +9,10 @@
         <a onclick='popUpProfile()' class='mt-3 mr-5 absolute top-1 right-0 text-indigo-500 inline-flex items-center'>Edit</a>
           <div class="flex items-center lg:w-3/4 mx-auto border-b pb-12 mb-10 border-gray-200 sm:flex-row flex-col">
             <div class="sm:w-64 sm:h-64  h-20 w-20 sm:mr-40  inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png" alt="">
+        <a onclick='popUpPic()' class='mt-3 mr-5 absolute top-1  text-indigo-800 inline-flex items-center'>Edit</a>
+              <img  class="h-60 w-60 rounded-full" src="{{ profilepic.profilepic.url }}" alt="">
             </div>
+          
             <div id="profileData" class="flex-grow items-center sm:text-left text-center mt-1 sm:mt-10">
               {% comment %} <h1 class="text-gray-1000 text-5xl title-font font-xldium mb-4"><ion-icon class="" name="person-circle-outline"></ion-icon>{{ user.first_name }} {{ user.last_name }}</h1>
               <h1 class="text-gray-1000 text-2xl title-font font-xldium ml-3"><ion-icon name="card" class="mr-3 "></ion-icon>{{ user.username }}</h1>
@@ -32,6 +34,69 @@
           <!-- <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button> -->
         </div>
         
+
+
+
+         <!-- pop up -->
+  <form action="{% url 'updatePic' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+      <div id="popup-pic" style="display: none" class="fixed z-10 inset-0 overflow-y-auto">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+       
+          <div class="fixed inset-0 transition-opacity">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+      
+          
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+       
+          <div  class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <!-- Heroicon name: exclamation -->
+                  <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                    Update your profile picture
+                  </h3>
+                  
+                  <div class="mt-2">
+                    <p class="text-sm leading-5 text-gray-500">
+                      <span class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Profile Picture&nbsp;</span>
+                      <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4"  type="file" name="profilepic">
+                    </p>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+                <button  type="submit" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                  Save
+                </button>
+              </span>
+              <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+                <button onclick="popUpPic()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                  Cancel
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+</form>
+      <!-- pop up -->
+
+
+
+
+
 
         <!-- pop up -->
   
@@ -80,6 +145,17 @@
                     </div>
                     </tr>
 
+                    {% comment %} <tr>
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                      <td>
+                        <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Profile Picture&nbsp;</span>
+                        </td><td>
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4"  type="file" id="profilepic"></td>
+                      </p>
+                    </div>
+                    </tr> {% endcomment %}
+
                     <tr>
                     <div class="mt-2">
                       <p class="text-sm leading-5 text-gray-500">
@@ -95,7 +171,7 @@
                       <p class="text-sm leading-5 text-gray-500">
                       <td>
                         <span  class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Gender&nbsp;</span></td><td>
-                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Male">Male
+                        <b>:</b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender"  type="radio" id="gender" value="Male">Male
                         <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Female">Female
                         <b></b>&nbsp;<input class="bg-white-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-black px-4 py-2 mb-4" name="gender" type="radio" id="gender" value="Other">Other
                       </td>
@@ -178,6 +254,9 @@
                       </p>
                     </div>
                     </tr>
+
+                    
+
                     </tbody>
                     </table>
                   </div>
@@ -824,6 +903,17 @@
         }
 
 
+        function popUpPic() {
+          var popup = document.getElementById('popup-pic');    
+          if(popup.style.display == "block") { // if is menuBox displayed, hide it
+            popup.style.display = "none";
+          }
+          else { // if is menuBox hidden, display it
+            popup.style.display = "block";
+          }
+        }
+
+
         function popUpHobbie() {
           var popup = document.getElementById('popup-hobbie');    
           if(popup.style.display == "block") { // if is menuBox displayed, hide it
@@ -939,6 +1029,8 @@
             }
           } 
 
+      {% comment %} save_pic {% endcomment %}
+
       function save_hobbies() {
         var action = confirm("Are you sure you want to save this data?");
         var token = "{{csrf_token}}";
@@ -1021,7 +1113,19 @@
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
         var date = $('#date').val();
-        var gender = $('#gender').val();
+        //var date = $('#gender').val();
+        const rbs = document.querySelectorAll('input[name="gender"]');
+            let selectedValue;
+            for (const rb of rbs) {
+                if (rb.checked) {
+                    selectedValue = rb.value;
+                    break;
+                }
+            }
+            var gender = selectedValue;
+        //var x = document.getElementById("gender1");
+        //var y = document.getElementById("gender2");
+       
         var phoneNumber = $('#phoneNumber').val();
         var email = $('#email').val();
         var courseName = $('#courseName').val();
@@ -1118,8 +1222,7 @@
                         var temp = "<h1 class='text-gray-1000 text-5xl title-font font-xldium mb-4'><ion-icon  name='person-circle-outline'></ion-icon>"+response.student[key].first_name+" "+response.student[key].last_name+"</h1>"+
                                     "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='card' class='mr-3'></ion-icon>"+response.student[key].username+"</h1>"+
                                     "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='mail' class='mr-3 '></ion-icon>"+response.student[key].email+"</h1>"
-                                    
-                        $("#profileData").append(temp);
+                    $("#profileData").append(temp);
 
                       }
                       var temp = "<h1 class='text-gray-1000 text-2xl title-font font-xldium ml-3'><ion-icon name='calendar' class='mr-3 '></ion-icon>"+response.personal[key].dateOfBirth+"</h1>"+
@@ -1162,7 +1265,7 @@
                  // alert("No data found");
                 }
             });
-          },2000);
+          },3000);
 
         });
 
