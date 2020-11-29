@@ -8,6 +8,7 @@ from .forms import PostDrive, PostTest, PostCriteria
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required(login_url='login')
@@ -116,23 +117,24 @@ def editDrive(request, id):#get the drive editing page
 @login_required(login_url='login')
 def updateDrive(request, id):# save edited Drive details
     if request.method == "POST":
-        x = Company.objects.filter(pk=id)
-        #y = Test.objects.filter(Company_Name=id).first()
-        #z = Criteria.objects.filter(Company_Name=id)
+        x = Company.objects.get(id=id)
+        y = Test.objects.get(Company_Name=id)
+        z = Criteria.objects.get(Company_Name=id)
         form1 = PostDrive(request.POST, instance=x)
-        #form2 = PostTest(request.POST, instance=y)
-        #form3 = PostCriteria(request.POST, instance=x)
-        if form1.is_valid():
-            form1.save()
-            #b = form2.save(commit=False)
-            #c = form3.save(commit=False)
-            #b.Company_Name = a
-            #b.save()
-            #c.Company_Name = a
-            #c.save()
-            return redirect('postDrive')
+        form2 = PostTest(request.POST, instance=y)
+        form3 = PostCriteria(request.POST, instance=z)
+        if form1.is_valid() and form2.is_valid() and form3.is_valid():
+            a=form1.save()
+            b = form2.save(commit=False)
+            c = form3.save(commit=False)
+            b.Company_Name = a
+            b.save()
+            c.Company_Name = a
+            c.save()
+            return redirect(Drive_Details,id)
         else:
-            return render(request, "Drives/companyList.html")
+            messages.warning(request, 'Please Insert Date.')
+            return redirect(editDrive, id)
     else:
         return render(request, "Drives/companyList.html")
     
