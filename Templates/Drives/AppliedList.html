@@ -33,6 +33,9 @@
               <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Selection Status
               </th>
+              <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Action
+              </th>
               
               <th class="px-6 py-3 bg-gray-50"></th>
             </tr>
@@ -65,9 +68,11 @@
                     {% if list.Selected_status == 1 %}
                     Applied
                     {% elif list.Selected_status == 2 %}
-                    Rejected
+                    Not Applied
                     {% elif list.Selected_status == 3 %}
-                    Selected
+                    Applied
+                    {% elif list.Selected_status == 4 %}
+                    Applied
                     {% endif %}
                 </div>
               </td>
@@ -77,15 +82,43 @@
                     {% if list.Selected_status == 1 %}
                     Process
                     {% elif list.Selected_status == 2 %}
-                    Rejected
+                    Dropped
                     {% elif list.Selected_status == 3 %}
                     Selected
+                    {% elif list.Selected_status == 4 %}
+                    Rejected
                     {% endif %}
                     </div>
               </td>
 
               <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+
                 <input type="checkbox" id="selectSatus" name="selectSatus" value="3">
+
+              <span class="inline-block items-right justify-center ">
+                {% if list.Selected_status == 0 %}
+                <a href="{% url 'listUpdate' id=list.id d=0 %}"
+                          class="m-4 bg-green-500 text-lg font-bold p-2 py-2 text-white shadow-md rounded">
+                      Select
+                  </a>
+        
+                  <a href="{% url 'listUpdate' id=list.id d=1 %}"
+                          class="m-4 bg-red-500 text-lg font-bold p-2 py-2 text-white shadow-md rounded">
+                      Reject
+                  </a>
+                  {% elif list.Selected_status == 3 %}
+                  <a href="{% url 'listUpdate' id=list.id d=1 %}"
+                          class="m-4 bg-red-500 text-lg font-bold p-2 py-2 text-white shadow-md rounded">
+                      Reject
+                  </a>
+                  {% elif list.Selected_status == 4 %}
+                  <a href="{% url 'listUpdate' id=list.id d=0 %}"
+                          class="m-4 bg-green-500 text-lg font-bold p-2 py-2 text-white shadow-md rounded">
+                      Select
+                  </a>
+                  {% endif %}
+              </span>
+
               </td>
               
             </tr>

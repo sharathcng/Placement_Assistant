@@ -10,6 +10,16 @@
       </h1>
     </div>
   </header>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <div class="text-red-500 {{ message.tags }} text-center ">
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                {{ message }}
+              </div>
+            {% endfor %}
+            </ul>
+        {% endif %}
 {% for companyDetail in companyDetail %}
 <form action="{% url 'updateDrive' companyDetail.id %}" method="POST" >
 

@@ -8,9 +8,10 @@ urlpatterns = [
     path('student_drives', views.Student_Drives, name="student_drives"),
     path('mydrives', views.MyDrives, name="mydrives"),
     path('AppliedStudents<int:id>', views.AppliedStudents, name="AppliedStudents"),
+    path('listUpdate<int:id><int:d>',views.AppliedListUpdate, name="listUpdate"),
+    path('ApplyReject<int:id><int:d>', views.ApplyReject, name="ApplyReject"),
 
-    path('postDrive', views.Post_Drive,
-         name="postDrive"),  # posting new drive
+    path('postDrive', views.Post_Drive,name="postDrive"),  # posting new drive
     path('driveYear', views.Drive_Year, name="driveYear"),
     path('companyList/<int:year>', views.Company_List, name="companyList"),
     path('editDrive<int:id>', views.editDrive, name="editDrive"),
