@@ -13,6 +13,17 @@
     </div>
 </header>
 
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <div class="text-green-500 {{ message.tags }} text-center ">
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+      </div>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 
 <div class="flex flex-col">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -132,16 +143,5 @@
   </div>
 </div>
 {% endfor %}
-{% comment %} <div class="space-y-0">
-  <span  class="inline-block items-right justify-center ">
-      {% comment %} <a href="" class="absolute right-0 w-24 mt-4 mr-32 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                Send&nbsp;Email
-      </a> {% endcomment %}
-
-      <a href="" class="absolute right-0  w-24 mt-4 mr-2 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                Submit
-      </a>
-
-</span>
-<div> {% endcomment %}
+<div> 
 {% endblock content %}

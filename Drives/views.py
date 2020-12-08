@@ -150,11 +150,14 @@ def AppliedStudents(request, id):  # Applied students list Html Page.
 def AppliedListUpdate(request,id,d):
     if d == 0:
         drive.objects.filter(id=id).update(Selected_status=3)
+        messages.success(request, 'Details Updated')
     elif d == 1:
         drive.objects.filter(id=id).update(Selected_status=4)
+        messages.warning(request, 'Details Updated')
     else:
         pass
     appliedList = drive.objects.filter(id=id)
+    
     return render(request, "Drives/AppliedList.html", {'appliedList': appliedList})
 
 
