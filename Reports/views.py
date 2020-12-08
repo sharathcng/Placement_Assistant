@@ -35,3 +35,20 @@ def report(request):  # Drive Stundent Html Page.
     #         l[b]+=years.values[b]
     # print(l)
     return render(request, "Reports/reportHome.html",{'years':years})
+
+
+# def bookir_chart1(request):
+#     labels = []
+#     data = []
+#     qury = Company.objects.values("Year")
+#     dept1 = Company.objects.values(
+#         'Company_Name').annotate(Sum('Company_Name'))
+#     for entry in dept1:
+#         data.append(entry['Company_Name__sum'])
+#     for val in qury:
+#         labels.append(val['Company_Name'])
+#     data = {
+#         'labels': labels,
+#         'data': data
+#     }
+#     return JsonResponse(data)

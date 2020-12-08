@@ -7,6 +7,16 @@
     <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Placement Drive Section</h1>
       <p class="lg:w-1/2 w-full leading-relaxed text-base">Here you can add and manage placement drives</p>
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <div class="text-green-500 {{ message.tags }} text-center ">
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                {{ message }}
+              </div>
+            {% endfor %}
+            </ul>
+        {% endif %}
 </div>
 
 
