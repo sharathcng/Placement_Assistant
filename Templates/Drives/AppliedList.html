@@ -46,8 +46,10 @@
               <td class="px-6 py-4 text-center whitespace-no-wrap">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                  {% for pro in profile%}
+                    <img class="h-10 w-10 rounded-full" src="{{ pro.profilepic.url }}" alt="">
                   </div>
+                  {% endfor %}
                   <div class="ml-4">
                     <div class="text-sm leading-5 font-medium text-gray-900">
                       {{list.username.first_name}} {{list.username.last_name}}
@@ -132,9 +134,9 @@
 {% endfor %}
 <div class="space-y-0">
   <span  class="inline-block items-right justify-center ">
-      <a href="" class="absolute right-0 w-24 mt-4 mr-32 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+      {% comment %} <a href="" class="absolute right-0 w-24 mt-4 mr-32 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                 Send&nbsp;Email
-      </a>
+      </a> {% endcomment %}
 
       <a href="" class="absolute right-0  w-24 mt-4 mr-2 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                 Submit

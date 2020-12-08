@@ -39,7 +39,7 @@ class Academic_table(models.Model):
     university = models.CharField(max_length = 100)
     yearOfPass = models.IntegerField()
     CGPA = models.DecimalField(max_digits=4, decimal_places=2)
-    markscard = models.ImageField(upload_to = 'markscard/', blank=True, null=True)
+    markscard = models.ImageField(blank=True, null=True)
 
 
 class skills(models.Model):

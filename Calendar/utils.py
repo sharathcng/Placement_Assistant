@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from .models import Event
 from Drives.models import Test
+from Drives.urls import *
 
 
 class Calendar(HTMLCalendar):
@@ -16,7 +17,7 @@ class Calendar(HTMLCalendar):
 		events_per_day = events.filter(Test_Date__day=day)
 		d = ''
 		for event in events_per_day:
-			d += f'<li><a href="#"> {event.Company_Name.Company_Name} </a></li>'
+			d += f'<li><a href=""> {event.Company_Name.Company_Name} </a></li>'
 
 		if day != 0:
 			return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"

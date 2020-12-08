@@ -142,7 +142,10 @@ def updateDrive(request, id):# save edited Drive details
 @login_required(login_url='login')
 def AppliedStudents(request, id):  # Applied students list Html Page.
     appliedList = drive.objects.filter(Company_Name=id)
-    return render(request, "Drives/AppliedList.html", {'appliedList': appliedList})
+    profile= []
+    for x in appliedList:
+        profile += Student_Profile.objects.filter(username=x.username)
+    return render(request, "Drives/AppliedList.html", {'appliedList': appliedList,'profile':profile})
 
 @login_required(login_url='login')
 def AppliedListUpdate(request,id,d):

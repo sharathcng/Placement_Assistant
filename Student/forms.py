@@ -8,3 +8,11 @@ class updatePics(forms.ModelForm):
 
     def _init_(self, *args, **kwargs):
         super(updatePics, self)._init_(*args, **kwargs)
+
+class updateMarks(forms.ModelForm):
+    class Meta:
+        model = Academic_table
+        fields=["markscard"]
+
+    def _init_(self, *args, **kwargs):
+        super(updateMarks, self)._init_(*args, **kwargs)

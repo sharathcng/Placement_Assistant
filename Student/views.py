@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from Student.models import *
 from Drives.models import drive,Company
 from django.http import JsonResponse
-from .forms import updatePics
+from .forms import updatePics,updateMarks
 
 # Create your views here.
 
@@ -43,6 +43,16 @@ def updatePic(request):
             m = Student_Profile.objects.get(username=request.user)
             m.profilepic = form.cleaned_data['profilepic']
             m.save()
+    return redirect(Profile)
+
+def updateMark(request):
+    if request.method == "POST":
+        form = updateMarks(request.POST,request.FILES)
+        if  form.is_valid():
+            return redirect(Profile)
+            # m = Academic_table.objects.get(username=request.user)
+            # m.markscard = form.cleaned_data['markscard']
+            # m.save()
     return redirect(Profile)
 
 def Get_details(request):

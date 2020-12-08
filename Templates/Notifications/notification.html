@@ -51,19 +51,19 @@
                     <b class="capitalize">{{ offer.Company_Name.Company_Name }}</b> If you really want to work please choose <b>Apply</b> or you want to be a Entrepreneur please choose <b>Reject</b>...!!!
                 </span>
                 <span class="inline-block items-right justify-center ">
-                <a href="{% url 'applyJob' id=offer.Company_Name.id x=1 %}">
+                <a href="{% url 'driveDetails' id=offer.Company_Name.id  %}">
                     <button x-data="{}"
-                        @click="$dispatch('notice', {type: 'success',  text: 'Applied to {{ offer.Company_Name.Company_Name }}'})"
+                        {% comment %} @click="$dispatch('notice', {type: 'success',  text: 'Applied to {{ offer.Company_Name.Company_Name }}'})" {% endcomment %}
                         class="m-4 bg-green-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded" >
-                        Apply
+                        View
                     </button>
                     </a>
-                    <a href="{% url 'applyJob' id=offer.Company_Name.id x=2 %}">
+                    {% comment %} <a href="{% url 'applyJob' id=offer.Company_Name.id x=2 %}">
                     <button x-data="{}"
                         x-on:click="$dispatch('notice', {type: 'danger', text: 'you just rejected an chance from {{ offer.Company_Name.Company_Name }}'})"
                         class="m-4 bg-red-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded" >
                         Reject
-                    </button>
+                    </button> {% endcomment %}
                     </a>
                 </span>
             </div>

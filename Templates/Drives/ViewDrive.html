@@ -181,7 +181,7 @@
 {% endfor %}
 {% if user.is_superuser is False %}
 {% for apply in alldrive %}
-    {% if apply.Selected_status == 0 or apply.Selected_status == 1 %}
+    {% if apply.Selected_status == 0 %}
     <div class="px-64 py-2 ">
         <div class="flex content-center -mx-2">
             <div class="w-full px-2">

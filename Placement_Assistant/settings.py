@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'Placement_Assistant.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'placement_assistant_system',
+        'NAME': 'mcaplacement',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
