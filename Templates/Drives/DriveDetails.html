@@ -9,6 +9,7 @@
         Drive details
       </h1>
     </div>
+    
   </header>
         {% if messages %}
         <ul class="messages">
@@ -159,9 +160,10 @@
                             
                         </select>
                     <td class="px-8 py-4 whitespace-wrap text-right">Test Date :</td>
-                    <td class="px-2 py-4 w-100 whitespace-wrap"><input name="Test_Date" type="date" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" value="{{testDetail.Test_Date}}" >
-                
-                    
+                    <td class="px-2 py-4 w-100 whitespace-wrap">
+                    <input name="Test_Date" type="date" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150 " value="{{testDetail.Test_Date}}" >
+                    </td>
+ 
                 </tr>
                 <tr>
                     <td class="px-8 py-4 whitespace-wrap text-right">Aptitude :</td>
@@ -238,6 +240,13 @@
     </div>
 </div>
 
+
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("Test_Date")[0].setAttribute('min', today);
+</script>
+
 </form>
+
 
 {% endblock content %}

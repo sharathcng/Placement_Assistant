@@ -95,10 +95,10 @@
 
               <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
 
-                <input type="checkbox" id="selectSatus" name="selectSatus" value="3">
+              {% comment %} <input type="checkbox" id="selectSatus" name="selectSatus" value="3"> {% endcomment %}
 
               <span class="inline-block items-right justify-center ">
-                {% if list.Selected_status == 0 %}
+                {% if list.Selected_status == 1 %}
                 <a href="{% url 'listUpdate' id=list.id d=0 %}"
                           class="m-4 bg-green-500 text-lg font-bold p-2 py-2 text-white shadow-md rounded">
                       Select
@@ -132,7 +132,7 @@
   </div>
 </div>
 {% endfor %}
-<div class="space-y-0">
+{% comment %} <div class="space-y-0">
   <span  class="inline-block items-right justify-center ">
       {% comment %} <a href="" class="absolute right-0 w-24 mt-4 mr-32 flex items-center justify-center px-4 py-1 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                 Send&nbsp;Email
@@ -143,5 +143,5 @@
       </a>
 
 </span>
-<div>
+<div> {% endcomment %}
 {% endblock content %}

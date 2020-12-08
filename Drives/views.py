@@ -72,10 +72,9 @@ def Post_Drive(request):  # posting new Drive
                     else:
                         if value >= c.PG:
                             count = count+1
-                #print(count)
                 if count == 4:
-                    print(count)
                     drive.objects.create(username=q,Company_Name=a)
+            messages.success(request, 'New Drive Posted ')
             return redirect(Drives)            
         else:
             return render(request, "Drives/driveAdd.html")
@@ -100,8 +99,8 @@ def Company_List(request,year):  # company list Html Page.
 @login_required(login_url='login')
 def Drive_Details(request, id):# get the drive static details
     companyDetails = Company.objects.filter(id=id)
-    testDetails=Test.objects.filter(id=id)
-    criteriaDetails=Criteria.objects.filter(id=id)
+    testDetails = Test.objects.filter(Company_Name=id)
+    criteriaDetails=Criteria.objects.filter(Company_Name=id)
     alldrive = drive.objects.filter(username=request.user,Company_Name=id)
     return render(request, "Drives/ViewDrive.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails, "alldrive": alldrive})
 
@@ -109,8 +108,8 @@ def Drive_Details(request, id):# get the drive static details
 @login_required(login_url='login')
 def editDrive(request, id):#get the drive editing page
     companyDetails = Company.objects.filter(id=id)
-    testDetails = Test.objects.filter(id=id)
-    criteriaDetails = Criteria.objects.filter(id=id)
+    testDetails = Test.objects.filter(Company_Name=id)
+    criteriaDetails = Criteria.objects.filter(Company_Name=id)
     return render(request, "Drives/DriveDetails.html", {'companyDetail': companyDetails, 'testDetails': testDetails, 'criteriaDetails': criteriaDetails})
 
 
@@ -163,23 +162,11 @@ def AppliedListUpdate(request,id,d):
 def ApplyReject(request, id,d):
     if d == 1:
         drive.objects.filter(id=id).update(Selected_status=1)
+        messages.success(request, 'Applied')
     elif d == 2:
         drive.objects.filter(id=id).update(Selected_status=2)
+        messages.warning(request, 'Rejected')
     else:
         pass
     return redirect(MyDrives)
     
-
-
-# @login_required(login_url='login')
-# def Add_Drive(request): 
-#     context={}
-#     if request.method == "post":
-#         form = CompanyForms(request.POST)  # , request.FILES
-#         if form.is_valid():
-#             form.save()
-#         return redirect('CriteriaDetails')
-#     else: 
-#         form = CompanyForms()
-#         context['form'] = form
-#         return render(request, "Drives/driveAdd.html", context)
