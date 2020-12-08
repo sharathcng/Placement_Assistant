@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views import generic
 from django.utils.safestring import mark_safe
 import calendar
-from Calendar.models import *
+from .models import *
 from .utils import Calendar
 
 # Create your views here.
@@ -26,7 +26,7 @@ class CalendarView(generic.ListView):
         # Instantiate our calendar class with today's year and date
         
 
-        #Call the formatmonth method, which returns our calendar as a table
+        # Call the formatmonth method, which returns our calendar as a table
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
         cal = Calendar(d.year, d.month)
@@ -35,24 +35,12 @@ class CalendarView(generic.ListView):
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         return context
-        # context = super().get_context_data(**kwargs)
-
-        # # use today's date for the calendar
-        # d = get_date(self.request.GET.get('day', None))
-
-        # # Instantiate our calendar class with today's year and date
-        # cal = Calendar(d.year, d.month)
-
-        # # Call the formatmonth method, which returns our calendar as a table
-        # html_cal = cal.formatmonth(withyear=True)
-        # context['calendar'] = mark_safe(html_cal)
-        # return context
 
 def get_date(req_day):
     if req_day:
         year, month = (int(x) for x in req_day.split('-'))
         return date(year, month, day=1)
-    return datetime
+    return datetime.today()
 
 
 def prev_month(d):
