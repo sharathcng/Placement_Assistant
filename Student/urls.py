@@ -20,6 +20,7 @@ urlpatterns = [
     path("ajax/deleteProject", views.delete_project, name="deleteProject"),
 
     path("updatePic", views.updatePic, name="updatePic"),
+    path("updateMark", views.updateMark, name="updateMark"),
     
     
 
