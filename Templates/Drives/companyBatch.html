@@ -3,20 +3,22 @@
 {% block content %}
 
 <title>Drives</title>
-{% for year in driveYears%}
+
   <section class="text-gray-700 body-font overflow-hidden">
     <div class="container px-5 py-14 mx-auto">
       <div class="flex flex-wrap -m-12">
         <div class="p-12 md:w-full flex flex-col items-start">
           <span class="items-start inline-block py-1 px-3 rounded bg-indigo-100 text-indigo-500 text-sm font-medium tracking-widest">Placement Drives</span>
+          {% for year in driveYears%}
             <a href="{% url 'companyList' year.Year %}">
-            <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900 mt-1 mb-">{{ year.Year}}</h2>
+            <h2 class="sm:text-2xl text-2xl title-font font-medium text-gray-900  mt-1 mb-1">{{ year.Year}}</h2>
+            {% endfor%}
             </a>
         </div>
       </div>
     </div>
   </section>
-{% endfor%}
+
       <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
       <script>
 

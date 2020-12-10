@@ -25,16 +25,19 @@ def report(request):  # Drive Stundent Html Page.
         #print(y['Year'])
         z = str(y['Year'])
         years.append([z,Company.objects.filter(Year=y['Year']).count()])
-    #print(years)
+    
+    select = drive.objects.values('Company_Name').distinct()
+    selected = []
+    for s in select :
+        #print(y['Year'])
+        z = str(s['Company_Name'])
+        selected.append([z,drive.objects.filter(Company_Name=s['Company_Name'],Selected_status=3).count()])
+    print(selected)
+    # selected = drive.objects.values(
+    #             'Company_Name').annotate(Sum('Company_Name'))
 
-    # l = []
-    # for j in years:
-    #     print(years.keys())
-    #     for b in range(len(years)):
-    #         l[b]+=years.keys[b]
-    #         l[b]+=years.values[b]
-    # print(l)
-    return render(request, "Reports/reportHome.html",{'years':years})
+
+    return render(request, "Reports/reportHome.html",{'years':years,'selected':selected})
 
 
 # def bookir_chart(request):
