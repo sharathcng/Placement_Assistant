@@ -2,12 +2,12 @@
 {% load static %}
 {% block content %}
 
-<head>
+{% comment %} <head>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-</head>
+</head> {% endcomment %}
 
-    {% comment %} 
+    
     <html>
   <head>
   <!--Load the AJAX API-->
@@ -64,8 +64,8 @@
     </div>
     </div>
   </body>
-</html>  {% endcomment %}
-<body>
+</html>  
+{% comment %} <body>
 <div class="content" >
     <div class="container-fluid pull-right">        
       <div class="row">
@@ -82,7 +82,7 @@
               </div>
             </div>
           </div> 
-        </div>
+        </div> {% endcomment %}
 
         {% comment %} <div class="col-md-6">  
           <div class="card card-chart">
@@ -115,7 +115,7 @@
       {% comment %} </div>
     </div>
   </div> {% endcomment %}
-</body>
+{% comment %} </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script> 
@@ -151,7 +151,7 @@
            scales: { 
              yAxes: [{ 
                ticks: { 
-                 {% comment %} display: false, {% endcomment %}
+                 {% comment %} display: false, 
                  beginAtZero: true 
                 },
                scaleLabel: {
@@ -172,6 +172,6 @@
      }    
    </script> 
 
+{% endcomment %}
 
-
-{% endblock content %}
+{% endblock content %} 
