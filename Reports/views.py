@@ -10,7 +10,7 @@ from django.db.models import Sum
 
 
 def report(request):  # Drive Stundent Html Page.
-    year = Company.objects.values('Year').distinct()
+    year = Company.objects.values('Year').distinct().order_by('Year')
     #print(year)
     # a = year[0]
     # b = year[1]
@@ -29,14 +29,12 @@ def report(request):  # Drive Stundent Html Page.
     select = drive.objects.values('Company_Name').distinct()
     selected = []
     for s in select :
-        #print(y['Year'])
         z = str(s['Company_Name'])
-        selected.append([z,drive.objects.filter(Company_Name=s['Company_Name'],Selected_status=3).count()])
+        name=Company.objects.filter(id=z)
+        for x in name:
+            print(x.Company_Name)
+            selected.append([x.Company_Name,drive.objects.filter(Company_Name=s['Company_Name'],Selected_status=3).count()])
     print(selected)
-    # selected = drive.objects.values(
-    #             'Company_Name').annotate(Sum('Company_Name'))
-
-
     return render(request, "Reports/reportHome.html",{'years':years,'selected':selected})
 
 

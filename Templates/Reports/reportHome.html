@@ -28,11 +28,11 @@
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
-        data.addColumn('number', 'number of companies');
+        data.addColumn('number', 'Number of companies');
         data.addRows({{years|safe}});
 
         // Set chart options
-        var options = {'title':'Companies visited per year',
+        var options = {'title':'Companies visited',
                        'width':600,
                        'height':300,
                        'is3D': true};
