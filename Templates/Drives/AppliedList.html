@@ -11,9 +11,7 @@
         {{ list.Company_Name }} - Applied Students
       </h1>
     </div>
-</header>
-
-{% if messages %}
+    {% if messages %}
   <ul class="messages">
     {% for message in messages %}
       <div class="text-green-500 {{ message.tags }} text-center ">
@@ -23,6 +21,7 @@
     {% endfor %}
   </ul>
 {% endif %}
+</header>
 
 
 <div class="flex flex-col">
