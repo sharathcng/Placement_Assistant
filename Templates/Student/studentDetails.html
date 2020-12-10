@@ -182,13 +182,14 @@
           <tbody>
             <tr>
       {% for academic in academic %}
-            {% if academic.courses == "SSLC" %}
+            {% if academic.qualification == "10" %}
               <td class="border px-4 py-2">{{ academic.courses}}</td>
               <td class="border px-4 py-2">{{ academic.college }}</td>
               <td class="border px-4 py-2">{{ academic.university }}</td>
               <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
               <td class="border px-4 py-2">{{ academic.CGPA }}</td>
               <td class="border px-4 py-2">
+
               <img src='{{ academic.markscard.url }}' alt="..." width="50pt" height="50pt">
             {% endif %}
                 {% comment %} <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Upload&nbsp;&nbsp;
@@ -200,14 +201,14 @@
             
 
             <tr>
-            {% if academic.courses == "PUC" %}
+            {% if academic.qualification == "12" %}
               <td class="border px-4 py-2">{{academic.courses}}</td>
               <td class="border px-4 py-2">{{ academic.college }}</td>
               <td class="border px-4 py-2">{{ academic.university }}</td>
               <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
               <td class="border px-4 py-2">{{ academic.CGPA }}</td>
               <td class="border px-4 py-2">
-              <img src='{{ puc.markscard.url }}' alt="...">
+              <img src='{{ academic.markscard.url }}' alt="..." width="50pt" height="50pt">
             {% endif %}
                 
                 {% comment %} <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Upload&nbsp;&nbsp;
@@ -219,14 +220,14 @@
             </tr>
 
             <tr>
-            {% if academic.courses == "UG" %}
+            {% if academic.qualification == "UG" %}
               <td class="border px-4 py-2">{{academic.courses}}</td>
               <td class="border px-4 py-2">{{ academic.college }}</td>
               <td class="border px-4 py-2">{{ academic.university }}</td>
               <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
               <td class="border px-4 py-2">{{ academic.CGPA }}</td>
               <td class="border px-4 py-2">
-              <img src='{{ degree.markscard.url }}' alt="...">
+              <img src='{{ academic.markscard.url }}' alt="..." width="50pt" height="50pt">
             {% endif %}
                 
                 {% comment %} <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none  text-black  rounded text-base mt-4 md:mt-0">Upload&nbsp;&nbsp;
@@ -237,13 +238,16 @@
             </tr>
 
             <tr>
-            {% if academic.courses == "PG" %}
+            {% if academic.qualification == "PG" %}
               <td class="border px-4 py-2">{{academic.courses}}</td>
               <td class="border px-4 py-2">{{ academic.college }}</td>
               <td class="border px-4 py-2">{{ academic.university }}</td>
               <td class="border px-4 py-2">{{ academic.yearOfPass }}</td>
               <td class="border px-4 py-2">{{ academic.CGPA }}</td>
+              <td class="border px-4 py-2">
+              <img src='{{ academic.markscard.url }}' alt="..." width="50pt" height="50pt">
             {% endif %}
+            </td>
     {% endfor %}
             </tr>
            
