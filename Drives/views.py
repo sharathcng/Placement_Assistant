@@ -150,10 +150,10 @@ def AppliedStudents(request, id):  # Applied students list Html Page.
 def AppliedListUpdate(request,id,d):
     if d == 0:
         drive.objects.filter(id=id).update(Selected_status=3)
-        messages.success(request, 'Details Updated')
+        messages.success(request, 'Student Selected')
     elif d == 1:
         drive.objects.filter(id=id).update(Selected_status=4)
-        messages.warning(request, 'Details Updated')
+        messages.warning(request, 'Student Rejected')
     else:
         pass
     appliedList = drive.objects.filter(id=id)
