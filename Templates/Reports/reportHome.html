@@ -46,6 +46,42 @@
 
     </script>
 
+
+
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+       google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Students selected');
+        data.addRows({{selected|safe}});
+
+        // Set chart options
+        var options = {'title':'Students selected',
+                       'width':600,
+                       'height':300,
+                       'is3D': true};
+
+        // Instantiate and draw our chart, passing in some options.
+        //var pieChart = new google.visualization.PieChart(document.getElementById('chart_div_pie_selected'));
+        var barChart = new google.visualization.BarChart(document.getElementById('chart_div_bar_selected'));
+        //pieChart.draw(data, options);
+        barChart.draw(data, options);
+      } 
+
+    </script>
+
   </head>
 
   <body>
@@ -53,17 +89,29 @@
 <div class="px-3 py-2 ">
   <div class="flex -mx-2">
     <div class="w-1/2 px-2">
-      <div  id="chart_div_pie">
-    </div>
+        <div  id="chart_div_pie">
+        </div>
     </div>
     
-<div class="w-1/2 px-2">
+    <div class="w-1/2 px-2">
       <div  id="chart_div_bar">
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="px-3 py-2 ">
+  <div class="flex -mx-2">
+    
+    
+    <div class="w-1/2 px-2">
+      <div  id="chart_div_bar_selected">
+      </div>
     </div>
-    </div>
-    </div>
-  </body>
+  </div>
+</div>
+
+</body>
 </html>  
 {% comment %} <body>
 <div class="content" >
